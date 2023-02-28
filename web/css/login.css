@@ -1,0 +1,63 @@
+body {
+    padding: 0px;
+    margin: 0px;
+    font-family: sans-serif;
+    box-sizing: border-box;
+    background-image: url("../image/hinh-nen-slide-xanh-ngoc_100606136.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100vh;
+}
+
+.login-form {
+    width: 100%;
+    max-width: 400px;
+    margin: 20vh auto;
+    background-color: #ffffff;
+    padding: 15px;
+    border: 2px dotted #cccccc;
+    border-radius: 10px;
+}
+
+h1 {
+    color: #009999;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.input-box {
+    margin-bottom: 10px;
+}
+
+.input-box input {
+    padding: 7.5px 0 7.5px 3px;
+    width: 100%;
+    border: 1px solid #cccccc;
+    outline: none;
+}
+
+.btn-box {
+    margin-top: 20px;
+    display: inline-flex;
+
+}
+
+.btn-box select {
+    text-align: left;
+    padding: 7.5px 15px;
+
+}
+
+.btn-box input {
+    margin-left: 50%;
+    padding: 7.5px 15px;
+    border-radius: 2px;
+    background-color: #009999;
+    color: #ffffff;
+    border: none;
+    outline: none;
+
+}
+.btn-box input:hover {
+  background: #cccccc;
+  color: black;
+}

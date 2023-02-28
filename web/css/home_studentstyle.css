@@ -1,0 +1,56 @@
+.ctr1 {
+    background-color: teal;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+H1 {
+    color: bisque;
+    margin-top: 0;
+    margin-left: 1%;
+    margin-top: 1%;
+}
+
+.ctr2 {
+    border: 5px solid teal;
+    margin-left: 2%;
+    box-shadow: 5px 5px 5px 5px slategray;
+    padding-left: 1%;
+    background-color: white;
+    width: 20%; 
+}
+
+p {
+    text-align: left;
+    font-weight: bold;
+    color: black;
+}
+
+.ctr3 {
+    border: 5px solid teal;
+    box-shadow: 5px 5px 5px 5px slategray;
+    background-image: url("../image/anh2.jpg");
+    background-size: 100%;
+    margin-left: 1%;
+    width: 10%;
+    margin-left: 35%;
+}
+
+body {
+    background-image: url("../image/anh1.jpg");
+    margin: 0;
+}
+
+input:hover {
+    color: bisque;
+    background: rosybrown;
+}
+
+.ctr4{
+    width: 0%; 
+    padding-top: 5%;
+    width: 100%;  
+    display: flex;
+    margin: 0 auto;
+}

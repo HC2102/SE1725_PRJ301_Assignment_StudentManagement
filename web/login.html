@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Đăng nhập vào website</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="css\login.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="login-form">
+      <form action="" method="post">
+        <h1>STUDENT MANAGEMENT LOGIN</h1>
+        <div class="input-box">
+          <i></i>
+          <input
+            type="text"
+            placeholder="Enter username"
+            name="user"
+            required
+          />
+        </div>
+        <div class="input-box">
+          <i></i>
+          <input
+            type="password"
+            placeholder="Enter password"
+            name="pass"
+            required
+          />
+        </div>
+        <div class="btn-box">
+          <select name="choice">
+            <option value="Choice" hidden>WHO ARE YOU ?</option>
+            <option value="student">STUDENT</option>
+            <option value="teacher">TEACHER</option>
+            <option value="manager">ADMIN</option>
+          </select>
+          <input type="submit" value="LOGIN" />
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
