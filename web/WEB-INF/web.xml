@@ -4,9 +4,17 @@
         <servlet-name>DummyServlet</servlet-name>
         <servlet-class>Servlet.DummyServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>StudentHomeServlet</servlet-name>
+        <servlet-class>Servlet.StudentHomeServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DummyServlet</servlet-name>
         <url-pattern>/DummyServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StudentHomeServlet</servlet-name>
+        <url-pattern>/StudentHomeServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
