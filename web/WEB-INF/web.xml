@@ -5,16 +5,19 @@
         <servlet-class>Servlet.DummyServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>Servlet.LoginServlet</servlet-class>
+
+        <servlet-name>StudentHomeServlet</servlet-name>
+        <servlet-class>Servlet.StudentHomeServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>DummyServlet</servlet-name>
         <url-pattern>/DummyServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>LoginServlet</servlet-name>
-        <url-pattern>/loginServlet</url-pattern>
+
+        <servlet-name>StudentHomeServlet</servlet-name>
+        <url-pattern>/StudentHomeServlet</url-pattern>
+
     </servlet-mapping>
     <session-config>
         <session-timeout>
