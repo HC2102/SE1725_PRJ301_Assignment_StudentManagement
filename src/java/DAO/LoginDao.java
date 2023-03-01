@@ -3,47 +3,63 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package DAO;
+
 import Login.LoginBeans;
 import dbConnect.DBContext;
 import java.sql.*;
+
 /**
  *
  * @author HE170417
  */
 public class LoginDao {
-    public String  authenticateUser(LoginBeans loginbean){
-        DBContext db = new DBContext();
+
+    public String authenticateUser(LoginBeans loginbean) {
+
         String userName = loginbean.getUserName();
         String password = loginbean.getPassword();
-        Connection con  = null;
-        Statement statement = null;
-        ResultSet resultSet = null;
-        String userNameDB, passwordDB,roleDB = "";
-        try{
-            con = db.getConnection();
-            statement = con.createStatement(); // prepare for statement
+        String sql = "SELECT [User_name], User_Password, Role_ID FROM [User]";
+        String userNameDB, passwordDB, roleDB = "";
+        try {
+            DBContext db = new DBContext();
+            Connection con = db.getConnection();
+            Statement st = con.createStatement(); // prepare for statement
             // take the user table
-            resultSet = statement.executeQuery("select User_name, User_Password, Role_ID from User");
+            ResultSet rs = st.executeQuery(sql);
             //check the table to find the user name and password
-            while(resultSet.next()){
-                userNameDB = resultSet.getString("User_name");
-                passwordDB = resultSet.getString("User_Password");
-                roleDB = resultSet.getString("Role_ID");
-                if(userName.equals(userNameDB)&&password.equals(passwordDB)&&roleDB.equals("0")){
+            while (rs.next()) {
+                userNameDB = rs.getString("User_name");
+                passwordDB = rs.getString("User_Password");
+                roleDB = rs.getString("Role_ID");
+
+                if (userName.equals(userNameDB) && password.equals(passwordDB) && roleDB.equals("0")) {
+                    rs.close();
+                    st.close();
+                    con.close();
                     return "Admin";
                 }
-                if(userName.equals(userNameDB)&&password.equals(passwordDB)&&roleDB.equals("1")){
+                if (userName.equals(userNameDB) && password.equals(passwordDB) && roleDB.equals("1")) {
+                    
+                    rs.close();
+                    st.close();
+                    con.close();
                     return "Student";
                 }
-                if(userName.equals(userNameDB)&&password.equals(passwordDB)&&roleDB.equals("2")){
+                if (userName.equals(userNameDB) && password.equals(passwordDB) && roleDB.equals("2")) {
+                    rs.close();
+                    st.close();
+                    con.close();
                     return "Teacher";
                 }
             }
-            
-        }catch(Exception e){
-            System.out.println(e.getMessage());
+            rs.close();
+            st.close();
+            con.close();
+
+        } catch (Exception e) {
+            System.out.println("DAO login: " + e.getMessage());
         }
-        return "Invalid user role";
-                
+        return "Invalid authentication";
+
     }
 }
