@@ -10,4 +10,17 @@ package dbObject;
  */
 public class Teacher {
     private String userName, teacherName, majorID, phoneNum, address, email;
+
+    public Teacher() {
+    }
+
+    public Teacher(String userName, String teacherName, String majorID, String phoneNum, String address, String email) {
+        this.userName = userName;
+        this.teacherName = teacherName;
+        this.majorID = majorID;
+        this.phoneNum = phoneNum;
+        this.address = address;
+        this.email = email;
+    }
+    
 }
