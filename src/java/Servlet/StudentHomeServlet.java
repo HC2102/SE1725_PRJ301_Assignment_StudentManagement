@@ -24,7 +24,7 @@ public class StudentHomeServlet extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String user = req.getParameter("")
+        String user = req.getParameter("");
         RequestDispatcher rd = req.getRequestDispatcher("JSP/StudentHome.jsp");
         rd.forward(req, resp);
     }
