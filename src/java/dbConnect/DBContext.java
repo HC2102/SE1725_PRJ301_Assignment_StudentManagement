@@ -16,7 +16,7 @@ public class DBContext {
     /*Insert your other code right after this comment*/
  /*Change/update information of your database connection, DO NOT change name of instance variables in this class*/
     private final String serverName = "localhost"; //127.0.0.1
-    private final String dbName = "PRJ301_test";
+    private final String dbName = "SE1725_Assignment_PRJ301";
     private final String portNumber = "1433";
     private final String userID = "sa";
     private final String password = "123456";
