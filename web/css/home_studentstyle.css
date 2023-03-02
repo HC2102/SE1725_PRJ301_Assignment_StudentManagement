@@ -39,6 +39,7 @@ p {
 
 body {
     background-image: url("../image/anh1.jpg");
+    overflow-x: hidden;
     margin: 0;
 }
 
