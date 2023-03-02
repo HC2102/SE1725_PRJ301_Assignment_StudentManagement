@@ -16,6 +16,10 @@
         <servlet-name>classOfStudent</servlet-name>
         <servlet-class>Servlet.ClassOfStudentServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>changePassServlet</servlet-name>
+        <servlet-class>Servlet.ChangePassServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DummyServlet</servlet-name>
         <url-pattern>/DummyServlet</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>classOfStudent</servlet-name>
         <url-pattern>/classofstudent</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>changePassServlet</servlet-name>
+        <url-pattern>/ChangePassServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

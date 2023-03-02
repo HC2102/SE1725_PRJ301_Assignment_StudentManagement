@@ -1,0 +1,100 @@
+body{
+  margin: 0;
+  padding: 0;
+  background-image: url("../image/hinh-nen-slide-xanh-ngoc_100606136.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size:cover;
+  overflow: hidden;
+}
+h2{
+  text-align: center;
+  margin:0;
+  padding: 2%;
+  color: #EEEEEE;
+  background-color: #5B8FB9;
+  font-family: cursive;
+}
+.container{
+  border-radius: 20px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  
+  margin: 10% auto;
+  width: 40%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: lightblue;
+}
+form{
+  font-family:monospace;
+  font-size: large;
+  padding-top: 10%;
+  width: 100%;
+  height: auto;
+  margin: 0;
+}
+.col-25 {
+    text-align: center;
+    float: left;
+    width: 30%;
+    margin: 1%;
+    padding: 1%;
+   
+  }
+.col-75 {
+
+    float: right;
+    width: 60%;
+    
+  }
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+input[type=submit]:hover,input[type=submit]:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.25em);
+  cursor: pointer;
+  background-color: rgb(47, 206, 255);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+input[type=submit]{
+  width: 25%;
+  height: auto;
+    margin: 6%;
+    border: 0;
+    border-radius: 3px;
+    padding: 6px;
+    margin-left: 40%;
+  transition: 0.25s; 
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+textarea{
+  width: 75%;
+  margin: 4% auto;
+}
+input {
+  
+  margin: 3% auto;
+  margin-right: 0;
+    padding: 3px 5px;
+    width: 70%;
+    border-radius: 5px;
+    
+}
+  @media screen and (max-width:940px) {
+    .col-25,.col-75,form,.container, textarea{
+      width: 90%;
+      margin: 2% auto;
+    }
+  }
+  @media screen and (max-width:800px) {
+    input[type=submit],input[type=text],input[type=date], textarea {
+      width: 50%;
+    }
+  }
+ 
