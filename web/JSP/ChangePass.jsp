@@ -19,14 +19,7 @@
         <h2>Change Password</h2>
        <div class="container">
             <form action="<%= request.getContextPath()%>\ChangePassServlet" method="post">
-                <div class="row">
-                    <div class="col-25">
-                        <label for="text">Username:</label>
-                    </div>
-                    <div class="col-75">
-                        <input type="text" name="usern" required>
-                    </div>
-                </div> 
+                
                 <div class="row">
                     <div class="col-25">
                         <label for="password">Old Password:</label>
@@ -45,13 +38,16 @@
                     </div>
                 </div>
                 <div class="row">
-                    
-                    <input type="submit" value="Change"> <br>
-                    <span style="color:red"><%
+                    <span><%
                         String error = (String) request.getAttribute("error");
                         if(error!=null && error.compareTo("")!=0) out.println(error);
-                        %> </span>
+                        %> 
+                    </span>
+                    <a href="<%= request.getContextPath()%>\JSP\StudentHome.jsp"><input type="button" value="Back to homepage"></a>
+                    <input type="submit" value="Change">
+                    
                 </div>
+                    
             </form>
        </div>
     </body>

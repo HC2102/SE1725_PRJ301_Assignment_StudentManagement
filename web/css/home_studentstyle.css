@@ -4,7 +4,15 @@
     justify-content: space-between;
     align-items: center;
 }
-
+.headerbutton a{
+    display: inline-block;
+}
+.headerbutton{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 5%;
+}
 H1 {
     color: bisque;
     margin-top: 0;

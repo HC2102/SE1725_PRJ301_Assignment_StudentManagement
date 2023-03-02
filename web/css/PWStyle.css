@@ -55,23 +55,28 @@ form{
     display: table;
     clear: both;
   }
-input[type=submit]:hover,input[type=submit]:focus {
+input[type=submit]:hover,input[type=submit]:focus,input[type=button]:hover,input[type=button]:focus {
   box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
   transform: translateY(-0.25em);
   cursor: pointer;
   background-color: rgb(47, 206, 255);
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
-input[type=submit]{
+input[type=submit],input[type=button]{
   width: 25%;
   height: auto;
-    margin: 6%;
     border: 0;
     border-radius: 3px;
     padding: 6px;
-    margin-left: 40%;
+    margin-left: 15%;
   transition: 0.25s; 
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+span{
+    color: red;
+    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 textarea{
   width: 75%;
