@@ -31,6 +31,7 @@ p {
     border: 5px solid teal;
     box-shadow: 5px 5px 5px 5px slategray;
     background-image: url("../image/anh2.jpg");
+    background-repeat: no-repeat;
     background-size: 100%;
     margin-left: 1%;
     width: 10%;
@@ -38,8 +39,8 @@ p {
 }
 
 body {
+    overflow-x: hidden !important;
     background-image: url("../image/anh1.jpg");
-    overflow-x: hidden;
     margin: 0;
 }
 
