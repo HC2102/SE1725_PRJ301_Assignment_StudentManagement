@@ -24,7 +24,11 @@
         %>
         <div class="ctr1">
             <H1>Home</H1>
-            <a href="<%= request.getContextPath()%>/logout"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Log out"></a>
+            <div class="headerbutton">
+                <a href="<%= request.getContextPath()%>/JSP/ChangePass.jsp"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Change Password"></a>
+                <a href="<%= request.getContextPath()%>/logout"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Log out"></a>
+            </div>
+
 
         </div>
         <div class="ctr4">
@@ -43,6 +47,8 @@
         <form style="padding-top: 5%; padding-left: 42%;"  action="classofstudent" method="post">
             <input style=" padding: 1%; font-weight: bold; margin-right: 1% ;" type="submit" value="Your Class">
             <input style=" padding: 1%; font-weight: bold;" type="submit" value="Average Score">
+
         </form>
+
     </body>
 </html>
