@@ -28,12 +28,12 @@ public class StudentDAO {
                 while (rs.next()) {
                     Student s = new Student();
                     s.setStudentID(rs.getString("Student_ID"));
-                    s.setStudentID(rs.getString("User_name"));
+                    s.setUserName(rs.getString("User_name"));
                     s.setStudentName(rs.getString("Student_name"));
-                    s.setStudentName(rs.getString("Major_ID"));
-                    s.setStudentName(rs.getString("Phone_number"));
-                    s.setStudentName(rs.getString("Address"));
-                    s.setStudentName(rs.getString("Email"));
+                    s.setMajorID(rs.getString("Major_ID"));
+                    s.setPhoneNum(rs.getString("Phone_number"));
+                    s.setAddress(rs.getString("Address"));
+                    s.setEmail(rs.getString("Email"));
                     listStudent.add(s);
                 }
                 rs.close();
@@ -108,12 +108,41 @@ public class StudentDAO {
                 if (rs.next()) {
                     Student s = new Student();
                     s.setStudentID(rs.getString("Student_ID"));
-                    s.setStudentID(rs.getString("User_name"));
+                    s.setUserName(rs.getString("User_name"));
                     s.setStudentName(rs.getString("Student_name"));
-                    s.setStudentName(rs.getString("Major_ID"));
-                    s.setStudentName(rs.getString("Phone_number"));
-                    s.setStudentName(rs.getString("Address"));
-                    s.setStudentName(rs.getString("Email"));
+                    s.setMajorID(rs.getString("Major_ID"));
+                    s.setPhoneNum(rs.getString("Phone_number"));
+                    s.setAddress(rs.getString("Address"));
+                    s.setEmail(rs.getString("Email"));
+                    return s;
+                }
+                rs.close();
+                st.close();
+                con.close();
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+    
+    public Student getStudentByUsername(String Username) {
+        try {
+            DBContext db = new DBContext();
+            Connection con = db.getConnection();
+            if (con != null) {
+                Statement st = con.createStatement();
+                String sql = "SELECT * FROM Student WHERE User_name = '" + Username + "';";
+                ResultSet rs = st.executeQuery(sql);
+                if (rs.next()) {
+                    Student s = new Student();
+                    s.setStudentID(rs.getString("Student_ID"));
+                    s.setUserName(rs.getString("User_name"));
+                    s.setStudentName(rs.getString("Student_name"));
+                    s.setMajorID(rs.getString("Major_ID"));
+                    s.setPhoneNum(rs.getString("Phone_number"));
+                    s.setAddress(rs.getString("Address"));
+                    s.setEmail(rs.getString("Email"));
                     return s;
                 }
                 rs.close();

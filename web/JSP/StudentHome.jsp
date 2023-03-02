@@ -4,6 +4,8 @@
     Author     : Zarius
 --%>
 
+<%@page import="dbObject.Student_Class"%>
+<%@page import="dbObject.Student"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +17,9 @@
         <title>StudentHome</title>
     </head>
     <body>
+        <% Student stu = (Student) request.getAttribute("userStudent");
+            Student_Class stcl = (Student_Class) request.getAttribute("studentClass");
+        %>
         <div class="ctr1">
             <H1>Home</H1>
             <input style="margin-right: 1%; font-weight: bold;" type="button" value="Log out">
@@ -26,10 +31,10 @@
             </div>
 
             <div class="ctr2">
-                <P>Name</P>
-                <P>Class</P>
-                <P>Adress</P>
-                <p>Email</p>
+                <P>Name: <%= stu.getStudentName()%></P>
+                <P>Class: <%=stcl.getClass_ID()%></P>
+                <P>Adress: <%= stu.getAddress()%></P>
+                <p>Email: <%= stu.getEmail()%></p>
             </div>
         </div>
         <form style="padding-top: 5%; padding-left: 42%;">
