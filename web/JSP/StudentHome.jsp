@@ -18,12 +18,13 @@
         <title>StudentHome</title>
     </head>
     <body>
-        <% Student stu = (Student) request.getAttribute("userStudent");
-            Student_Class stcl = (Student_Class) request.getAttribute("studentClass");
+        <%
+            Student stu = (Student) session.getAttribute("userStudent");
+            Student_Class stcl = (Student_Class) session.getAttribute("studentClass");
         %>
         <div class="ctr1">
             <H1>Home</H1>
-            <a href="JSP/Login.jsp"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Log out"></a>
+            <a href="<%= request.getContextPath()%>/logout"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Log out"></a>
 
         </div>
         <div class="ctr4">

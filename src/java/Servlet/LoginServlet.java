@@ -8,6 +8,7 @@ import DAO.LoginDao;
 import DAO.StudentClassDAO;
 import DAO.StudentDAO;
 import Login.LoginBeans;
+import com.sun.corba.se.impl.protocol.giopmsgheaders.RequestMessage;
 import dbObject.Student;
 import dbObject.Student_Class;
 import java.io.IOException;
@@ -16,6 +17,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.util.HashSet;
 
 /**
@@ -44,11 +46,18 @@ public class LoginServlet extends HttpServlet {
 
                 //StudentHome Page
             } else if (userRole.compareTo("Student") == 0) {
-                System.out.println("Student");
+                //working for student
+                //get student object
                 Student s = stuDAO.getStudentByUsername(userName);
+                //get student and class
                 Student_Class stcl = stclDAO.getStudentFromClass(s.getStudentID());
-                req.setAttribute("userStudent", s);
-                req.setAttribute("studentClass", stcl);
+                //Create a session
+                HttpSession session = req.getSession();
+                //attribute for session
+                session.setAttribute("userStudent",s);
+                session.setAttribute("studentClass", stcl);
+                req.setAttribute("userName", userName);
+                //request Dispatcher
                 req.getRequestDispatcher("JSP/StudentHome.jsp").forward(req, resp);
             } else if (userRole.compareTo("Teacher") == 0) {
                 System.out.println("Teacher");
