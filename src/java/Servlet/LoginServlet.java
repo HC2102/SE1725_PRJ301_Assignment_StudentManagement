@@ -5,7 +5,11 @@
 package Servlet;
 
 import DAO.LoginDao;
+import DAO.StudentClassDAO;
+import DAO.StudentDAO;
 import Login.LoginBeans;
+import dbObject.Student;
+import dbObject.Student_Class;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -31,21 +35,33 @@ public class LoginServlet extends HttpServlet {
         String passWord = req.getParameter("pass");
         LoginBeans bean = new LoginBeans(userName, passWord);
         LoginDao logindao = new LoginDao();
+        StudentDAO stuDAO = new StudentDAO();
+        StudentClassDAO stclDAO = new StudentClassDAO();
         try {
             String userRole = logindao.authenticateUser(bean);
             if (userRole.compareTo("Admin") == 0) {
                 System.out.println("ADMIN");
 
+                //StudentHome Page
             } else if (userRole.compareTo("Student") == 0) {
                 System.out.println("Student");
-                req.setAttribute("user", userName);
+                Student s = stuDAO.getStudentByUsername(userName);
+                Student_Class stcl = stclDAO.getStudentFromClass(s.getStudentID());
+                req.setAttribute("userStudent", s);
+                req.setAttribute("studentClass", stcl);
                 req.getRequestDispatcher("JSP/StudentHome.jsp").forward(req, resp);
+                
+                
             } else if (userRole.compareTo("Teacher") == 0) {
                 System.out.println("Teacher");
+                
+                
             } else {
-                req.setAttribute("error", "user or password is not correct, please try again");
+                req.setAttribute("error", "User or password is not correct, please try again");
                 req.getRequestDispatcher("JSP/Login.jsp").forward(req, resp);
             }
+            
+            
         } catch (Exception e) {
             System.out.println("Servlet login" + e.getMessage());
         }
