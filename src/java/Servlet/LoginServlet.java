@@ -50,18 +50,14 @@ public class LoginServlet extends HttpServlet {
                 req.setAttribute("userStudent", s);
                 req.setAttribute("studentClass", stcl);
                 req.getRequestDispatcher("JSP/StudentHome.jsp").forward(req, resp);
-                
-                
             } else if (userRole.compareTo("Teacher") == 0) {
                 System.out.println("Teacher");
-                
-                
+
             } else {
                 req.setAttribute("error", "User or password is not correct, please try again");
                 req.getRequestDispatcher("JSP/Login.jsp").forward(req, resp);
             }
-            
-            
+
         } catch (Exception e) {
             System.out.println("Servlet login" + e.getMessage());
         }

@@ -23,7 +23,8 @@
         %>
         <div class="ctr1">
             <H1>Home</H1>
-            <input style="margin-right: 1%; font-weight: bold;" type="button" value="Log out">
+            <a href="JSP/Login.jsp"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Log out"></a>
+
         </div>
         <div class="ctr4">
 
