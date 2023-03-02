@@ -40,9 +40,9 @@
                 <p>Email: <%= stu.getEmail()%></p>
             </div>
         </div>
-        <form style="padding-top: 5%; padding-left: 42%;">
-            <input style=" padding: 1%; font-weight: bold; margin-right: 1% ;" type="button" value="Your Class">
-            <input style=" padding: 1%; font-weight: bold;" type="button" value="Average Score">
+        <form style="padding-top: 5%; padding-left: 42%;"  action="classofstudent" method="post">
+            <input style=" padding: 1%; font-weight: bold; margin-right: 1% ;" type="submit" value="Your Class">
+            <input style=" padding: 1%; font-weight: bold;" type="submit" value="Average Score">
         </form>
     </body>
 </html>

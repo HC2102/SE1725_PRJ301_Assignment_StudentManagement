@@ -154,4 +154,35 @@ public class StudentDAO {
         }
         return null;
     }
+    
+    public ArrayList<Student> getAllStudentFromClassID(String classID) {
+        ArrayList<Student> listStudentFromClassID = new ArrayList<>();
+        try {
+            DBContext db = new DBContext();
+            Connection con = db.getConnection();
+            if (con != null) {
+                Statement st = con.createStatement();
+                String sql = "SELECT s.*, sc.Class_ID FROM Student s, Student_Class sc WHERE s.Student_ID = sc.Student_ID and Class_ID = '" + classID + "'";
+                ResultSet rs = st.executeQuery(sql);
+                while (rs.next()) {
+                    Student s = new Student();
+                    s.setStudentID(rs.getString("Student_ID"));
+                    s.setUserName(rs.getString("User_name"));
+                    s.setStudentName(rs.getString("Student_name"));
+                    s.setMajorID(rs.getString("Major_ID"));
+                    s.setPhoneNum(rs.getString("Phone_number"));
+                    s.setAddress(rs.getString("Address"));
+                    s.setEmail(rs.getString("Email"));
+                    listStudentFromClassID.add(s);
+                }
+                rs.close();
+                st.close();
+                con.close();
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return listStudentFromClassID;
+    }
 }
