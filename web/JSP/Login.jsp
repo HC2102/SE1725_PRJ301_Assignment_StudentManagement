@@ -1,5 +1,6 @@
 <%-- Document : Login Created on : Mar 1, 2023, 10:41:13 PM Author : HE170417
 --%> <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page errorPage="error.jsp" %>
 <!DOCTYPE html>
 <html>
   <head>
