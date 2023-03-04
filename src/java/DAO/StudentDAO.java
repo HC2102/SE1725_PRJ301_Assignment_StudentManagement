@@ -103,7 +103,7 @@ public class StudentDAO {
             Connection con = db.getConnection();
             if (con != null) {
                 Statement st = con.createStatement();
-                String sql = "SELECT * FROM Student WHERE ID = '" + ID + "';";
+                String sql = "SELECT * FROM Student WHERE Student_ID = '" + ID + "';";
                 ResultSet rs = st.executeQuery(sql);
                 if (rs.next()) {
                     Student s = new Student();
@@ -121,7 +121,7 @@ public class StudentDAO {
                 con.close();
             }
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println("getStudent"+e.getMessage());
         }
         return null;
     }

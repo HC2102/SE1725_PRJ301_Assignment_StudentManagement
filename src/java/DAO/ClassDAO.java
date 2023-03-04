@@ -94,7 +94,7 @@ public class ClassDAO {
                 con.close();
             }
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println("getClass "+e.getMessage());
         }
         return null;
     }

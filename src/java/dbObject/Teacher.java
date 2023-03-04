@@ -9,6 +9,7 @@ package dbObject;
  * @author HE170417
  */
 public class Teacher {
+
     private String userName, teacherName, majorID, phoneNum, address, email;
 
     public Teacher() {
@@ -22,5 +23,53 @@ public class Teacher {
         this.address = address;
         this.email = email;
     }
-    
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getTeacherName() {
+        return teacherName;
+    }
+
+    public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName;
+    }
+
+    public String getMajorID() {
+        return majorID;
+    }
+
+    public void setMajorID(String majorID) {
+        this.majorID = majorID;
+    }
+
+    public String getPhoneNum() {
+        return phoneNum;
+    }
+
+    public void setPhoneNum(String phoneNum) {
+        this.phoneNum = phoneNum;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
 }

@@ -20,6 +20,14 @@
         <servlet-name>changePassServlet</servlet-name>
         <servlet-class>Servlet.ChangePassServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>listStudentOfCps</servlet-name>
+        <servlet-class>Servlet.ListStudentOfCps</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>teacherInfo</servlet-name>
+        <servlet-class>Servlet.teacherInfor</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DummyServlet</servlet-name>
         <url-pattern>/DummyServlet</url-pattern>
@@ -39,6 +47,14 @@
     <servlet-mapping>
         <servlet-name>changePassServlet</servlet-name>
         <url-pattern>/ChangePassServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>listStudentOfCps</servlet-name>
+        <url-pattern>/listStudentOfCps</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>teacherInfo</servlet-name>
+        <url-pattern>/teacherInfo</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
