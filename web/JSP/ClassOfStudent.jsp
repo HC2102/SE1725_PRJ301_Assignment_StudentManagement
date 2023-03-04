@@ -15,7 +15,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="<%= request.getContextPath()%>/css/table.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="<%= request.getContextPath()%>/css/home_studentstyle.css">
-        <title>Class</title>
+        <title>Class information</title>
     </head>
     <body>
         <div class="ctr1">
@@ -30,11 +30,12 @@
             String classID = (String)request.getAttribute("classID");
             ArrayList<Class> listClass = (ArrayList<Class>)request.getAttribute("listClass");
         %>
-        <h2>Student Information</h2>
+        <h2>Student Information In Class <span style="color: white; font-weight: bold;"><%=classID%></span> </h2>
         <form action="<%= request.getContextPath()%>/ListStudentOfClass" method="post" class="table-wrapper" style="margin-bottom: 0; box-shadow: none">
 
             <label for="classFind">Search class: </label>
             <select name="chooseClass">
+                <option disabled selected value> -- select a class -- </option>
                 <%for (Class cl : listClass) {
                 %>
                 <option value="<%=cl.getClass_ID()%>"><%=cl.getClass_ID()%></option>

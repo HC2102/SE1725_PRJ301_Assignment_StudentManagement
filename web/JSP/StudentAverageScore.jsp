@@ -12,7 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="<%= request.getContextPath()%>/css/table.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="<%= request.getContextPath()%>/css/home_studentstyle.css">
-        <title>Class</title>
+        <title>student's score information</title>
     </head>
     <body>
         <div class="ctr1">

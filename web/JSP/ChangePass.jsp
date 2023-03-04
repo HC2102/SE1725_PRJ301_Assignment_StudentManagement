@@ -44,7 +44,7 @@
                         if(error!=null && error.compareTo("")!=0) out.println(error);
                         %> 
                     </span>
-                    <a href="<%= request.getContextPath()%>\JSP\StudentHome.jsp"><input type="button" value="Back to homepage"></a>
+                        <a href= "<%= request.getContextPath()%>/<%=(String)session.getAttribute("userType")%>Info"> <input type="button" value="Back to homepage"></a>
                     <input type="submit" value="Change">
                     
                 </div>

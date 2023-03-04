@@ -5,10 +5,10 @@
 package Servlet;
 
 import DAO.PasswordDAO;
+import DAO.UserDAO;
 import Login.LoginBeans;
-import dbObject.Student;
+import dbObject.User;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -29,20 +29,22 @@ public class ChangePassServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             HttpSession session = req.getSession();
+            PasswordDAO pdao = new PasswordDAO();
+            UserDAO uDao = new UserDAO();
+            String username = (String) session.getAttribute("userName");
             int row = 0;
-            Student username =(Student) session.getAttribute("userStudent");
-            System.out.println(username.getUserName());
+            User user = uDao.getUser(username);
             String passold = req.getParameter("passold");
             String passnew = req.getParameter("passnew");
-            PasswordDAO pdao = new PasswordDAO();
-            LoginBeans lb = new LoginBeans(username.getUserName(), passold);
+            System.out.println(user.getUserName());
+            LoginBeans lb = new LoginBeans(user.getUserName(), passold);
             if (pdao.ChangePass(lb).compareTo("clear") == 0) {
-                row = pdao.UpdatePassword(username.getUserName(), passnew);
+                row = pdao.UpdatePassword(user.getUserName(), passnew);
                 if (row < 1) {
                     throw new Exception("database update error");
                 }
                 req.setAttribute("error", "Change password successfully");
-                req.getRequestDispatcher("JSP/ChangePass.jsp").forward(req, resp);
+                req.getRequestDispatcher("JSP/ChangePass.jsp?user=" + username).forward(req, resp);
             } else {
                 throw new Exception("change password fail");
             }

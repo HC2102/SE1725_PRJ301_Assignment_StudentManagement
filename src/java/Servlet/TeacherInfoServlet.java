@@ -7,9 +7,7 @@ import DAO.TeacherDao;
 import dbObject.CPS;
 import dbObject.Teacher;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -20,7 +18,7 @@ import java.util.List;
  *
  * @author ADMIN
  */
-public class teacherInfor extends HttpServlet {
+public class TeacherInfoServlet extends HttpServlet {
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -34,7 +32,7 @@ public class teacherInfor extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        String user_name = (String)request.getAttribute("userName");
+        String user_name = (String)session.getAttribute("userName");
         TeacherDao td = new TeacherDao();
         Teacher t = td.getByUserName(user_name);
         List<CPS> list=td.getCpsByUserName(user_name);

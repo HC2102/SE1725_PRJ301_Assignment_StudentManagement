@@ -14,7 +14,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Student Mark</title>
     </head>
     <body>
         <html>
@@ -70,6 +70,6 @@
           history.back();
       }
   </script>
-  <a href="<%= request.getContextPath()%>\teacherHome.jsp"><input type="button" value="Back to homepage"></a>
+  <a href="<%= request.getContextPath()%>/teacherInfo"><input type="button" value="Back to homepage"></a>
     </body>
 </html>

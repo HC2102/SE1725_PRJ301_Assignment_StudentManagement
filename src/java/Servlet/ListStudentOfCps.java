@@ -7,11 +7,9 @@ package Servlet;
 import DAO.TeacherDao;
 import dbObject.CPS;
 import dbObject.Student_Class_Mark;
-import dbObject.Teacher;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -49,7 +47,7 @@ public class ListStudentOfCps extends HttpServlet {
                 list.get(i).setMark(list_marks.get(i));
             }
             request.setAttribute("list", list);
-            request.getRequestDispatcher("JSP/table_information_student.jsp").forward(request, response);
+            request.getRequestDispatcher("JSP/tableStudentInfoWithMark.jsp").forward(request, response);
         } catch (Exception e) {
             PrintWriter out = response.getWriter();
             out.println(e);

@@ -6,7 +6,6 @@
 package Servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -30,6 +29,7 @@ public class LogoutServlet extends HttpServlet {
         if(session != null){
             session.invalidate(); // remove all session attribute
             req.getRequestDispatcher("JSP/Login.jsp").forward(req, resp);
+//            resp.sendRedirect("JSP/Login.jsp");
             System.out.println("Logout");
         }
     }

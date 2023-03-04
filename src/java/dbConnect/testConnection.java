@@ -4,7 +4,6 @@
  */
 package dbConnect;
 import java.sql.*;
-import dbObject.User;
 /**
  *
  * @author HE170417
