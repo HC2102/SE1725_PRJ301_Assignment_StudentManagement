@@ -75,7 +75,7 @@ public class StudentClassDAO {
         }
     }
     
-    public Student_Class getStudentFromClass(String Student_ID) {
+    public Student_Class getStudentFromClassByStudentID(String Student_ID) {
         try {
             DBContext db = new DBContext();
             Connection con = db.getConnection();

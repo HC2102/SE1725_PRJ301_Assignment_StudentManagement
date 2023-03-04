@@ -23,7 +23,33 @@ public class ClassDAO {
             Connection con = db.getConnection();
             if (con != null) {
                 Statement st = con.createStatement();
-                String sql = "SELECT * FROM Class";
+                String sql = "SELECT * FROM Class ORDER BY Class_ID";
+                ResultSet rs = st.executeQuery(sql);
+                while (rs.next()) {
+                    Class cl = new Class();
+                    cl.setClass_ID(rs.getString("Class_ID"));
+                    cl.setMajor_ID(rs.getString("Major_ID"));
+                    listClass.add(cl);
+                }
+                rs.close();
+                st.close();
+                con.close();
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return listClass;
+    }
+    
+    public ArrayList<Class> getAllClassExceptClassID(String ClassID) {
+        ArrayList<Class> listClass = new ArrayList<>();
+        try {
+            DBContext db = new DBContext();
+            Connection con = db.getConnection();
+            if (con != null) {
+                Statement st = con.createStatement();
+                String sql = "SELECT * FROM Class WHERE not Class_ID = '" + ClassID +"' ORDER BY Class_ID";
                 ResultSet rs = st.executeQuery(sql);
                 while (rs.next()) {
                     Class cl = new Class();
@@ -94,7 +120,7 @@ public class ClassDAO {
                 con.close();
             }
         } catch (Exception e) {
-            System.out.println("getClass "+e.getMessage());
+            System.out.println(e.getMessage());
         }
         return null;
     }

@@ -28,6 +28,14 @@
         <servlet-name>teacherInfo</servlet-name>
         <servlet-class>Servlet.teacherInfor</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListStudentOfClass</servlet-name>
+        <servlet-class>Servlet.ListStudentOfClass</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EachStudentHomeServlet</servlet-name>
+        <servlet-class>Servlet.EachStudentHome</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DummyServlet</servlet-name>
         <url-pattern>/DummyServlet</url-pattern>
@@ -55,6 +63,14 @@
     <servlet-mapping>
         <servlet-name>teacherInfo</servlet-name>
         <url-pattern>/teacherInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListStudentOfClass</servlet-name>
+        <url-pattern>/ListStudentOfClass</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EachStudentHomeServlet</servlet-name>
+        <url-pattern>/EachStudentHome</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

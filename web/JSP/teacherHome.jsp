@@ -21,7 +21,8 @@
     <body>
         <div class="ctr1">
             <H1>Home</H1>
-            <div class="headerbutton">
+            <a style="text-decoration: none; font-family:'Times New Roman'; margin-left:5%; margin-top:1%;" href="<%= request.getContextPath()%>/JSP/teacherHome.jsp"><H1>Home</H1></a>
+           <div class="headerbutton">
                 <a href="<%= request.getContextPath()%>/JSP/ChangePass.jsp"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Change Password"></a>
                 <a href="<%= request.getContextPath()%>/logout"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Log out"></a>
             </div>
@@ -29,7 +30,7 @@
         <div class="ctr4">
 
             <div class="ctr3">
-                <p></p>
+                <img src="<%= request.getContextPath()%>\image\anh2.jpg" style="width:100%; height: 100%;" class="" alt="">
             </div>
             <%
                 Teacher t=(Teacher)request.getAttribute("data");

@@ -53,7 +53,7 @@ public class LoginServlet extends HttpServlet {
                 //get student object
                 Student s = stuDAO.getStudentByUsername(userName);
                 //get student and class
-                Student_Class stcl = stclDAO.getStudentFromClass(s.getStudentID());
+                Student_Class stcl = stclDAO.getStudentFromClassByStudentID(s.getStudentID());
                 //Create a session
                 HttpSession session = req.getSession();
                 //attribute for session
