@@ -23,7 +23,8 @@ public class StudentInfoServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //Variable sections
+        try{
+            //Variable sections
         StudentDAO stuDAO = new StudentDAO();
         StudentClassDAO stclDAO = new StudentClassDAO();
         HttpSession session = req.getSession();
@@ -38,6 +39,10 @@ public class StudentInfoServlet extends HttpServlet {
         session.setAttribute("userStudent", s);
         session.setAttribute("studentClass", stcl);
         req.getRequestDispatcher("JSP/StudentHome.jsp").forward(req, resp);
+        }catch(Exception  e){
+            System.out.println("StudentInfoServlet, there may be empty in this class or other unexpected error");
+        }
+        
     }
 
     @Override
