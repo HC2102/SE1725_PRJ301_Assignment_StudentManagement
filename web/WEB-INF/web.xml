@@ -36,6 +36,10 @@
         <servlet-name>StudentInfoServlet</servlet-name>
         <servlet-class>Servlet.StudentInfoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CourseDetailGrade</servlet-name>
+        <servlet-class>Servlet.CourseDetailGrade</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/loginServlet</url-pattern>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>TeacherInfo</servlet-name>
         <url-pattern>/teacherInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CourseDetailGrade</servlet-name>
+        <url-pattern>/CourseDetailGrade</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
