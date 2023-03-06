@@ -9,6 +9,9 @@ import dbObject.Course;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -42,6 +45,27 @@ public class GradeDAO {
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
+        }
+        return null;
+    }
+    public HashMap<String, Double> getDetailGradesForCourse(String studentID, String courseID){
+        try{
+            HashMap<String, Double> list = new HashMap<>();
+            DBContext db = new DBContext();
+            Connection con = db.getConnection();
+            if(con!=null){
+                Statement st = con.createStatement();
+                String sql = "SELECT * FROM GRADE G WHERE G.Student_ID = '"+studentID+"' and G.Course_ID = '"+courseID+"'";
+                ResultSet rs = st.executeQuery(sql);
+                while(rs.next()){
+                    list.put(rs.getString("Test_ID"), rs.getDouble("Value"));
+                }
+                rs.close();
+            }
+            con.close();
+            return list;
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
         }
         return null;
     }

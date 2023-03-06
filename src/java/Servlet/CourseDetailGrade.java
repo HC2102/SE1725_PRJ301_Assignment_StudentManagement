@@ -4,11 +4,17 @@
  */
 package Servlet;
 
+import DAO.GradeDAO;
+import DAO.StudentDAO;
+import dbObject.Student;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashMap;
 
 /**
  *
@@ -18,11 +24,25 @@ public class CourseDetailGrade extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        GradeDAO gdao = new GradeDAO();
+        Double avg = 0.0;
+        StudentDAO studentDAO = new StudentDAO();
+        HttpSession session = req.getSession();
+        String course = req.getParameter("Course_ID");
+        Student st = studentDAO.getStudentByUsername((String)session.getAttribute("userName"));
+        avg = gdao.getAvgScoreByStudentIDAndCourseID(st.getStudentID(), course);
+        HashMap<String, Double> listDetailGrade = gdao.getDetailGradesForCourse(st.getStudentID(), course);
+        
+        //set and send to jsp
+        req.setAttribute("averageScore", avg);
+        req.setAttribute("listDetailGrade", listDetailGrade);
+        req.getRequestDispatcher("JSP/CourseDetailGrade.jsp").forward(req, resp);
         
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        this.doGet(req, resp);
     }
     
 }

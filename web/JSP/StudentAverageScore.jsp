@@ -59,7 +59,7 @@
                         <%}else{%>
                         <td><b style="background-color: red; color: white; padding: .3em; border-radius: .25em;">Not passed</b></td>
                         <%}%>
-                        <td ><a style="text-decoration: none; font-weight: bold; border: 3px solid teal;" href="CourseDetailGrade?Course_ID= <%=c.getCourse_ID()%>">See Detail</a></td>
+                        <td ><a style="text-decoration: none; font-weight: bold; border: 3px solid teal;" href="CourseDetailGrade?Course_ID=<%=c.getCourse_ID()%>">See Detail</a></td>
                     </tr>
                     <%}%>
                 </tbody>
