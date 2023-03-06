@@ -6,9 +6,10 @@ Zarius --%> <%@page import="dbObject.Student"%>
 <!DOCTYPE html>
 <html>
     <%
-        HashMap<String, Double> listOfDetail = (HashMap<String, Double>) request.getAttribute("listDetailGrade");
-        Double avg = (Double) request.getAttribute("averageScore");
+        HashMap<String, Double> listOfDetail = (HashMap<String, Double>) session.getAttribute("listDetailGrade");
+        Double avg = (Double) session.getAttribute("averageScore");
         Student s = (Student) session.getAttribute("userStudent");
+        HashMap<String, Double> listTestWeight = (HashMap<String, Double>) session.getAttribute("listTestWeight");
         String[]gradeList = listOfDetail.keySet().toArray(new String[listOfDetail.size()]);
     %>
     <head>
@@ -75,7 +76,7 @@ Zarius --%> <%@page import="dbObject.Student"%>
                     <% for(String i :gradeList){
                     %>
                     <tr>
-                        <th><%=i%></th>
+                        <th><%=i%> (<%=listTestWeight.get(i)%>%)</th>
                         <td><%=listOfDetail.get(i)%></td>
                     </tr>
                     <%}%>

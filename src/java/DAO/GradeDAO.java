@@ -69,4 +69,25 @@ public class GradeDAO {
         }
         return null;
     }
+    public HashMap<String, Double> getTestWeightByCourseID( String courseID){
+        try{
+            HashMap<String, Double> list = new HashMap<>();
+            DBContext db = new DBContext();
+            Connection con = db.getConnection();
+            if(con!=null){
+                Statement st = con.createStatement();
+                String sql = "SELECT T.Test_ID, T.[Weight]  FROM TEST T WHERE T.Course_ID = '"+courseID+"'";
+                ResultSet rs = st.executeQuery(sql);
+                while(rs.next()){
+                    list.put(rs.getString("Test_ID"), rs.getDouble("Weight"));
+                }
+                rs.close();
+            }
+            con.close();
+            return list;
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return null;
+    }
 }

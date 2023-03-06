@@ -32,10 +32,12 @@ public class CourseDetailGrade extends HttpServlet{
         Student st = studentDAO.getStudentByUsername((String)session.getAttribute("userName"));
         avg = gdao.getAvgScoreByStudentIDAndCourseID(st.getStudentID(), course);
         HashMap<String, Double> listDetailGrade = gdao.getDetailGradesForCourse(st.getStudentID(), course);
+        HashMap<String, Double> listTestWeight = gdao.getTestWeightByCourseID(course);
         
         //set and send to jsp
-        req.setAttribute("averageScore", avg);
-        req.setAttribute("listDetailGrade", listDetailGrade);
+        session.setAttribute("averageScore", avg);
+        session.setAttribute("listDetailGrade", listDetailGrade);
+        session.setAttribute("listTestWeight", listTestWeight);
         req.getRequestDispatcher("JSP/CourseDetailGrade.jsp").forward(req, resp);
         
     }
