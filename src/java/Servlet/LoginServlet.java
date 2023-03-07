@@ -33,7 +33,12 @@ public class LoginServlet extends HttpServlet {
         try {
             String userRole = logindao.authenticateUser(bean);
             if (userRole.compareTo("Admin") == 0) {
-                System.out.println("ADMIN");
+                HttpSession session = req.getSession();
+                session.setAttribute("userName", userName);
+                session.setAttribute("userType", "Admin");
+                System.out.println("Admin");
+                //request Dispatcher
+                req.getRequestDispatcher("AdminInfo").forward(req, resp);
 
                 //StudentHome Page
             } else if (userRole.compareTo("Student") == 0) {
