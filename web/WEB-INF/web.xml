@@ -20,10 +20,57 @@
         <servlet-name>changePassServlet</servlet-name>
         <servlet-class>Servlet.ChangePassServlet</servlet-class>
     </servlet>
+<<<<<<< Updated upstream
     <servlet-mapping>
         <servlet-name>DummyServlet</servlet-name>
         <url-pattern>/DummyServlet</url-pattern>
     </servlet-mapping>
+=======
+    <servlet>
+        <servlet-name>listStudentOfCps</servlet-name>
+        <servlet-class>Servlet.ListStudentOfCps</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TeacherInfo</servlet-name>
+        <servlet-class>Servlet.TeacherInfoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListStudentOfClass</servlet-name>
+        <servlet-class>Servlet.ListStudentOfClass</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EachStudentHomeServlet</servlet-name>
+        <servlet-class>Servlet.EachStudentHome</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StudentInfoServlet</servlet-name>
+        <servlet-class>Servlet.StudentInfoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CourseDetailGrade</servlet-name>
+        <servlet-class>Servlet.CourseDetailGrade</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminInfoServlet</servlet-name>
+        <servlet-class>Servlet.AdminInfoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ToCourses</servlet-name>
+        <servlet-class>Servlet.ToCourses</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updateCourse</servlet-name>
+        <servlet-class>Servlet.updateCourse</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>deleteCourse</servlet-name>
+        <servlet-class>Servlet.deleteCourse</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addCourse</servlet-name>
+        <servlet-class>Servlet.addCourse</servlet-class>
+    </servlet>
+>>>>>>> Stashed changes
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/loginServlet</url-pattern>
@@ -40,6 +87,53 @@
         <servlet-name>changePassServlet</servlet-name>
         <url-pattern>/ChangePassServlet</url-pattern>
     </servlet-mapping>
+<<<<<<< Updated upstream
+=======
+    <servlet-mapping>
+        <servlet-name>listStudentOfCps</servlet-name>
+        <url-pattern>/listStudentOfCps</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListStudentOfClass</servlet-name>
+        <url-pattern>/ListStudentOfClass</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EachStudentHomeServlet</servlet-name>
+        <url-pattern>/EachStudentHome</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StudentInfoServlet</servlet-name>
+        <url-pattern>/studentInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TeacherInfo</servlet-name>
+        <url-pattern>/teacherInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CourseDetailGrade</servlet-name>
+        <url-pattern>/CourseDetailGrade</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminInfoServlet</servlet-name>
+        <url-pattern>/AdminInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ToCourses</servlet-name>
+        <url-pattern>/Courses</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateCourse</servlet-name>
+        <url-pattern>/updateCourse</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteCourse</servlet-name>
+        <url-pattern>/deleteCourse</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addCourse</servlet-name>
+        <url-pattern>/addCourse</url-pattern>
+    </servlet-mapping>
+>>>>>>> Stashed changes
     <session-config>
         <session-timeout>
             30

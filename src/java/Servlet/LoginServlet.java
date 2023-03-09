@@ -8,9 +8,13 @@ import DAO.LoginDao;
 import DAO.StudentClassDAO;
 import DAO.StudentDAO;
 import Login.LoginBeans;
+<<<<<<< Updated upstream
 import com.sun.corba.se.impl.protocol.giopmsgheaders.RequestMessage;
 import dbObject.Student;
 import dbObject.Student_Class;
+=======
+import dbObject.Admin;
+>>>>>>> Stashed changes
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -28,7 +32,7 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+           
     }
 
     @Override
@@ -37,14 +41,21 @@ public class LoginServlet extends HttpServlet {
         String passWord = req.getParameter("pass");
         LoginBeans bean = new LoginBeans(userName, passWord);
         LoginDao logindao = new LoginDao();
+<<<<<<< Updated upstream
         StudentDAO stuDAO = new StudentDAO();
         StudentClassDAO stclDAO = new StudentClassDAO();
+=======
+        
+>>>>>>> Stashed changes
         try {
             String userRole = logindao.authenticateUser(bean);
             if (userRole.compareTo("Admin") == 0) {
-                System.out.println("ADMIN");
-
-                //StudentHome Page
+                HttpSession session = req.getSession();
+                session.setAttribute("userName", userName);
+                System.out.println("Admin");
+                //request Dispatcher
+                req.getRequestDispatcher("AdminInfo").forward(req, resp);
+                
             } else if (userRole.compareTo("Student") == 0) {
                 //working for student
                 //get student object
