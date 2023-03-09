@@ -48,7 +48,8 @@ public class StudentDAO {
         return listStudent;
     }
 
-    public void insertStudent(Student s) {
+    public int insertStudent(Student s) {
+        int row = 0;
         try {
             DBContext db = new DBContext();
             Connection con = db.getConnection();
@@ -57,13 +58,15 @@ public class StudentDAO {
                 String sql = "INSERT INTO Student(Student_ID, User_name, Student_name, Major_ID, Phone_number, Address, Email)"
                         + " values ('" + s.getStudentID() + "','" + s.getUserName() + "','" + s.getStudentName() + "','" + s.getMajorID() + "','"
                         + s.getPhoneNum() + "','" + s.getAddress() + "','" + s.getPhoneNum() + "')";
-                int rows = st.executeUpdate(sql);
+                row = st.executeUpdate(sql);
                 st.close();
                 con.close();
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            row = -1;
         }
+        return row;
     }
 
     public void deleteStudent(String ID) {

@@ -44,6 +44,14 @@
         <servlet-name>AdminInfoServlet</servlet-name>
         <servlet-class>Servlet.AdminInfoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>adAddUser</servlet-name>
+        <servlet-class>Servlet.adAddUser</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddUserByRole</servlet-name>
+        <servlet-class>Servlet.AddUserByRole</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/loginServlet</url-pattern>
@@ -87,6 +95,14 @@
     <servlet-mapping>
         <servlet-name>AdminInfoServlet</servlet-name>
         <url-pattern>/AdminInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>adAddUser</servlet-name>
+        <url-pattern>/adAddUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddUserByRole</servlet-name>
+        <url-pattern>/AddUserByRole</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

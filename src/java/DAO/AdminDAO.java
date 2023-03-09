@@ -9,11 +9,13 @@ import dbObject.Admin;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+
 /**
  *
  * @author dange
  */
 public class AdminDAO {
+
     public Admin getAdmin(String username) {
         try {
             DBContext db = new DBContext();
@@ -43,5 +45,25 @@ public class AdminDAO {
             System.out.println(e.getMessage());
         }
         return null;
-}
+    }
+    public int insertAdmin(Admin a) {
+        int row = 0;
+        try {
+            
+            DBContext db = new DBContext();
+            Connection con = db.getConnection();
+            if (con != null) {
+                Statement st = con.createStatement();
+                String sql = "INSERT INTO [Admin](User_name,Admin_name,Address,Phone_number,Email)"
+                        + " values ('" + a.getAdmin_username() + "','" + a.getAdmin_name() + "','"+a.getAdmin_Address() + "','" + a.getAdmin_phonenumber() + "','" + a.getAdmin_email()+"')";
+                row = st.executeUpdate(sql);
+                st.close();
+                con.close();
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            row =  -1;
+        }
+        return row;
+    }
 }

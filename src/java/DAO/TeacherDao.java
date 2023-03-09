@@ -15,12 +15,35 @@ import java.util.List;
 import dbObject.Class;
 import dbObject.Student;
 import java.sql.Connection;
+import java.sql.Statement;
 
 /**
  *
  * @author ADMIN
  */
 public class TeacherDao extends DBContext {
+
+    public int insertTeacher(Teacher t) {
+        int row = 0;
+        try {
+            DBContext db = new DBContext();
+            Connection con = db.getConnection();
+
+            if (con != null) {
+                Statement st = con.createStatement();
+                String sql = "INSERT INTO Teacher(User_name, Teacher_name, Major_ID, Phone_number, Address, Email)"
+                        + " values ('" + t.getUserName() + "','" + t.getTeacherName() + "','" + t.getMajorID() + "','" + t.getPhoneNum() + "','"
+                        + t.getAddress() + "','" + t.getEmail() + "')";
+                row = st.executeUpdate(sql);
+                st.close();
+                con.close();
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            row = -1;
+        }
+        return row;
+    }
 
     public Teacher getByUserName(String user_name) {
         String sql = "select * from Teacher where User_name = ?";
@@ -88,7 +111,7 @@ public class TeacherDao extends DBContext {
         try {
             DBContext db = new DBContext();
             Connection con = db.getConnection();
-            PreparedStatement st =  con.prepareStatement(sql);
+            PreparedStatement st = con.prepareStatement(sql);
             st.setInt(1, cid);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
@@ -142,7 +165,7 @@ public class TeacherDao extends DBContext {
         list = td.getStudent_Class_MarkByCid(1);
         List<Double> list_marks = td.getListMarkOfStudentByCourseIdAndStudentId(list, "PRF192");
         System.out.println(list_marks.get(0) + " " + list_marks.get(1));
-        CPS cps=td.getCpsByCid(5);
+        CPS cps = td.getCpsByCid(5);
         System.out.println(cps.getCourse_ID());
     }
 }
