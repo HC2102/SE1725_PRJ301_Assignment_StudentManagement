@@ -16,7 +16,7 @@ import java.util.ArrayList;
  * @author Zarius
  */
 public class CourseDAO {
-    public ArrayList<Course> getAllStudent() {
+    public ArrayList<Course> getAllCourse() {
         ArrayList<Course> listCourse = new ArrayList<>();
         try {
             DBContext db = new DBContext();
@@ -44,7 +44,8 @@ public class CourseDAO {
         return listCourse;
     }
 
-    public void insertCourse(Course c) {
+    public int insertCourse(Course c) {
+        int row = 0;
         try {
             DBContext db = new DBContext();
             Connection con = db.getConnection();
@@ -52,29 +53,34 @@ public class CourseDAO {
                 Statement st = con.createStatement();
                 String sql = "INSERT INTO Course(Course_ID, Course_name, Major_ID, Biographic)"
                         + " values ('" + c.getCourse_ID() + "','" + c.getCourse_name() + "','" + c.getMajor_ID() + "','" + c.getBiographic() + "')";
-                int rows = st.executeUpdate(sql);
+                row = st.executeUpdate(sql);
                 st.close();
                 con.close();
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            row = -1;
         }
+        return row;
     }
 
-    public void deleteCourse(String Course_ID) {
+    public int deleteCourse(String Course_ID) {
+        int row = 0;
         try {
             DBContext db = new DBContext();
             Connection con = db.getConnection();
             if (con != null) {
                 Statement st = con.createStatement();
                 String sql = "DELETE FROM Course WHERE Course_ID = " + Course_ID + ";";
-                int rows = st.executeUpdate(sql);
+                row = st.executeUpdate(sql);
                 st.close();
                 con.close();
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            row = -1;
         }
+        return row;
     }
 
 //    public void updateStudent(Student s) {
@@ -168,6 +174,24 @@ public class CourseDAO {
             System.out.println(e.getMessage());
         }
         return listCourseFromStudentID;
+    }
+    public int updateCourse(String ID, String name, String bio) {
+        int row = 0;
+        try {
+            DBContext db = new DBContext();
+            Connection con = db.getConnection();
+            if (con != null) {
+                Statement st = con.createStatement();
+                String sql = "UPDATE Course SET Course_name = '" + name + "', Biographic='"+ bio +"'  WHERE Course_ID = '" + ID + "';";
+                row = st.executeUpdate(sql);
+                st.close();
+                con.close();
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            row  = -1;
+        }
+        return row;
     }
 }
 

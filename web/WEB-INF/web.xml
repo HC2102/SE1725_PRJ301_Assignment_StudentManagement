@@ -52,6 +52,22 @@
         <servlet-name>AddUserByRole</servlet-name>
         <servlet-class>Servlet.AddUserByRole</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ToCourses</servlet-name>
+        <servlet-class>Servlet.ToCourses</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addCourse</servlet-name>
+        <servlet-class>Servlet.addCourse</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>deleteCourse</servlet-name>
+        <servlet-class>Servlet.deleteCourse</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updateCourse</servlet-name>
+        <servlet-class>Servlet.updateCourse</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/loginServlet</url-pattern>
@@ -103,6 +119,22 @@
     <servlet-mapping>
         <servlet-name>AddUserByRole</servlet-name>
         <url-pattern>/AddUserByRole</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ToCourses</servlet-name>
+        <url-pattern>/ToCourses</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addCourse</servlet-name>
+        <url-pattern>/addCourse</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteCourse</servlet-name>
+        <url-pattern>/deleteCourse</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateCourse</servlet-name>
+        <url-pattern>/updateCourse</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
