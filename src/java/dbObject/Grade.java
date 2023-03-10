@@ -6,58 +6,52 @@ package dbObject;
 
 /**
  *
- * @author Zarius
+ * @author ADMIN
  */
 public class Grade {
-    private String Test_ID, Course_ID, Student_ID;
-    private Double Value;
+    String test_id,course_id,student_id;
+    double value;
 
     public Grade() {
     }
 
-    public Grade(String Test_ID, String Course_ID, String Student_ID, Double Value) {
-        this.Test_ID = Test_ID;
-        this.Course_ID = Course_ID;
-        this.Student_ID = Student_ID;
-        this.Value = Value;
+    public Grade(String test_id, String course_id, String student_id, double value) {
+        this.test_id = test_id;
+        this.course_id = course_id;
+        this.student_id = student_id;
+        this.value = value;
     }
 
-    public String getTest_ID() {
-        return Test_ID;
+    public String getTest_id() {
+        return test_id;
     }
 
-    public void setTest_ID(String Test_ID) {
-        this.Test_ID = Test_ID;
+    public void setTest_id(String test_id) {
+        this.test_id = test_id;
     }
 
-    public String getCourse_ID() {
-        return Course_ID;
+    public String getCourse_id() {
+        return course_id;
     }
 
-    public void setCourse_ID(String Course_ID) {
-        this.Course_ID = Course_ID;
+    public void setCourse_id(String course_id) {
+        this.course_id = course_id;
     }
 
-    public String getStudent_ID() {
-        return Student_ID;
+    public String getStudent_id() {
+        return student_id;
     }
 
-    public void setStudent_ID(String Student_ID) {
-        this.Student_ID = Student_ID;
+    public void setStudent_id(String student_id) {
+        this.student_id = student_id;
     }
 
-    public Double getValue() {
-        return Value;
+    public double getValue() {
+        return value;
     }
 
-    public void setValue(Double Value) {
-        this.Value = Value;
+    public void setValue(double value) {
+        this.value = value;
     }
-
-    @Override
-    public String toString() {
-        return "Grade{" + "Test_ID=" + Test_ID + ", Course_ID=" + Course_ID + ", Student_ID=" + Student_ID + ", Value=" + Value + '}';
-    }
-    
     
 }

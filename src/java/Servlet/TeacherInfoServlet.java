@@ -19,15 +19,6 @@ import java.util.List;
  * @author ADMIN
  */
 public class TeacherInfoServlet extends HttpServlet {
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -36,34 +27,14 @@ public class TeacherInfoServlet extends HttpServlet {
         TeacherDao td = new TeacherDao();
         Teacher t = td.getByUserName(user_name);
         List<CPS> list=td.getCpsByUserName(user_name);
-        request.setAttribute("cps", list);
-        request.setAttribute("data", t);
-        request.getRequestDispatcher("JSP/teacherHome.jsp").forward(request, response);
-
+        List<String> list_semester=td.getListSemesterByUsername(user_name);
+        session.setAttribute("data", t);
+        session.setAttribute("list_semester", list_semester);
+    response.sendRedirect("JSP/teacherHome.jsp");
     }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         this.doGet(request, response);
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
 }

@@ -17,10 +17,6 @@
         <servlet-class>Servlet.ChangePassServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>listStudentOfCps</servlet-name>
-        <servlet-class>Servlet.ListStudentOfCps</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>TeacherInfo</servlet-name>
         <servlet-class>Servlet.TeacherInfoServlet</servlet-class>
     </servlet>
@@ -72,6 +68,10 @@
         <servlet-name>adUserList</servlet-name>
         <servlet-class>Servlet.adUserList</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListStudentOfCpsServlet</servlet-name>
+        <servlet-class>Servlet.ListStudentOfCpsServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/loginServlet</url-pattern>
@@ -87,10 +87,6 @@
     <servlet-mapping>
         <servlet-name>changePassServlet</servlet-name>
         <url-pattern>/ChangePassServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>listStudentOfCps</servlet-name>
-        <url-pattern>/listStudentOfCps</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ListStudentOfClass</servlet-name>
@@ -143,6 +139,10 @@
     <servlet-mapping>
         <servlet-name>adUserList</servlet-name>
         <url-pattern>/adUserList</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListStudentOfCpsServlet</servlet-name>
+        <url-pattern>/listStudentOfCps</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

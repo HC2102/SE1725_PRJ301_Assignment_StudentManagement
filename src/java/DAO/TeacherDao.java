@@ -13,8 +13,11 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import dbObject.Class;
+import dbObject.Grade;
+import dbObject.Semester;
 import dbObject.Student;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
@@ -22,8 +25,7 @@ import java.sql.Statement;
  * @author ADMIN
  */
 public class TeacherDao extends DBContext {
-
-    public int insertTeacher(Teacher t) {
+     public int insertTeacher(Teacher t) {
         int row = 0;
         try {
             DBContext db = new DBContext();
@@ -56,28 +58,44 @@ public class TeacherDao extends DBContext {
                 return t;
             }
         } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
         return null;
     }
 
     public List<CPS> getCpsByUserName(String user_name) {
-        /*
-        [CPS_ID] [int] NOT NULL,
-	[Course_ID] [nvarchar](10) NOT NULL,
-	[Semester_ID] [nvarchar](15) NOT NULL,
-	[Teacher_User_name] [nvarchar](30) NOT NULL,
-	[Biographic] [ntext] NULL,
-	[Resource] [ntext] NULL,
-         */
         List<CPS> list = new ArrayList<>();
         String sql = "select * from CPS\n"
                 + "where Teacher_User_name = ?";
+        TeacherDao td = new TeacherDao();
         try {
             PreparedStatement st = (PreparedStatement) getConnection().prepareStatement(sql);
             st.setString(1, user_name);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                CPS cps = new CPS(rs.getInt("CPS_ID"), rs.getString("Course_ID"), rs.getString("Semester_ID"), rs.getString("Teacher_User_name"), rs.getString("Biographic"), rs.getString("Resource"));
+                Semester semester = td.getSemesterBySemesterId(rs.getString("Semester_ID"));
+                CPS cps = new CPS(rs.getInt("CPS_ID"), rs.getString("Course_ID"), semester, rs.getString("Teacher_User_name"), rs.getString("Biographic"), rs.getString("Resource"));
+                list.add(cps);
+            }
+            st.close();
+        } catch (Exception e) {
+        }
+        return list;
+    }
+    
+    public List<CPS> getCpsByUserNameAndSemester(String user_name, String semester_id) {
+        List<CPS> list = new ArrayList<>();
+        String sql = "select * from CPS\n"
+                + "where Teacher_User_name = ? and Semester_ID=?";
+        TeacherDao td = new TeacherDao();
+        try {
+            PreparedStatement st = (PreparedStatement) getConnection().prepareStatement(sql);
+            st.setString(1, user_name);
+            st.setString(2, semester_id);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Semester semester = td.getSemesterBySemesterId(rs.getString("Semester_ID"));
+                CPS cps = new CPS(rs.getInt("CPS_ID"), rs.getString("Course_ID"), semester, rs.getString("Teacher_User_name"), rs.getString("Biographic"), rs.getString("Resource"));
                 list.add(cps);
             }
             st.close();
@@ -89,18 +107,38 @@ public class TeacherDao extends DBContext {
     public CPS getCpsByCid(int cid) {
 //        select * from CPS where  CPS_ID= 
         String sql = "select * from CPS where  CPS_ID= ?";
+        TeacherDao td = new TeacherDao();
         try {
             PreparedStatement st = (PreparedStatement) getConnection().prepareStatement(sql);
             st.setInt(1, cid);
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
-                CPS cps = new CPS(rs.getInt("CPS_ID"), rs.getString("Course_ID"), rs.getString("Semester_ID"), rs.getString("Teacher_User_name"), rs.getString("Biographic"), rs.getString("Resource"));
+                Semester semester = td.getSemesterBySemesterId(rs.getString("Semester_ID"));
+                CPS cps = new CPS(rs.getInt("CPS_ID"), rs.getString("Course_ID"), semester, rs.getString("Teacher_User_name"), rs.getString("Biographic"), rs.getString("Resource"));
                 return cps;
             }
             st.close();
         } catch (Exception e) {
         }
         return null;
+    }
+
+    public List<String> getListSemesterByUsername(String user_name) {
+        List<String> list=new ArrayList<>();
+        String sql = "select distinct Semester_ID from CPS\n"
+                + "                where Teacher_User_name = ?";
+        try {
+            PreparedStatement st = (PreparedStatement) getConnection().prepareStatement(sql);
+            st.setString(1, user_name);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {               
+                String semester = rs.getString("Semester_ID");
+                list.add(semester);  
+            }
+            st.close();
+        } catch (Exception e) {
+        }
+        return list;
     }
 
     public ArrayList<Student_Class_Mark> getStudent_Class_MarkByCid(int cid) {
@@ -157,6 +195,63 @@ public class TeacherDao extends DBContext {
             }
         }
         return list_marks;
+    }
+
+    public ArrayList<Grade> getListGradeByStIdAndCourseId(String st_id, String course_id) {
+        ArrayList<Grade> list = new ArrayList<>();
+        String sql = "SELECT TOP (1000) [Test_ID]\n"
+                + "      ,[Course_ID]\n"
+                + "      ,[Student_ID]\n"
+                + "      ,[Value]\n"
+                + "  FROM [SE1725_Assignment_PRJ301].[dbo].[Grade]\n"
+                + "  where Student_ID=? and Course_ID=?";
+        try {
+            PreparedStatement st = (PreparedStatement) getConnection().prepareStatement(sql);
+            st.setString(1, st_id);
+            st.setString(2, course_id);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Grade gr = new Grade(rs.getString("Test_ID"), rs.getString("Course_ID"), rs.getString("Student_ID"), rs.getDouble("Value"));
+                list.add(gr);
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public void updateGrade(String st_id, String Test_ID, String course_id, double value) {
+        String sql = "UPDATE [dbo].[Grade]\n"
+                + "   SET [Value] = ?\n"
+                + " WHERE Student_ID=? and Test_ID=? and Course_ID=?";
+        try {
+            PreparedStatement st = (PreparedStatement) getConnection().prepareStatement(sql);
+            st.setDouble(1, value);
+            st.setString(2, st_id);
+            st.setString(3, Test_ID);
+            st.setString(4, course_id);
+            st.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public Semester getSemesterBySemesterId(String semester_id) {
+        String sql = "SELECT [Semester_ID]\n"
+                + "      ,[Time_start]\n"
+                + "      ,[Time_end]\n"
+                + "      ,[current_Semester]\n"
+                + "  FROM [dbo].[Semester]\n"
+                + "  where Semester_ID = ?";
+        try {
+            PreparedStatement st = (PreparedStatement) getConnection().prepareStatement(sql);
+            st.setString(1, semester_id);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                Semester semester = new Semester(semester_id, rs.getDate("Time_start"), rs.getDate("Time_end"), rs.getInt("current_Semester"));
+                return semester;
+            }
+        } catch (Exception e) {
+        }
+        return null;
     }
 
     public static void main(String[] args) {

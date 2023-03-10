@@ -19,15 +19,17 @@ public class CPS {
 	[Resource] [ntext] NULL,
     */
     int cps_id;
-    String Course_ID,Semester_ID,Teacher_User_name,Biographic,Resource;
+    String Course_ID;
+    Semester semester;
+    String Teacher_User_name,Biographic,Resource;
 
     public CPS() {
     }
 
-    public CPS(int cps_id, String Course_ID, String Semester_ID, String Teacher_User_name, String Biographic, String Resource) {
+    public CPS(int cps_id, String Course_ID, Semester semester, String Teacher_User_name, String Biographic, String Resource) {
         this.cps_id = cps_id;
         this.Course_ID = Course_ID;
-        this.Semester_ID = Semester_ID;
+        this.semester = semester;
         this.Teacher_User_name = Teacher_User_name;
         this.Biographic = Biographic;
         this.Resource = Resource;
@@ -49,12 +51,12 @@ public class CPS {
         this.Course_ID = Course_ID;
     }
 
-    public String getSemester_ID() {
-        return Semester_ID;
+    public Semester getSemester() {
+        return semester;
     }
 
-    public void setSemester_ID(String Semester_ID) {
-        this.Semester_ID = Semester_ID;
+    public void setSemester(Semester semester) {
+        this.semester = semester;
     }
 
     public String getTeacher_User_name() {
@@ -80,5 +82,6 @@ public class CPS {
     public void setResource(String Resource) {
         this.Resource = Resource;
     }
+
     
 }
