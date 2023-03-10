@@ -8,6 +8,7 @@
             <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/WEB-INF/web.xml</file>
             <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/TeacherInfoServlet.java</file>
             <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/teacherHome.jsp</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/ListStudentOfCpsServlet.java</file>
         </group>
     </open-files>
 </project-private>
