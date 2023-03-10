@@ -18,6 +18,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Teacher Homepage</title>
     </head>
+    <%
+    if (request.getAttribute("data")==null) {
+        response.sendRedirect("Login.jsp");
+    }
+%>
     <body>
         <div class="ctr1">
             <a style="text-decoration: none; font-family:'Times New Roman'; margin-left:5%; margin-top:1%;" href="<%= request.getContextPath()%>/teacherInfo"><H1>Home</H1></a>

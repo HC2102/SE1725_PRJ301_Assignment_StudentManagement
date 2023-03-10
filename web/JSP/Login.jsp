@@ -11,7 +11,7 @@
   </head>
   <body>
     <div class="login-form">
-      <form action="loginServlet" method="post">
+      <form action="<%= request.getContextPath()%>\loginServlet" method="post">
         <h1>STUDENT MANAGEMENT LOGIN</h1>
         <div class="input-box">
           <i></i>

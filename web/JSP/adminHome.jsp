@@ -15,6 +15,11 @@
         <link rel="stylesheet" href="<%= request.getContextPath()%>/css/home_studentstyle.css">
         <title>Admin Services</title>
     </head>
+    <%
+    if (session.getAttribute("admin")==null) {
+        response.sendRedirect("Login.jsp");
+    }
+%>
     <body>
         <%
             Admin ad = (Admin) session.getAttribute("admin");

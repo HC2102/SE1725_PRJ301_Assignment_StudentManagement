@@ -15,6 +15,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="<%= request.getContextPath()%>/css/CourseStyle.css">
     </head>
+    <%
+    if (request.getAttribute("newcourse")==null) {
+        response.sendRedirect("Login.jsp");
+    }
+%>
     <body>
         <h2>Update Course...</h2>
         <%

@@ -6,11 +6,16 @@ Zarius --%> <%@page import="dbObject.Student"%>
 <!DOCTYPE html>
 <html>
     <%
+        if (session.getAttribute("listDetailGrade") == null || session.getAttribute("averageScore") == null || session.getAttribute("userStudent") == null || session.getAttribute("listTestWeight") == null) {
+            response.sendRedirect("Login.jsp");
+        }
+    %>
+    <%
         HashMap<String, Double> listOfDetail = (HashMap<String, Double>) session.getAttribute("listDetailGrade");
         Double avg = (Double) session.getAttribute("averageScore");
         Student s = (Student) session.getAttribute("userStudent");
         HashMap<String, Double> listTestWeight = (HashMap<String, Double>) session.getAttribute("listTestWeight");
-        String[]gradeList = listOfDetail.keySet().toArray(new String[listOfDetail.size()]);
+        String[] gradeList = listOfDetail.keySet().toArray(new String[listOfDetail.size()]);
     %>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -73,7 +78,7 @@ Zarius --%> <%@page import="dbObject.Student"%>
                         <th>Course</th>
                         <td><%=request.getParameter("Course_ID")%></td>
                     </tr>
-                    <% for(String i :gradeList){
+                    <% for (String i : gradeList) {
                     %>
                     <tr>
                         <th><%=i%> (<%=listTestWeight.get(i)%>%)</th>
@@ -86,7 +91,7 @@ Zarius --%> <%@page import="dbObject.Student"%>
                     </tr>
                     <tr>
                         <th>Status</th>
-                        <%if (avg > 5) { %>
+                            <%if (avg > 5) { %>
                         <td><b style="background-color: green; color: white; padding: .3em; border-radius: .25em;">Passed</b></td>
                         <%} else {%>
                         <td><b style="background-color: red; color: white; padding: .3em; border-radius: .25em;">Not passed</b></td>

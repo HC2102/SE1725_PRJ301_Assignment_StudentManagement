@@ -10,6 +10,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page errorPage="error.jsp" %>
 <!DOCTYPE html>
+<%
+    if (session.getAttribute("userStudent") == null || session.getAttribute("studentClass") == null) {
+        response.sendRedirect("Login.jsp");
+    }
+%>
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -23,14 +28,15 @@
             Student stu = (Student) session.getAttribute("userStudent");
             Student_Class stcl = (Student_Class) session.getAttribute("studentClass");
         %>
+
         <div class="ctr1">
             <a style="text-decoration: none; font-family:'Times New Roman'; margin-left:5%; margin-top:1%;" href="<%= request.getContextPath()%>/JSP/StudentHome.jsp"><H1>Home</H1></a>
-           <div class="headerbutton">
+            <div class="headerbutton">
                 <a href="<%= request.getContextPath()%>/JSP/ChangePass.jsp"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Change Password"></a>
                 <a href="<%= request.getContextPath()%>/logout"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Log out"></a>
             </div>
         </div>
-        
+
         <div class="ctr4">
 
             <div class="ctr3">

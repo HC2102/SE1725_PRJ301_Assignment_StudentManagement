@@ -16,6 +16,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="<%= request.getContextPath()%>\css\PWStyle.css">
     </head>
+    <%
+    if (session.getAttribute("userType")==null) {
+        response.sendRedirect("Login.jsp");
+    }
+%>
     <body>
         <h2>Change Password</h2>
        <div class="container">

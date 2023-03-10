@@ -17,6 +17,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="<%= request.getContextPath()%>\css\adAddUser.css" />
     </head>
+    <%
+    if (session.getAttribute("majorList")==null) {
+        response.sendRedirect("Login.jsp");
+    }
+%>
     <body>
         <!-- <script src="function.js"></script> -->
         <script>
@@ -217,7 +222,7 @@
                     </div>
                 </div>
                 <button type="submit">Add user</button>
-                <button type="reset" onclick="location.reload()">Reset</button>
+                <a href="adUserList"><button type="button">Go back</button></a>
             </form>
         </div>
     </body>
