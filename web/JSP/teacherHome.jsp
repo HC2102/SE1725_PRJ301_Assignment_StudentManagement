@@ -8,6 +8,7 @@
 <%@page import="dbObject.Teacher" %>
 <%@page import="dbObject.CPS" %>
 <%@page import="java.util.List" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -16,28 +17,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="<%= request.getContextPath()%>/css/TeacherHome.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Teacher Homepage</title>
-    </head>
-    <%
-    if (request.getAttribute("data")==null) {
-        response.sendRedirect("Login.jsp");
-    }
-%>
+        <title>Document</title>
     <body>
         <div class="ctr1">
-            <a style="text-decoration: none; font-family:'Times New Roman'; margin-left:5%; margin-top:1%;" href="<%= request.getContextPath()%>/teacherInfo"><H1>Home</H1></a>
-           <div class="headerbutton">
-                <a href="<%= request.getContextPath()%>/JSP/ChangePass.jsp"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Change Password"></a>
+            <H1>Home</H1>
+            <div class="headerbutton">
+                <a style="margin-right: 5%" href="<%= request.getContextPath()%>/JSP/ChangePass.jsp"><input style="font-weight: bold;" type="Submit" value="Change Password"></a>
                 <a href="<%= request.getContextPath()%>/logout"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Log out"></a>
             </div>
         </div>
         <div class="ctr4">
 
             <div class="ctr3">
-                <img src="<%= request.getContextPath()%>\image\anh2.jpg" style="width:100%; height: 100%;" class="" alt="">
+                <p></p>
             </div>
             <%
-                Teacher t=(Teacher)request.getAttribute("data");
+                Teacher t=(Teacher)session.getAttribute("data");
             %>
             <div class="ctr2">
                 <P>Name: <%= t.getTeacherName()%></P>
@@ -46,18 +41,33 @@
                 <p>Email: <%= t.getEmail()%></p>
             </div>
         </div>
-        <form style="padding-top: 5%; padding-left: 42%;" action="listStudentOfCps" method="get">
-            <input style=" padding: 1%; font-weight: bold; margin-right: 1% ;" type="submit" value="Search">
-            <select class="select" id="Sub" name="subject">
-                <% 
-                List<CPS> list=(List<CPS>)request.getAttribute("cps");
-                for(int i=0; i<list.size();i++){%>
-                <option value="<%= list.get(i).getCps_id()%>"><%= list.get(i).getCourse_ID()%></option>            
-                <%}
-                %>
-            </select>
-
-        </form>
-
+        <div>
+            <form style="padding-top: 5%; padding-left: 42%; color: red" action="<%=request.getContextPath()%>/sos">
+                <input type="text" name="user_name" value="<%= t.getUserName()%>" hidden/>
+                <c:set var="semester" value="${requestScope.semester}" /> 
+                <select class="select" id="Sub" name="semester">    
+                    <option value="CHOOSE SEMESTER" hidden>CHOOSE SEMESTER</option>  
+                    <c:forEach items="${sessionScope.list_semester}" var="c">                            
+                                <option ${(semester==c)? 'selected':''} value="${c}">${c}</option>
+                    </c:forEach>
+                </select>
+                <input style="padding: 1%; font-weight: bold" type="submit" value="CHOOSE"/>
+            </form>
+            <% List<CPS> list=(List<CPS>)request.getAttribute("cps");
+                if(list!=null){
+            %>            
+            <form style="padding-top: 1%; padding-left: 42%; padding-bottom: " action="listStudentOfCps" method="get">
+                <select class="select" id="Sub" name="subject">               
+                    <% 
+                    
+                    for(int i=0; i<list.size();i++){%>
+                    <option value="<%= list.get(i).getCps_id()%>"><%= list.get(i).getCourse_ID()%></option>            
+                    <%}
+                    %>
+                </select>
+                <input style=" padding: 1%; font-weight: bold; margin-right: 1% ;" type="submit" value="Search">
+            </form>
+            <%}%>
+        </div>
     </body>
 </html>
