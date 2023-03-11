@@ -10,6 +10,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -17,32 +18,20 @@ import java.util.ArrayList;
  *
  * @author Zarius
  */
-public class AdminOptions extends HttpServlet {
+public class adCPSList extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        CPSDAO cpsDAO = new CPSDAO();
+        ArrayList<CPS> listCPS = cpsDAO.getAllCPS();
+        HttpSession session = req.getSession();
+        session.setAttribute("listCPS", listCPS);
+        req.getRequestDispatcher("JSP/ListCPS.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String adminOption = req.getParameter("option");
-        switch (adminOption) {
-            case "List CPS":
-                resp.sendRedirect("adCPSList");
-                break;
-            case "Add user":
-                resp.sendRedirect("adUserList");
-                break;
-
-            case "List Enrolled":
-                resp.sendRedirect("adEnrolledList");
-
-            case "Add course":
-                resp.sendRedirect("ToCourses");
-                break;
-            default:
-                throw new AssertionError();
-        }
+        this.doGet(req, resp);
     }
 
 }

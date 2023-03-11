@@ -5,7 +5,11 @@
 package Servlet.Admin;
 
 import DAO.CPSDAO;
+import DAO.CourseDAO;
+import DAO.SemesterDAO;
 import dbObject.CPS;
+import dbObject.Course;
+import dbObject.Semester;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,7 +21,7 @@ import java.util.ArrayList;
  *
  * @author Zarius
  */
-public class AdminOptions extends HttpServlet {
+public class InsertCPS extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -25,24 +29,14 @@ public class AdminOptions extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String adminOption = req.getParameter("option");
-        switch (adminOption) {
-            case "List CPS":
-                resp.sendRedirect("adCPSList");
-                break;
-            case "Add user":
-                resp.sendRedirect("adUserList");
-                break;
-
-            case "List Enrolled":
-                resp.sendRedirect("adEnrolledList");
-
-            case "Add course":
-                resp.sendRedirect("ToCourses");
-                break;
-            default:
-                throw new AssertionError();
+        if (req.getParameter("addCPS") != null) {
+            SemesterDAO semDAO = new SemesterDAO();
+            CourseDAO cDAO = new CourseDAO();
+            Semester currentSem = semDAO.getSemesterIDByCurrentSemester();
+            ArrayList<Course> listCourse = cDAO.getAllCourse();
+            req.setAttribute("listCourse", listCourse);
+            req.setAttribute("currentSem", currentSem.getSemester_ID());
+            req.getRequestDispatcher("JSP/adAddCPS.jsp").forward(req, resp);
         }
     }
-
 }

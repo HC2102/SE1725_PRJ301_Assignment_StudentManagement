@@ -16,7 +16,8 @@ import java.util.ArrayList;
  * @author Zarius
  */
 public class CPSDAO {
-    public ArrayList<CPS> getAllSemester() {
+
+    public ArrayList<CPS> getAllCPS() {
         ArrayList<CPS> listCPS = new ArrayList<>();
         try {
             DBContext db = new DBContext();
@@ -45,7 +46,7 @@ public class CPSDAO {
         }
         return listCPS;
     }
-    
+
     public int deleteCPS(int CPSID) {
         int rows = 0;
         try {
@@ -64,4 +65,49 @@ public class CPSDAO {
         }
         return rows;
     }
+
+    public int insertCPS(CPS cps) {
+        int rows = 0;
+        try {
+            DBContext db = new DBContext();
+            Connection con = db.getConnection();
+            if (con != null) {
+                Statement st = con.createStatement();
+                String sql = "INSERT INTO CPS(CPS_ID, Course_ID, Semester_ID, Teacher_User_name, Biographic, [Resource])"
+                        + " Values (" + cps.getCps_id() + ",'" + cps.getCourse_ID() + "','" + cps.getSemesterID() + "','" + cps.getTeacher_User_name() + "','"
+                        + cps.getBiographic() + "','" + cps.getResource() + "')";
+                rows = st.executeUpdate(sql);
+                st.close();
+                con.close();
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            rows = -1;
+        }
+        return rows;
+    }
+    
+    public int getMaxCPSID() {
+        try {
+            DBContext db = new DBContext();
+            Connection con = db.getConnection();
+            if (con != null) {
+                Statement st = con.createStatement();
+                String sql = "SELECT Max(CPS_ID)[index] From CPS";
+                ResultSet rs = st.executeQuery(sql);
+                if (rs.next()) {
+                    int maxCPS = rs.getInt("index");
+                    return maxCPS;
+                    
+                }
+                rs.close();
+                st.close();
+                con.close();
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return -1;
+    }
+    
 }

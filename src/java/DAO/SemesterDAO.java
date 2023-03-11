@@ -17,6 +17,7 @@ import java.util.ArrayList;
  * @author Zarius
  */
 public class SemesterDAO {
+
     public ArrayList<Semester> getAllStudent() {
         ArrayList<Semester> listSemester = new ArrayList<>();
         try {
@@ -81,7 +82,6 @@ public class SemesterDAO {
 //            System.out.println(e.getMessage());
 //        }
 //    }
-
     public Semester getSemesterByID(String SemID) {
         try {
             DBContext db = new DBContext();
@@ -107,5 +107,30 @@ public class SemesterDAO {
         }
         return null;
     }
-    
+
+    public Semester getSemesterIDByCurrentSemester() {
+        try {
+            DBContext db = new DBContext();
+            Connection con = db.getConnection();
+            if (con != null) {
+                Statement st = con.createStatement();
+                String sql = "SELECT * FROM SEMESTER WHERE current_Semester = 1";
+                ResultSet rs = st.executeQuery(sql);
+                if (rs.next()) {
+                    Semester sem = new Semester();
+                    sem.setSemester_ID(rs.getString(1));
+                    sem.setTime_start(rs.getDate(2));
+                    sem.setTime_end(rs.getDate(3));
+                    sem.setCurrent_Semester(rs.getBoolean(4));
+                    return sem;
+                }
+                rs.close();
+                st.close();
+                con.close();
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
 }

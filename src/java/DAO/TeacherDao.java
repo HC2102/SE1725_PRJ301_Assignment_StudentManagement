@@ -252,7 +252,33 @@ public class TeacherDAO extends DBContext {
         }
         return null;
     }
-    public int deleteTeacher(String username) {
+    
+    public ArrayList<Teacher> getTeacherByCourseIDAndMajorID(String CourseID){
+        ArrayList<Teacher> listTeacher = new ArrayList<>();
+        try {
+            DBContext db = new DBContext();
+            Connection con = db.getConnection();
+            if (con != null) {
+                Statement st = con.createStatement();
+                String sql = "SELECT t.[User_name] FROM Course c, Teacher t WHERE c.Major_ID = t.Major_ID and c.Course_ID = '" + CourseID + "'";
+                ResultSet rs = st.executeQuery(sql);
+                while(rs.next()) {
+                    Teacher t = new Teacher();
+                    t.setUserName(rs.getString(1));
+                    listTeacher.add(t);
+                }
+                rs.close();
+                st.close();
+                con.close();
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return listTeacher;
+  }
+    
+  public int deleteTeacher(String username) {
         int row = 0;
         try {
             DBContext db = new DBContext();
@@ -269,8 +295,8 @@ public class TeacherDAO extends DBContext {
             row = -1;
         }
         return row;
-    }
-
+        }
+  
      public int updateTeacher(Teacher t) {
         try {
             DBContext db = new DBContext();
