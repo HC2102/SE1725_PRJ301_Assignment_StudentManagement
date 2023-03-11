@@ -41,7 +41,7 @@
         <%
             ArrayList<Major> mList = (ArrayList<Major>) session.getAttribute("majorList");
         %>
-        <h2>Add student information</h2>
+        <h2>Add user information</h2>
         <div class="container">
             <div class="imgdiv">
                 <img src="<%= request.getContextPath()%>\image\manyUser.png" alt="" />

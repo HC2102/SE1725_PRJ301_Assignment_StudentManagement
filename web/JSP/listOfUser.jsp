@@ -8,11 +8,11 @@
 <%@page import="java.util.List" %>
 <!DOCTYPE html>
 <html>
- <%
-    if (session.getAttribute("userList")==null) {
-        response.sendRedirect("Login.jsp");
-    }
-%>
+    <%
+       if (session.getAttribute("userList")==null) {
+           response.sendRedirect("Login.jsp");
+       }
+    %>
     <head>
         <title>List of user</title>
         <meta charset="UTF-8">
@@ -62,8 +62,10 @@
                 </tbody>
             </table>
         </div>
-        <a href="adAddUser"><input type="button" value="Add more user"></a>
-        <a href="<%= request.getContextPath()%>/teacherInfo"><input type="button" value="Back to homepage"></a>
+        <div style=" text-align: center; margin-bottom: 2%;">
+            <a href="adAddUser" ><input type="button" value="Add more user" style="padding:10px"></a>
+            <a href="<%= request.getContextPath()%>/AdminInfo"><input type="button" value="Back to homepage" style="padding:10px"></a>
+        </div>
         <script type="text/javascript">
             var elems = document.getElementsByClassName('confirmation');
             var confirmIt = function (e) {

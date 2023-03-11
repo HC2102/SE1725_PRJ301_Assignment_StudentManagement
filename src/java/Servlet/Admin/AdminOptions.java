@@ -33,6 +33,9 @@ public class AdminOptions extends HttpServlet {
                 req.setAttribute("listCPS", listCPS);
                 req.getRequestDispatcher("JSP/ListCPS.jsp").forward(req, resp);
                 break;
+            case "Add user":
+                resp.sendRedirect("adUserList");
+                break;
             default:
                 throw new AssertionError();
         }
