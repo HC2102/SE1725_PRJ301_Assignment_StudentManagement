@@ -47,9 +47,11 @@ public class addCourse extends HttpServlet {
             } else {
                 session.setAttribute("status", "Add course successfully!");
                 session.setAttribute("error", null);
-                response.sendRedirect("Courses");
-            }
-        } catch (Exception e) {
+
+                response.sendRedirect("ToCourses"); 
+            }  
+        }catch(Exception e){
+
             request.setAttribute("error", "Error!");
             request.getRequestDispatcher("JSP/addCourse.jsp").forward(request, response);
         }
