@@ -6,7 +6,7 @@ package Servlet.Admin;
 
 import DAO.CourseDAO;
 import DAO.SemesterDAO;
-import DAO.TeacherDao;
+import DAO.TeacherDAO;
 import dbObject.Course;
 import dbObject.Semester;
 import dbObject.Teacher;
@@ -34,7 +34,7 @@ public class teacherByCourse extends HttpServlet {
         SemesterDAO semDAO = new SemesterDAO();
         String courseID = req.getParameter("chooseCourse");
         Semester currentSem = semDAO.getSemesterIDByCurrentSemester();
-        TeacherDao tDAO = new TeacherDao();
+        TeacherDAO tDAO = new TeacherDAO();
         ArrayList<Teacher> listTeacherByCourseIDandMajor = tDAO.getTeacherByCourseIDAndMajorID(courseID);
         req.setAttribute("listTeacherByCourseIDandMajor", listTeacherByCourseIDandMajor);
         CourseDAO cDAO = new CourseDAO();

@@ -5,7 +5,7 @@
 --%>
 
 <%@page import="dbObject.Teacher"%>
-<%@page import="DAO.TeacherDao"%>
+<%@page import="DAO.TeacherDAO"%>
 <%@page import="dbObject.Course"%>
 <%@page import="java.util.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

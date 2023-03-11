@@ -30,7 +30,7 @@ public class AdminOptions extends HttpServlet {
             case "List CPS":
                 resp.sendRedirect("adCPSList");
                 break;
-            case "Add user":
+            case "User Data":
                 resp.sendRedirect("adUserList");
                 break;
 
