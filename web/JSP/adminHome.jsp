@@ -19,7 +19,7 @@
     if (session.getAttribute("admin")==null) {
         response.sendRedirect("Login.jsp");
     }
-%>
+    %>
     <body>
         <%
             Admin ad = (Admin) session.getAttribute("admin");
@@ -46,10 +46,13 @@
                 <p>Your Email:<%=ad.getAdmin_email()%></p>
             </div>
         </div>
-        <form style="padding-top: 5%; padding-left: 42%;"  action="" method="post">
-            <input style=" padding: 1%; font-weight: bold; margin-right: 1% ;" type="submit" value="Your Class">
-            <input style=" padding: 1%; font-weight: bold;" type="submit" value="Average Score">
-
+        <form style="padding-top: 5%; padding-left: 42%;"  action="AdminOptions" method="post">
+            <input style=" padding: 1%; font-weight: bold; margin-right: 1% ;" type="submit" value="List CPS" name="listCps">
+            <input style=" padding: 1%; font-weight: bold; margin-right: 1% ;" type="submit" value="List Course"> 
+            <input style=" padding: 1%; font-weight: bold;" type="submit" value="List..."> <br>
+            <input style=" padding: 1%; font-weight: bold; margin-right: 1% ;" type="submit" value="List..."> 
+            <input style=" padding: 1%; font-weight: bold; margin-right: 1% ;" type="submit" value="List...">
+            <input style=" padding: 1%; font-weight: bold;" type="submit" value="List..."> <br>
         </form>
 
     </body>

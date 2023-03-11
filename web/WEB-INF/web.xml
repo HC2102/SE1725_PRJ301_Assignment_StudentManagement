@@ -10,7 +10,7 @@
     </servlet>
     <servlet>
         <servlet-name>classOfStudent</servlet-name>
-        <servlet-class>Servlet.ClassOfStudentServlet</servlet-class>
+        <servlet-class>Servlet.Student.ClassOfStudentServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>changePassServlet</servlet-name>
@@ -22,19 +22,19 @@
     </servlet>
     <servlet>
         <servlet-name>ListStudentOfClass</servlet-name>
-        <servlet-class>Servlet.ListStudentOfClass</servlet-class>
+        <servlet-class>Servlet.Student.ListStudentOfClass</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>EachStudentHomeServlet</servlet-name>
-        <servlet-class>Servlet.EachStudentHome</servlet-class>
+        <servlet-class>Servlet.Student.EachStudentHome</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>StudentInfoServlet</servlet-name>
-        <servlet-class>Servlet.StudentInfoServlet</servlet-class>
+        <servlet-class>Servlet.Student.StudentInfoServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CourseDetailGrade</servlet-name>
-        <servlet-class>Servlet.CourseDetailGrade</servlet-class>
+        <servlet-class>Servlet.Student.CourseDetailGrade</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AdminInfoServlet</servlet-name>
@@ -42,35 +42,39 @@
     </servlet>
     <servlet>
         <servlet-name>adAddUser</servlet-name>
-        <servlet-class>Servlet.adAddUser</servlet-class>
+        <servlet-class>Servlet.Admin.adAddUser</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AddUserByRole</servlet-name>
-        <servlet-class>Servlet.AddUserByRole</servlet-class>
+        <servlet-class>Servlet.Admin.AddUserByRole</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ToCourses</servlet-name>
-        <servlet-class>Servlet.ToCourses</servlet-class>
+        <servlet-class>Servlet.Admin.ToCourses</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>addCourse</servlet-name>
-        <servlet-class>Servlet.addCourse</servlet-class>
+        <servlet-class>Servlet.Admin.addCourse</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>deleteCourse</servlet-name>
-        <servlet-class>Servlet.deleteCourse</servlet-class>
+        <servlet-class>Servlet.Admin.deleteCourse</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>updateCourse</servlet-name>
-        <servlet-class>Servlet.updateCourse</servlet-class>
+        <servlet-class>Servlet.Admin.updateCourse</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>adUserList</servlet-name>
-        <servlet-class>Servlet.adUserList</servlet-class>
+        <servlet-class>Servlet.Admin.adUserList</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ListStudentOfCpsServlet</servlet-name>
         <servlet-class>Servlet.ListStudentOfCpsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminOptions</servlet-name>
+        <servlet-class>Servlet.Admin.AdminOptions</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -143,6 +147,10 @@
     <servlet-mapping>
         <servlet-name>ListStudentOfCpsServlet</servlet-name>
         <url-pattern>/listStudentOfCps</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminOptions</servlet-name>
+        <url-pattern>/AdminOptions</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

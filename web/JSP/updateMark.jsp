@@ -3,6 +3,8 @@
     Created on : 06-03-2023, 13:06:29
     Author     : ADMIN
 --%>
+<%@page import="DAO.SemesterDAO"%>
+<%@page import="dbObject.Semester"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="dbObject.Student_Class_Mark"%>
@@ -24,11 +26,14 @@
         <% 
         ArrayList<Grade> list = (ArrayList<Grade>)request.getAttribute("data");
         CPS cps=(CPS)request.getAttribute("cps");
-        if(cps.getSemester().getCurrent_Semester()==0){%>
+        //Semester cua CPS la object Semester
+        SemesterDAO semDAO = new SemesterDAO();
+        Semester sem = semDAO.getSemesterByID(cps.getSemesterID());
+        if(sem.isCurrent_Semester() == true){%>
         <div class="ctr1">   
-            SEMESTER: &nbsp; <%= cps.getSemester().getSemester_ID()%><br/>
-            TIME START: &nbsp; <%= cps.getSemester().getTime_start()%><br/>
-            TIME END: &nbsp;<%= cps.getSemester().getTime_end()%><br/>
+            SEMESTER: &nbsp; <%= sem.getSemester_ID()%><br/>
+            TIME START: &nbsp; <%= sem.getTime_start()%><br/>
+            TIME END: &nbsp;<%= sem.getTime_end()%><br/>
             <p>Scores of this semester can't be changed</p>
             <%for(Grade i : list){
             if(i.getTest_id().equalsIgnoreCase("AC")){%>
@@ -51,9 +56,9 @@
         </div>
         <%    } else{%>
         <div class="ctr1">
-            <b>SEMESTER: &nbsp; <%= cps.getSemester().getSemester_ID()%><br/>
-                <b>TIME START: &nbsp; <%= cps.getSemester().getTime_start()%><br/>
-                    <b>TIME END: &nbsp;<%= cps.getSemester().getTime_end()%><br/>
+            <b>SEMESTER: &nbsp; <%= sem.getSemester_ID()%><br/>
+                <b>TIME START: &nbsp; <%= sem.getTime_start()%><br/>
+                    <b>TIME END: &nbsp;<%= sem.getTime_end()%><br/>
                         <form action="update" method="post">
                             <%String st_id=(String)request.getAttribute("st_id");
               String course_id=(String)request.getAttribute("course_id");%>

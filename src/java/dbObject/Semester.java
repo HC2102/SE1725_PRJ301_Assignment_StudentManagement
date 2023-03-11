@@ -11,24 +11,20 @@ import java.sql.Date;
  * @author ADMIN
  */
 public class Semester {
-//    [Semester](
-//	[Semester_ID] [nvarchar](15) NOT NULL,
-//	[Time_start] [date] NOT NULL,
-//	[Time_end] [date] NOT NULL,
-//	[current_Semester] [bit] NOT NULL,
-    String Semester_ID;
-    Date Time_start,Time_end;
-    int current_Semester;
+    private String Semester_ID;
+    private Date Time_start,Time_end;
+    private boolean current_Semester;
 
     public Semester() {
     }
 
-    public Semester(String Semester_ID, Date Time_start, Date Time_end, int current_Semester) {
+    public Semester(String Semester_ID, Date Time_start, Date Time_end, boolean current_Semester) {
         this.Semester_ID = Semester_ID;
         this.Time_start = Time_start;
         this.Time_end = Time_end;
         this.current_Semester = current_Semester;
     }
+
 
     public String getSemester_ID() {
         return Semester_ID;
@@ -54,12 +50,14 @@ public class Semester {
         this.Time_end = Time_end;
     }
 
-    public int getCurrent_Semester() {
+    public boolean isCurrent_Semester() {
         return current_Semester;
     }
 
-    public void setCurrent_Semester(int current_Semester) {
+    public void setCurrent_Semester(boolean current_Semester) {
         this.current_Semester = current_Semester;
     }
+
+    
     
 }

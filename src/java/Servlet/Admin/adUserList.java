@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
-package Servlet;
+package Servlet.Admin;
 
 import DAO.UserDAO;
 import dbObject.User;

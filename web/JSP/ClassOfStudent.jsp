@@ -14,7 +14,7 @@
     if (request.getAttribute("listStudentFromClassID")==null) {
         response.sendRedirect("Login.jsp");
     }
-%>
+    %>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,8 +24,8 @@
     </head>
     <body>
         <div class="ctr1">
-           <a style="text-decoration: none; font-family:'Times New Roman'; margin-left:5%; margin-top:1%;" href="<%= request.getContextPath()%>/JSP/StudentHome.jsp"><H1>Home</H1></a>
-           <div class="headerbutton">
+            <a style="text-decoration: none; font-family:'Times New Roman'; margin-left:5%; margin-top:1%;" href="<%= request.getContextPath()%>/JSP/StudentHome.jsp"><H1>Home</H1></a>
+            <div class="headerbutton">
                 <a href="<%= request.getContextPath()%>/JSP/ChangePass.jsp"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Change Password"></a>
                 <a href="<%= request.getContextPath()%>/logout"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Log out"></a>
             </div>
@@ -48,7 +48,7 @@
             </select>
             <input type="submit" name="findClass" value="Find Class">
         </form>
-            
+
         <div class="table-wrapper">
             <table class="fl-table">
                 <thead>

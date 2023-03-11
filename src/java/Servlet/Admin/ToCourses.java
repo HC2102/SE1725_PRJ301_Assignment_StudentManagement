@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
-package Servlet;
+package Servlet.Admin;
 
 import DAO.CourseDAO;
 import dbObject.Course;
@@ -14,13 +14,13 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import java.util.ArrayList;
 
 /**
  *
  * @author dange
  */
-public class addCourse extends HttpServlet {
+public class ToCourses extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -29,7 +29,8 @@ public class addCourse extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-   
+    
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /** 
@@ -42,7 +43,11 @@ public class addCourse extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        
+       ServletContext context=getServletContext();          
+       CourseDAO cd = new CourseDAO();
+       ArrayList<Course> clist = cd.getAllCourse();
+       request.setAttribute("clist", clist);
+       request.getRequestDispatcher("JSP/Course.jsp").forward(request, response);
     } 
 
     /** 
@@ -55,36 +60,14 @@ public class addCourse extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        try{
-            HttpSession session = request.getSession();
-            int row=0;
-            ServletContext context=getServletContext();
-            CourseDAO cd = new CourseDAO();
-            Course c = new Course();
-            c.setCourse_ID(request.getParameter("cid"));
-            c.setCourse_name(request.getParameter("cname"));
-            c.setMajor_ID(request.getParameter("mid"));
-            c.setBiographic(request.getParameter("nbio"));
-            row=cd.insertCourse(c);
-            if(row<1){
-                request.setAttribute("info", "Course ID already exists");
-                request.getRequestDispatcher("JSP/addCourse.jsp").forward(request, response);
-            }
-            else{
-                session.setAttribute("status","Add course successfully!"); 
-                session.setAttribute("error", null);
-                response.sendRedirect("Courses"); 
-            }  
-        }catch(Exception e){
-            request.setAttribute("error", "Error!");
-            request.getRequestDispatcher("JSP/addCourse.jsp").forward(request, response);
-        }
+       this.doGet(request, response);
     }
 
     /** 
      * Returns a short description of the servlet.
      * @return a String containing servlet description
      */
-
+    
+    
 
 }

@@ -3,10 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
-package Servlet;
+package Servlet.Admin;
 
 import DAO.CourseDAO;
-import dbObject.Course;
 import jakarta.servlet.ServletContext;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,13 +13,13 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
  * @author dange
  */
-public class ToCourses extends HttpServlet {
+public class deleteCourse extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -29,7 +28,6 @@ public class ToCourses extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
     
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -43,11 +41,24 @@ public class ToCourses extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-       ServletContext context=getServletContext();          
-       CourseDAO cd = new CourseDAO();
-       ArrayList<Course> clist = cd.getAllCourse();
-       request.setAttribute("clist", clist);
-       request.getRequestDispatcher("JSP/Course.jsp").forward(request, response);
+        try {
+            int row = 0;
+            HttpSession session = request.getSession();
+            CourseDAO cd = new CourseDAO();
+            String id = request.getParameter("id");
+            row = cd.deleteCourse(id);
+            if (row < 1) {
+                session.setAttribute("error", "Course deletion failed! This course is active!");
+                
+                response.sendRedirect("Courses"); 
+            } else {
+                session.setAttribute("status", "Course deletion successfully!");
+                
+                response.sendRedirect("Courses"); 
+            }           
+        } catch (Exception E) {
+            return;
+        }
     } 
 
     /** 
@@ -60,14 +71,16 @@ public class ToCourses extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-       this.doGet(request, response);
+        this.doGet(request, response);
     }
 
     /** 
      * Returns a short description of the servlet.
      * @return a String containing servlet description
      */
-    
-    
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
 
 }

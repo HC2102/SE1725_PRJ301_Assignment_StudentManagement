@@ -3,9 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
-package Servlet;
+package Servlet.Admin;
 
 import DAO.CourseDAO;
+import dbObject.Course;
 import jakarta.servlet.ServletContext;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,8 +20,8 @@ import jakarta.servlet.http.HttpSession;
  *
  * @author dange
  */
-public class deleteCourse extends HttpServlet {
-   
+public class updateCourse extends HttpServlet {
+    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      * @param request servlet request
@@ -42,22 +43,19 @@ public class deleteCourse extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         try {
-            int row = 0;
-            HttpSession session = request.getSession();
+            
             CourseDAO cd = new CourseDAO();
             String id = request.getParameter("id");
-            row = cd.deleteCourse(id);
-            if (row < 1) {
-                session.setAttribute("error", "Course deletion failed! This course is active!");
-                
-                response.sendRedirect("Courses"); 
-            } else {
-                session.setAttribute("status", "Course deletion successfully!");
-                
-                response.sendRedirect("Courses"); 
-            }           
-        } catch (Exception E) {
-            return;
+            Course c = cd.getCourse(id);
+            if(c == null){
+                response.sendRedirect("Courses");
+            }else{
+                request.setAttribute("newcourse", c);
+                request.getRequestDispatcher("JSP/UpdateCourse.jsp").forward(request, response);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            response.sendRedirect("Courses");
         }
     } 
 
@@ -71,16 +69,26 @@ public class deleteCourse extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        this.doGet(request, response);
+        try{
+            HttpSession session = request.getSession();
+            CourseDAO cd = new CourseDAO();
+            String id = request.getParameter("id");
+            String cname = request.getParameter("name");
+            String bio = request.getParameter("bio");
+            cd.updateCourse(id,cname,bio);
+            session.setAttribute("status","Update course successfully!"); 
+            
+            response.sendRedirect("Courses");   
+        }catch(Exception e){
+            request.setAttribute("error", "Error!");
+            request.getRequestDispatcher("JSP/UpdateCourse.jsp").forward(request, response);
+        }
     }
 
     /** 
      * Returns a short description of the servlet.
      * @return a String containing servlet description
      */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+   
 
 }

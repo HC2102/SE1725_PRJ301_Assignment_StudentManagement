@@ -73,8 +73,8 @@ public class TeacherDao extends DBContext {
             st.setString(1, user_name);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                Semester semester = td.getSemesterBySemesterId(rs.getString("Semester_ID"));
-                CPS cps = new CPS(rs.getInt("CPS_ID"), rs.getString("Course_ID"), semester, rs.getString("Teacher_User_name"), rs.getString("Biographic"), rs.getString("Resource"));
+                //Semester semester = td.getSemesterBySemesterId(rs.getString("Semester_ID"));
+                CPS cps = new CPS(rs.getInt("CPS_ID"), rs.getString("Course_ID"), rs.getString("Semester_ID"), rs.getString("Teacher_User_name"), rs.getString("Biographic"), rs.getString("Resource"));
                 list.add(cps);
             }
             st.close();
@@ -94,8 +94,8 @@ public class TeacherDao extends DBContext {
             st.setString(2, semester_id);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                Semester semester = td.getSemesterBySemesterId(rs.getString("Semester_ID"));
-                CPS cps = new CPS(rs.getInt("CPS_ID"), rs.getString("Course_ID"), semester, rs.getString("Teacher_User_name"), rs.getString("Biographic"), rs.getString("Resource"));
+                //Semester semester = td.getSemesterBySemesterId(rs.getString("Semester_ID"));
+                CPS cps = new CPS(rs.getInt("CPS_ID"), rs.getString("Course_ID"), rs.getString("Semester_ID"), rs.getString("Teacher_User_name"), rs.getString("Biographic"), rs.getString("Resource"));
                 list.add(cps);
             }
             st.close();
@@ -113,8 +113,8 @@ public class TeacherDao extends DBContext {
             st.setInt(1, cid);
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
-                Semester semester = td.getSemesterBySemesterId(rs.getString("Semester_ID"));
-                CPS cps = new CPS(rs.getInt("CPS_ID"), rs.getString("Course_ID"), semester, rs.getString("Teacher_User_name"), rs.getString("Biographic"), rs.getString("Resource"));
+                //Semester semester = td.getSemesterBySemesterId(rs.getString("Semester_ID"));
+                CPS cps = new CPS(rs.getInt("CPS_ID"), rs.getString("Course_ID"), rs.getString("Semester_ID"), rs.getString("Teacher_User_name"), rs.getString("Biographic"), rs.getString("Resource"));
                 return cps;
             }
             st.close();
@@ -246,7 +246,7 @@ public class TeacherDao extends DBContext {
             st.setString(1, semester_id);
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
-                Semester semester = new Semester(semester_id, rs.getDate("Time_start"), rs.getDate("Time_end"), rs.getInt("current_Semester"));
+                Semester semester = new Semester(semester_id, rs.getDate("Time_start"), rs.getDate("Time_end"), rs.getBoolean("current_Semester"));
                 return semester;
             }
         } catch (Exception e) {
