@@ -18,7 +18,7 @@
     </head>
     <%
         if (request.getAttribute("upUser") == null) {
-            response.sendRedirect("Login.jsp");
+            response.sendRedirect("JSP/Login.jsp");
         }
     %>
     <body>
