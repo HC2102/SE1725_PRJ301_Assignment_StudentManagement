@@ -76,6 +76,30 @@
         <servlet-name>AdminOptions</servlet-name>
         <servlet-class>Servlet.Admin.AdminOptions</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>adCPSList</servlet-name>
+        <servlet-class>Servlet.Admin.adCPSList</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>deleteCPS</servlet-name>
+        <servlet-class>Servlet.Admin.deleteCPS</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InsertCPS</servlet-name>
+        <servlet-class>Servlet.Admin.InsertCPS</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>teacherByCourse</servlet-name>
+        <servlet-class>Servlet.Admin.teacherByCourse</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addCPSToList</servlet-name>
+        <servlet-class>Servlet.Admin.addCPSToList</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>adEnrolledList</servlet-name>
+        <servlet-class>Servlet.Admin.adEnrolledList</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/loginServlet</url-pattern>
@@ -151,6 +175,30 @@
     <servlet-mapping>
         <servlet-name>AdminOptions</servlet-name>
         <url-pattern>/AdminOptions</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>adCPSList</servlet-name>
+        <url-pattern>/adCPSList</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteCPS</servlet-name>
+        <url-pattern>/deleteCPS</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>teacherByCourse</servlet-name>
+        <url-pattern>/teacherByCourse</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addCPSToList</servlet-name>
+        <url-pattern>/addCPSToList</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertCPS</servlet-name>
+        <url-pattern>/InsertCPS</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>adEnrolledList</servlet-name>
+        <url-pattern>/adEnrolledList</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

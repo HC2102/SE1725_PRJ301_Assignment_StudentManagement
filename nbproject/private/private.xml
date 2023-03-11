@@ -3,19 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/dbObject/Class.java</file>
-            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/dbObject/Grade.java</file>
-            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/dbObject/Semester.java</file>
-            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/UpdateMarkServlet.java</file>
-            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/dbObject/CPS.java</file>
-            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/dbObject/Major.java</file>
-            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/dbObject/User.java</file>
-            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/dbObject/Course.java</file>
-            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/dbObject/Student.java</file>
-            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/dbObject/Student_Class.java</file>
-            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/dbObject/Student_Class_Mark.java</file>
-            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/dbObject/Teacher.java</file>
-            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/dbObject/Admin.java</file>
+            <file>file:/D:/FPT_University/Semester4_SP2023/PRJ301/Github_PullOrigin/SE1725_PRJ301_Assignment_StudentManagement/src/java/dbObject/CPS.java</file>
+            <file>file:/D:/FPT_University/Semester4_SP2023/PRJ301/Github_PullOrigin/SE1725_PRJ301_Assignment_StudentManagement/src/java/DAO/CourseDAO.java</file>
+            <file>file:/D:/FPT_University/Semester4_SP2023/PRJ301/Github_PullOrigin/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/adAddCPS.jsp</file>
+            <file>file:/D:/FPT_University/Semester4_SP2023/PRJ301/Github_PullOrigin/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/ListCPS.jsp</file>
+            <file>file:/D:/FPT_University/Semester4_SP2023/PRJ301/Github_PullOrigin/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/cpsAndEnrolled.java</file>
+            <file>file:/D:/FPT_University/Semester4_SP2023/PRJ301/Github_PullOrigin/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/addCPSToList.java</file>
+            <file>file:/D:/FPT_University/Semester4_SP2023/PRJ301/Github_PullOrigin/SE1725_PRJ301_Assignment_StudentManagement/web/WEB-INF/web.xml</file>
+            <file>file:/D:/FPT_University/Semester4_SP2023/PRJ301/Github_PullOrigin/SE1725_PRJ301_Assignment_StudentManagement/src/java/DAO/CPSDAO.java</file>
+            <file>file:/D:/FPT_University/Semester4_SP2023/PRJ301/Github_PullOrigin/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/teacherByCourse.java</file>
         </group>
     </open-files>
 </project-private>

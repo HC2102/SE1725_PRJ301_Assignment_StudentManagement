@@ -4,20 +4,17 @@
  */
 package Servlet.Admin;
 
-import DAO.CPSDAO;
-import dbObject.CPS;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  *
  * @author Zarius
  */
-public class AdminOptions extends HttpServlet {
+public class updateCPS extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -25,19 +22,6 @@ public class AdminOptions extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String adminOption = req.getParameter("option");
-        switch (adminOption) {
-            case "List CPS":
-                resp.sendRedirect("adCPSList");
-                break;
-            case "Add user":
-                resp.sendRedirect("adUserList");
-                break;
-            case "List Enrolled":
-                resp.sendRedirect("adEnrolledList");
-            default:
-                throw new AssertionError();
-        }
     }
-
+    
 }

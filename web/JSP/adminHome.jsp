@@ -53,7 +53,7 @@
             <input style=" padding: 1%; font-weight: bold;" type="submit" value="Add user" name="option"> <br>
             <input style=" padding: 1%; font-weight: bold; margin-right: 1% ;" type="submit" value="List..."> 
             <input style=" padding: 1%; font-weight: bold; margin-right: 1% ;" type="submit" value="List...">
-            <input style=" padding: 1%; font-weight: bold;" type="submit" value="List..."> <br>
+            <input style=" padding: 1%; font-weight: bold;" type="submit" value="List Enrolled" name="option"> <br>
         </form>
 
     </body>
