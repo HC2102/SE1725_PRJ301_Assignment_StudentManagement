@@ -4,6 +4,7 @@
     Author     : HE170417
 --%>
 
+<%@page import="outsideObject.UserCommon"%>
 <%@page import="dbObject.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -24,6 +25,7 @@
     <body>
         <h2>Update User</h2>
         <%
+            UserCommon uc  = (UserCommon) request.getAttribute("commonUser");
             User u = (User) request.getAttribute("upUser");
         %>
         <div class="container">
@@ -41,7 +43,7 @@
 
                     </div>
                     <div class="col-75">
-                        <input type="text" name="fname" id="text" placeholder="full name" required>
+                        <input type="text" name="fname" id="text" placeholder="full name" value="<%=uc.getName()%>" required>
                     </div>
                 </div>
 
@@ -51,7 +53,7 @@
 
                     </div>
                     <div class="col-75">
-                        <input type="text" name="email" id="text" placeholder="email" required>
+                        <input type="text" name="email" id="text" placeholder="email" value="<%=uc.getEmail()%>"  required>
                     </div>
                 </div>
 
@@ -61,7 +63,7 @@
 
                     </div>
                     <div class="col-75">
-                        <input type="text" name="phonenum" id="text" placeholder="Phone number" required>
+                        <input type="text" name="phonenum" id="text" placeholder="Phone number" value="<%=uc.getPhonenumber()%>"  required>
                     </div>
                 </div>
                 <div class="row">
@@ -70,7 +72,7 @@
 
                     </div>
                     <div class="col-75">
-                        <input type="text" name="address" id="text" placeholder="address" required>
+                        <input type="text" name="address" id="text" placeholder="address" value="<%=uc.getAddress()%>"  required>
                     </div>
                 </div>
 

@@ -19,6 +19,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import outsideObject.UserCommon;
 
 /**
  *
@@ -29,12 +30,33 @@ public class updateUser extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserDAO uDao = new UserDAO();
+        StudentDAO sDAO = new StudentDAO();
+        TeacherDAO tDAO = new TeacherDAO();
+        AdminDAO aDAO  =  new AdminDAO();
         String username = req.getParameter("upname");
 //        HttpSession session = req.getSession();
         User u = uDao.getUser(username);
-        if (u == null) {
+        UserCommon uc = null;
+        switch (u.getRole()) {
+            case 0:
+                Admin getAdmin =aDAO.getAdmin(username);
+                uc = new UserCommon(username, getAdmin.getAdmin_name(), getAdmin.getAdmin_Address(), getAdmin.getAdmin_phonenumber(), getAdmin.getAdmin_email());
+                break;
+            case 1:
+                Student getStudent = sDAO.getStudentByUsername(username);
+                uc = new UserCommon(username, getStudent.getStudentName(), getStudent.getAddress(), getStudent.getPhoneNum(), getStudent.getEmail());
+                break;
+            case 2:
+                Teacher getTeacher = tDAO.getByUserName(username);
+                uc = new UserCommon(username, getTeacher.getTeacherName(), getTeacher.getAddress(), getTeacher.getPhoneNum(), getTeacher.getEmail());
+                break;
+            default:
+                throw new AssertionError();
+        }
+        if (u == null || uc == null) {
             resp.sendRedirect("adUserList");
         } else {
+            req.setAttribute("commonUser", uc);
             req.setAttribute("upUser", u);
             req.getRequestDispatcher("JSP/adUpdateUser.jsp").forward(req, resp);
         }
