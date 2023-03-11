@@ -254,13 +254,4 @@ public class TeacherDAO extends DBContext {
         return null;
     }
 
-    public static void main(String[] args) {
-        List<Student_Class_Mark> list = new ArrayList<>();
-        TeacherDAO td = new TeacherDAO();
-        list = td.getStudent_Class_MarkByCid(1);
-        List<Double> list_marks = td.getListMarkOfStudentByCourseIdAndStudentId(list, "PRF192");
-        System.out.println(list_marks.get(0) + " " + list_marks.get(1));
-        CPS cps = td.getCpsByCid(5);
-        System.out.println(cps.getCourse_ID());
-    }
 }

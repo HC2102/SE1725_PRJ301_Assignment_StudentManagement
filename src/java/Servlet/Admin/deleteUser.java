@@ -41,6 +41,8 @@ public class deleteUser extends HttpServlet {
                     if (username.compareTo("admin") != 0) {
                         row = aDAO.deleteAdmin(username);
                         row = uDAO.deleteUser(username);
+                    }else{
+                        throw new Exception("must not delete admin");
                     }
                     break;
                 case 1:
