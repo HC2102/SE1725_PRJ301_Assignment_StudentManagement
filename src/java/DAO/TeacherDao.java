@@ -17,7 +17,6 @@ import dbObject.Grade;
 import dbObject.Semester;
 import dbObject.Student;
 import java.sql.Connection;
-import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
