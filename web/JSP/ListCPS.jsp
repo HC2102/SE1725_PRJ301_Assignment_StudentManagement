@@ -4,6 +4,8 @@
     Author     : Zarius
 --%>
 
+<%@page import="dbObject.CPS"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -23,28 +25,12 @@
             </div>
         </div>
 
-        <%// Lay list CPS
-            CPSDAO cpsDAO = new CPSDAO();
-            ArrayList<CPS> listCPS = cpsDAO.getAllSemester();
+        <%
+            ArrayList<CPS> listCPS = (ArrayList<CPS>)request.getAttribute("listCPS");
         %>
 
         <h2>List Course Teach by Teacher</h2>
 
-        <span class="status">
-            <%
-                String status = (String) session.getAttribute("status");    
-                if(status != null && status.compareTo("") != 0){
-                    out.println(status);
-                }
-            %> 
-        </span>
-
-
-        <span class="error"><% String err = (String) session.getAttribute("error");
-            if(err != null && err.compareTo("")!=0){
-                out.println(err);
-            } %>
-        </span>
 
         <div class="table-wrapper">
             <table class="fl-table">
@@ -67,7 +53,7 @@
                     <tr>
                         <td><%=cps.getCps_id()%></td>
                         <td><%=cps.getCourse_ID()%></td>
-                        <td><%=cps.getSemester_ID()%></td>
+                        <td><%=cps.getSemesterID()%></td>
                         <td><%=cps.getTeacher_User_name()%></td>
                         <td><%=cps.getBiographic()%></td>
                         <td><%=cps.getResource()%></td>

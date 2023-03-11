@@ -15,17 +15,18 @@
         <link rel="stylesheet" href="<%= request.getContextPath()%>/css/home_studentstyle.css">
         <title>Admin Services</title>
     </head>
-    <%
+    
+    <body>
+        <%
     if (session.getAttribute("admin")==null) {
         response.sendRedirect("Login.jsp");
     }
     %>
-    <body>
         <%
             Admin ad = (Admin) session.getAttribute("admin");
         %>
         <div class="ctr1">
-            <H1>Home</H1>
+            <a style="text-decoration: none; font-family:'Times New Roman'; margin-left:5%; margin-top:1%;" href="<%= request.getContextPath()%>/JSP/adminHome.jsp"><H1>Home</H1></a>
             <div class="headerbutton">
                 <a href="<%= request.getContextPath()%>/JSP/ChangePass.jsp"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Change Password"></a>
                 <a href="<%= request.getContextPath()%>/logout"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Log out"></a>
@@ -46,8 +47,8 @@
                 <p>Your Email:<%=ad.getAdmin_email()%></p>
             </div>
         </div>
-        <form style="padding-top: 5%; padding-left: 42%;"  action="AdminOptions" method="post">
-            <input style=" padding: 1%; font-weight: bold; margin-right: 1% ;" type="submit" value="List CPS" name="listCps">
+            <form style="padding-top: 5%; padding-left: 42%;"  action="AdminOptions" method="post" >
+            <input style=" padding: 1%; font-weight: bold; margin-right: 1% ;" type="submit" value="List CPS" name="option">
             <input style=" padding: 1%; font-weight: bold; margin-right: 1% ;" type="submit" value="List Course"> 
             <input style=" padding: 1%; font-weight: bold;" type="submit" value="List..."> <br>
             <input style=" padding: 1%; font-weight: bold; margin-right: 1% ;" type="submit" value="List..."> 

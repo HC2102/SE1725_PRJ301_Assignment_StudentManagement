@@ -4,17 +4,20 @@
  */
 package Servlet.Admin;
 
+import DAO.CPSDAO;
+import dbObject.CPS;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  *
  * @author Zarius
  */
-public class AdminOptions extends HttpServlet{
+public class AdminOptions extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -22,9 +25,17 @@ public class AdminOptions extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if(req.getParameter("listCps") != null){
-            
+        String adminOption = req.getParameter("option");
+        switch (adminOption) {
+            case "List CPS":
+                CPSDAO cpsDAO = new CPSDAO();
+                ArrayList<CPS> listCPS = cpsDAO.getAllSemester();
+                req.setAttribute("listCPS", listCPS);
+                req.getRequestDispatcher("JSP/ListCPS.jsp").forward(req, resp);
+                break;
+            default:
+                throw new AssertionError();
         }
     }
-    
+
 }
