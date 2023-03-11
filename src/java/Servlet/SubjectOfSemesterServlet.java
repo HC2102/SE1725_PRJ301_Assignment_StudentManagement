@@ -5,7 +5,7 @@
 
 package Servlet;
 
-import DAO.TeacherDao;
+import DAO.TeacherDAO;
 import dbObject.CPS;
 import dbObject.Teacher;
 import java.io.IOException;
@@ -29,7 +29,7 @@ public class SubjectOfSemesterServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         HttpSession session = request.getSession();
-        TeacherDao td=new TeacherDao();
+        TeacherDAO td=new TeacherDAO();
         String semester =request.getParameter("semester");
         if(semester.equalsIgnoreCase("CHOOSE SEMESTER")){
             response.sendRedirect("JSP/teacherHome.jsp");

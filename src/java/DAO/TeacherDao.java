@@ -24,7 +24,7 @@ import java.sql.Statement;
  *
  * @author ADMIN
  */
-public class TeacherDao extends DBContext {
+public class TeacherDAO extends DBContext {
      public int insertTeacher(Teacher t) {
         int row = 0;
         try {
@@ -67,7 +67,7 @@ public class TeacherDao extends DBContext {
         List<CPS> list = new ArrayList<>();
         String sql = "select * from CPS\n"
                 + "where Teacher_User_name = ?";
-        TeacherDao td = new TeacherDao();
+        TeacherDAO td = new TeacherDAO();
         try {
             PreparedStatement st = (PreparedStatement) getConnection().prepareStatement(sql);
             st.setString(1, user_name);
@@ -87,7 +87,7 @@ public class TeacherDao extends DBContext {
         List<CPS> list = new ArrayList<>();
         String sql = "select * from CPS\n"
                 + "where Teacher_User_name = ? and Semester_ID=?";
-        TeacherDao td = new TeacherDao();
+        TeacherDAO td = new TeacherDAO();
         try {
             PreparedStatement st = (PreparedStatement) getConnection().prepareStatement(sql);
             st.setString(1, user_name);
@@ -107,7 +107,7 @@ public class TeacherDao extends DBContext {
     public CPS getCpsByCid(int cid) {
 //        select * from CPS where  CPS_ID= 
         String sql = "select * from CPS where  CPS_ID= ?";
-        TeacherDao td = new TeacherDao();
+        TeacherDAO td = new TeacherDAO();
         try {
             PreparedStatement st = (PreparedStatement) getConnection().prepareStatement(sql);
             st.setInt(1, cid);
@@ -256,7 +256,7 @@ public class TeacherDao extends DBContext {
 
     public static void main(String[] args) {
         List<Student_Class_Mark> list = new ArrayList<>();
-        TeacherDao td = new TeacherDao();
+        TeacherDAO td = new TeacherDAO();
         list = td.getStudent_Class_MarkByCid(1);
         List<Double> list_marks = td.getListMarkOfStudentByCourseIdAndStudentId(list, "PRF192");
         System.out.println(list_marks.get(0) + " " + list_marks.get(1));

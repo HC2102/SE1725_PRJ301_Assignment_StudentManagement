@@ -55,7 +55,7 @@ public class updateCourse extends HttpServlet {
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            response.sendRedirect("Courses");
+            response.sendRedirect("ToCourses");
         }
     } 
 
@@ -78,7 +78,7 @@ public class updateCourse extends HttpServlet {
             cd.updateCourse(id,cname,bio);
             session.setAttribute("status","Update course successfully!"); 
             
-            response.sendRedirect("Courses");   
+            response.sendRedirect("ToCourses");   
         }catch(Exception e){
             request.setAttribute("error", "Error!");
             request.getRequestDispatcher("JSP/UpdateCourse.jsp").forward(request, response);

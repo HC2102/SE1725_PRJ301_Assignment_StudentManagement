@@ -76,6 +76,10 @@
         <servlet-name>AdminOptions</servlet-name>
         <servlet-class>Servlet.Admin.AdminOptions</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>deleteUser</servlet-name>
+        <servlet-class>Servlet.Admin.deleteUser</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/loginServlet</url-pattern>
@@ -151,6 +155,10 @@
     <servlet-mapping>
         <servlet-name>AdminOptions</servlet-name>
         <url-pattern>/AdminOptions</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteUser</servlet-name>
+        <url-pattern>/deleteUser</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -43,10 +43,13 @@ public class addCourse extends HttpServlet {
             row = cd.insertCourse(c);
             if (row < 1) {
                 request.setAttribute("info", "Course ID already exists");
+                session.setAttribute("status", null);
+                session.setAttribute("error", null);
                 request.getRequestDispatcher("JSP/addCourse.jsp").forward(request, response);
             } else {
                 session.setAttribute("status", "Add course successfully!");
                 session.setAttribute("error", null);
+                request.setAttribute("info", null);
 
                 response.sendRedirect("ToCourses"); 
             }  

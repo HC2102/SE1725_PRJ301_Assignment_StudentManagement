@@ -6,7 +6,7 @@ package Servlet.Admin;
 
 import DAO.AdminDAO;
 import DAO.StudentDAO;
-import DAO.TeacherDao;
+import DAO.TeacherDAO;
 import DAO.UserDAO;
 import dbObject.Admin;
 import dbObject.Student;
@@ -33,7 +33,7 @@ public class AddUserByRole extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String username, pass, fname, address, phone, email, role;
         UserDAO uDAO = new UserDAO();
-        TeacherDao tDAO = new TeacherDao();
+        TeacherDAO tDAO = new TeacherDAO();
         AdminDAO aDAO = new AdminDAO();
         StudentDAO sDAO = new StudentDAO();
         HttpSession session = req.getSession();

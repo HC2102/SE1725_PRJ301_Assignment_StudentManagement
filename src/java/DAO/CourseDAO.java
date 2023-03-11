@@ -71,7 +71,7 @@ public class CourseDAO {
             Connection con = db.getConnection();
             if (con != null) {
                 Statement st = con.createStatement();
-                String sql = "DELETE FROM Course WHERE Course_ID = " + Course_ID + ";";
+                String sql = "DELETE FROM Course WHERE Course_ID = '" + Course_ID + "';";
                 row = st.executeUpdate(sql);
                 st.close();
                 con.close();

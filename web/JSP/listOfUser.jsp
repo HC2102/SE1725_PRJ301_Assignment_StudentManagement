@@ -9,9 +9,9 @@
 <!DOCTYPE html>
 <html>
     <%
-       if (session.getAttribute("userList")==null) {
-           response.sendRedirect("Login.jsp");
-       }
+        if (session.getAttribute("userList") == null) {
+            response.sendRedirect("Login.jsp");
+        }
     %>
     <head>
         <title>List of user</title>
@@ -52,7 +52,7 @@
                             }
                             %></th>
                         <th><a style="text-decoration: none; font-weight: bold; border: 3px solid teal;" href="#">Update</a></th>
-                        <th><a style="text-decoration: none; font-weight: bold; border: 3px solid teal;" href="#" class="confirmation">Delete</a></th>
+                        <th><a style="text-decoration: none; font-weight: bold; border: 3px solid teal;" href="deleteUser?delname=<%=u.getUserName()%>&role=<%=u.getRole()%>" class="confirmation">Delete</a></th>
                     </tr>
                     <%
                             }
@@ -61,6 +61,12 @@
                     %>
                 </tbody>
             </table>
+            <%                    if (request.getAttribute("err") != null) {
+            %>
+            <span style="text-align:center; color:red;"><%=request.getAttribute("err")%></span>
+            <%
+                }
+            %>
         </div>
         <div style=" text-align: center; margin-bottom: 2%;">
             <a href="adAddUser" ><input type="button" value="Add more user" style="padding:10px"></a>

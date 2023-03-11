@@ -4,7 +4,7 @@
  */
 package Servlet;
 
-import DAO.TeacherDao;
+import DAO.TeacherDAO;
 import dbObject.CPS;
 import dbObject.Student_Class_Mark;
 import dbObject.Teacher;
@@ -28,7 +28,7 @@ public class ListStudentOfCpsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        TeacherDao td = new TeacherDao();
+        TeacherDAO td = new TeacherDAO();
         String cid_raw = request.getParameter("subject");
         if(cid_raw==null){
             cid_raw=(String) request.getAttribute("cps_id");
@@ -94,7 +94,7 @@ public class ListStudentOfCpsServlet extends HttpServlet {
     }
 
     public static void main(String[] args) {
-        TeacherDao td = new TeacherDao();
+        TeacherDAO td = new TeacherDAO();
         ArrayList<Student_Class_Mark> list = new ArrayList<>();
         list = td.getStudent_Class_MarkByCid(1);
         System.out.println(list.get(1).getSt().getStudentID());
