@@ -18,7 +18,7 @@
     </servlet>
     <servlet>
         <servlet-name>TeacherInfo</servlet-name>
-        <servlet-class>Servlet.TeacherInfoServlet</servlet-class>
+        <servlet-class>Servlet.Teacher.TeacherInfoServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ListStudentOfClass</servlet-name>
@@ -38,7 +38,7 @@
     </servlet>
     <servlet>
         <servlet-name>AdminInfoServlet</servlet-name>
-        <servlet-class>Servlet.AdminInfoServlet</servlet-class>
+        <servlet-class>Servlet.Admin.AdminInfoServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>adAddUser</servlet-name>

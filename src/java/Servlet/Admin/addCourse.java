@@ -73,7 +73,7 @@ public class addCourse extends HttpServlet {
             else{
                 session.setAttribute("status","Add course successfully!"); 
                 session.setAttribute("error", null);
-                response.sendRedirect("Courses"); 
+                response.sendRedirect("ToCourses"); 
             }  
         }catch(Exception e){
             request.setAttribute("error", "Error!");
