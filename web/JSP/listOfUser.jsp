@@ -8,11 +8,7 @@
 <%@page import="java.util.List" %>
 <!DOCTYPE html>
 <html>
-    <%
-        if (session.getAttribute("userList") == null) {
-            response.sendRedirect("Login.jsp");
-        }
-    %>
+  
     <head>
         <title>List of user</title>
         <meta charset="UTF-8">
@@ -25,6 +21,16 @@
         %>
         <h2>User Information</h2>
         <div class="table-wrapper">
+            <span class="status"><%
+                String info = (String) session.getAttribute("status");
+                if (info != null && info.compareTo("") != 0)
+                    out.println(info);
+                %> 
+            </span>
+            <span class="error"><% String err = (String) session.getAttribute("error");
+                if (err != null && err.compareTo("") != 0)
+                    out.println(err); %>
+            </span>
             <table class="fl-table">
                 <thead>
                     <tr>
@@ -51,7 +57,7 @@
                                 out.print("Teacher");
                             }
                             %></th>
-                        <th><a style="text-decoration: none; font-weight: bold; border: 3px solid teal;" href="#">Update</a></th>
+                        <th><a style="text-decoration: none; font-weight: bold; border: 3px solid teal;" href="updateUser?upname=<%=u.getUserName()%>">Update</a></th>
                         <th><a style="text-decoration: none; font-weight: bold; border: 3px solid teal;" href="deleteUser?delname=<%=u.getUserName()%>&role=<%=u.getRole()%>" class="confirmation">Delete</a></th>
                     </tr>
                     <%
@@ -67,6 +73,7 @@
             <%
                 }
             %>
+
         </div>
         <div style=" text-align: center; margin-bottom: 2%;">
             <a href="adAddUser" ><input type="button" value="Add more user" style="padding:10px"></a>

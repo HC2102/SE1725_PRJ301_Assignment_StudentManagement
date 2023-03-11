@@ -46,14 +46,18 @@ public class deleteUser extends HttpServlet {
                     }
                     break;
                 case 1:
+                    row = sDAO.deleteStudent(username);
+                    row = uDAO.deleteUser(username);
                     break;
                 case 2:
+                    row = tDAO.deleteTeacher(username);
+                    row = uDAO.deleteUser(username);
                     break;
                 default:
                     throw new Exception("undefine role");
             }
             if(row <1){
-                throw new Exception("cannot delete because of constraint or not exists");
+                throw new Exception("cannot delete because of user still active or not exists");
             }
         } catch (Exception e) {
             err =  e.getMessage();

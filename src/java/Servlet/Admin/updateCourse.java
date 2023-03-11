@@ -48,7 +48,7 @@ public class updateCourse extends HttpServlet {
             String id = request.getParameter("id");
             Course c = cd.getCourse(id);
             if(c == null){
-                response.sendRedirect("Courses");
+                response.sendRedirect("ToCourses");
             }else{
                 request.setAttribute("newcourse", c);
                 request.getRequestDispatcher("JSP/UpdateCourse.jsp").forward(request, response);

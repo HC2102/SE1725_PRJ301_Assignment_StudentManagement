@@ -80,6 +80,10 @@
         <servlet-name>deleteUser</servlet-name>
         <servlet-class>Servlet.Admin.deleteUser</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>updateUser</servlet-name>
+        <servlet-class>Servlet.Admin.updateUser</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/loginServlet</url-pattern>
@@ -159,6 +163,10 @@
     <servlet-mapping>
         <servlet-name>deleteUser</servlet-name>
         <url-pattern>/deleteUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateUser</servlet-name>
+        <url-pattern>/updateUser</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -15,6 +15,25 @@ import java.sql.Statement;
  * @author dange
  */
 public class AdminDAO {
+     public int updateAdmin(Admin a) {
+        try {
+            DBContext db = new DBContext();
+            Connection con = db.getConnection();
+            if (con != null) {
+                Statement st = con.createStatement();
+                String sql = "Update [Admin] Set Admin_name = '"+a.getAdmin_name()+"', [Address] = '"+a.getAdmin_Address()+
+                        "',Phone_number='"+a.getAdmin_phonenumber()+"',Email='"+a.getAdmin_email()+"'  WHERE [User_name] ='"+a.getAdmin_username()+"'";
+                int rows = st.executeUpdate(sql);
+                st.close();
+                con.close();
+                return rows;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
 
     public Admin getAdmin(String username) {
         try {

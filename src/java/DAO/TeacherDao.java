@@ -252,5 +252,42 @@ public class TeacherDAO extends DBContext {
         }
         return null;
     }
+    public int deleteTeacher(String username) {
+        int row = 0;
+        try {
+            DBContext db = new DBContext();
+            Connection con = db.getConnection();
+            if (con != null) {
+                Statement st = con.createStatement();
+                String sql = "DELETE FROM [Teacher] WHERE [User_name] = '" + username + "';";
+                row = st.executeUpdate(sql);
+                st.close();
+                con.close();
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            row = -1;
+        }
+        return row;
+    }
 
+     public int updateTeacher(Teacher t) {
+        try {
+            DBContext db = new DBContext();
+            Connection con = db.getConnection();
+            if (con != null) {
+                Statement st = con.createStatement();
+                String sql = "UPDATE [Teacher] SET  Teacher_name = '"+t.getTeacherName()+
+                        "', [Address] ='"+t.getAddress()+"', Phone_number ='"+t.getPhoneNum()+"', Email='"+t.getEmail()+"' WHERE [User_name] = '"+t.getUserName()+"'";
+                int rows = st.executeUpdate(sql);
+                st.close();
+                con.close();
+                return rows;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
 }
