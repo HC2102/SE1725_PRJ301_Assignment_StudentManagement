@@ -19,7 +19,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="<%= request.getContextPath()%>/css/UpdateMark.css">
-        <title>JSP Page</title>
+        <title>Update Grade</title>
 
     </head>
     <body>
@@ -29,28 +29,15 @@
         //Semester cua CPS la object Semester
         SemesterDAO semDAO = new SemesterDAO();
         Semester sem = semDAO.getSemesterByID(cps.getSemesterID());
-        if(sem.isCurrent_Semester() == true){%>
+        if(sem.isCurrent_Semester() == false){%>
         <div class="ctr1">   
             SEMESTER: &nbsp; <%= sem.getSemester_ID()%><br/>
             TIME START: &nbsp; <%= sem.getTime_start()%><br/>
             TIME END: &nbsp;<%= sem.getTime_end()%><br/>
             <p>Scores of this semester can't be changed</p>
-            <%for(Grade i : list){
-            if(i.getTest_id().equalsIgnoreCase("AC")){%>
-            <b>AC Mark:</b> <input  readonly type="number" step="any" pattern="[-+]?[0-9]*[.,]?[0-9]+" name="AC" value="<%= i.getValue()%>" required/><br/>
-            <%}else if(i.getTest_id().equalsIgnoreCase("PT")){%>
-            <b>PT Mark:</b> <input readonly type="number" step="any" pattern="[-+]?[0-9]*[.,]?[0-9]+" name="PT" value="<%= i.getValue()%>" required/><br/>
-            <%}else if(i.getTest_id().equalsIgnoreCase("PE")){%>
-            <b>PE Mark:</b> <input readonly type="number" step="any" pattern="[-+]?[0-9]*[.,]?[0-9]+" name="PE" value="<%= i.getValue()%>" required/><br/>
-            <%}else if(i.getTest_id().equalsIgnoreCase("FE")){%>
-            <b>FE Mark:</b> <input readonly type="number" step="any" pattern="[-+]?[0-9]*[.,]?[0-9]+" name="FE" value="<%= i.getValue()%>" required/><br/>
-            <%}else if(i.getTest_id().equalsIgnoreCase("FE")){%>
-            <b>PRJ Mark:</b> <input readonly type="number" step="any" pattern="[-+]?[0-9]*[.,]?[0-9]+" name="PRJ" value="<%= i.getValue()%>" required/><br/>
-            <%}else if(i.getTest_id().equalsIgnoreCase("FE")){%>
-            <b>PRS Mark:</b> <input readonly type="number" step="any" pattern="[-+]?[0-9]*[.,]?[0-9]+" name="PRS" value="<%= i.getValue()%>" required/><br/>
-            <%}
-                }
-            %>
+            <%for(Grade i : list){%>            
+            <b><%=i.getTest_id()%> Mark:</b> <input  readonly type="number" step="any" pattern="[-+]?[0-9]*[.,]?[0-9]+" name="mark" value="<%= i.getValue()%>" required/><br/>
+            <%}%>
             <input type="submit" disabled value="UPDATE"/>
             <button class="ctr2" type="button" onclick="quay_lai_trang_truoc()">Back</button>
         </div>
@@ -65,21 +52,10 @@
                             <input type="text" name="st_id"value="<%= st_id%>" hidden/>
                             <input type="text" name="course_id"value="<%= course_id%>" hidden/>
                             <input type="text" name="cps_id"value="<%= cps.getCps_id()%>" hidden/>
-                            <%for(Grade i : list){
-            if(i.getTest_id().equalsIgnoreCase("AC")){%>
-                            <b>AC Mark:</b> <input type="number" step="any" pattern="[-+]?[0-9]*[.,]?[0-9]+" name="AC" value="<%= i.getValue()%>" required/><br/>
-                            <%}else if(i.getTest_id().equalsIgnoreCase("PT")){%>
-                            <b>PT Mark:</b> <input type="number" step="any" pattern="[-+]?[0-9]*[.,]?[0-9]+" name="PT" value="<%= i.getValue()%>" required/><br/>
-                            <%}else if(i.getTest_id().equalsIgnoreCase("PE")){%>
-                            <b>PE Mark:</b> <input type="number" step="any" pattern="[-+]?[0-9]*[.,]?[0-9]+" name="PE" value="<%= i.getValue()%>" required/><br/>
-                            <%}else if(i.getTest_id().equalsIgnoreCase("FE")){%>
-                            <b>FE Mark:</b> <input type="number" step="any" pattern="[-+]?[0-9]*[.,]?[0-9]+" name="FE" value="<%= i.getValue()%>" required/><br/>
-                            <%}else if(i.getTest_id().equalsIgnoreCase("FE")){%>
-                            <b>PRJ Mark:</b> <input type="number" step="any" pattern="[-+]?[0-9]*[.,]?[0-9]+" name="PRJ" value="<%= i.getValue()%>" required/><br/>
-                            <%}else if(i.getTest_id().equalsIgnoreCase("FE")){%>
-                            <b>PRS Mark:</b> <input type="number" step="any" pattern="[-+]?[0-9]*[.,]?[0-9]+" name="PRS" value="<%= i.getValue()%>" required/><br/>
+                            <%for(Grade i : list){%>
+                            <b><%=i.getTest_id()%> Mark:</b> <input  type="number" step="any" pattern="[-+]?[0-9]*[.,]?[0-9]+" name="mark" value="<%= i.getValue()%>" required/><br/>
+                            <input type="text" name="test_id"value="<%=i.getTest_id()%>" hidden/>
                             <%}
-                                }   
                             %>
                             <input class="ctr2" type="submit" value="UPDATE"/>
                             <button class="ctr2" type="button" onclick="quay_lai_trang_truoc()">Back</button>

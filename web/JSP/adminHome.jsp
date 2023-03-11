@@ -51,7 +51,7 @@
             <input style=" padding: 1%; font-weight: bold; margin-right: 1% ;" type="submit" value="List CPS" name="option">
             <input style=" padding: 1%; font-weight: bold; margin-right: 1% ;" type="submit" value="List Course"> 
             <input style=" padding: 1%; font-weight: bold;" type="submit" value="Add user" name="option"> <br>
-            <input style=" padding: 1%; font-weight: bold; margin-right: 1% ;" type="submit" value="List..."> 
+            <input style=" padding: 1%; font-weight: bold; margin-right: 1% ;" type="submit" value="Add course"name="option"> 
             <input style=" padding: 1%; font-weight: bold; margin-right: 1% ;" type="submit" value="List...">
             <input style=" padding: 1%; font-weight: bold;" type="submit" value="List Enrolled" name="option"> <br>
         </form>

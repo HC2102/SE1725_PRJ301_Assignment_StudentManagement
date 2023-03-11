@@ -6,7 +6,7 @@
 
 package Servlet.Teacher;
 
-import DAO.TeacherDao;
+import DAO.TeacherDAO;
 import dbObject.CPS;
 import dbObject.Teacher;
 import java.io.IOException;
@@ -28,7 +28,7 @@ public class TeacherInfoServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         String user_name = (String) session.getAttribute("userName");
-        TeacherDao td = new TeacherDao();
+        TeacherDAO td = new TeacherDAO();
         Teacher t = td.getByUserName(user_name);
         List<CPS> list = td.getCpsByUserName(user_name);
         List<String> list_semester = td.getListSemesterByUsername(user_name);

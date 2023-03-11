@@ -88,23 +88,21 @@ public class UserDAO {
         return row;
     }
     //warning: delete cascade will delete the user and all common entirely? make sure to user them
-    public int deleteCascadeUser(User u) {
-        int row = 0;
+    public int deleteUser(String  username) {
+         int row = 0;
         try {
-            
             DBContext db = new DBContext();
             Connection con = db.getConnection();
             if (con != null) {
                 Statement st = con.createStatement();
-                String sql = "INSERT INTO [User](User_name,User_Password,Role_ID)"
-                        + " values ('" + u.getUserName() + "','" + u.getPassWord() + "','"+u.getRole()+"')";
+                String sql = "DELETE FROM [User] WHERE [User_name] = '" + username + "';";
                 row = st.executeUpdate(sql);
                 st.close();
                 con.close();
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            row =  -1;
+            row = -1;
         }
         return row;
     }

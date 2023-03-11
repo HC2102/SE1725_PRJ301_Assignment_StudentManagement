@@ -17,14 +17,13 @@ import dbObject.Grade;
 import dbObject.Semester;
 import dbObject.Student;
 import java.sql.Connection;
-import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
  *
  * @author ADMIN
  */
-public class TeacherDao extends DBContext {
+public class TeacherDAO extends DBContext {
      public int insertTeacher(Teacher t) {
         int row = 0;
         try {
@@ -67,7 +66,7 @@ public class TeacherDao extends DBContext {
         List<CPS> list = new ArrayList<>();
         String sql = "select * from CPS\n"
                 + "where Teacher_User_name = ?";
-        TeacherDao td = new TeacherDao();
+        TeacherDAO td = new TeacherDAO();
         try {
             PreparedStatement st = (PreparedStatement) getConnection().prepareStatement(sql);
             st.setString(1, user_name);
@@ -87,7 +86,7 @@ public class TeacherDao extends DBContext {
         List<CPS> list = new ArrayList<>();
         String sql = "select * from CPS\n"
                 + "where Teacher_User_name = ? and Semester_ID=?";
-        TeacherDao td = new TeacherDao();
+        TeacherDAO td = new TeacherDAO();
         try {
             PreparedStatement st = (PreparedStatement) getConnection().prepareStatement(sql);
             st.setString(1, user_name);
@@ -107,7 +106,7 @@ public class TeacherDao extends DBContext {
     public CPS getCpsByCid(int cid) {
 //        select * from CPS where  CPS_ID= 
         String sql = "select * from CPS where  CPS_ID= ?";
-        TeacherDao td = new TeacherDao();
+        TeacherDAO td = new TeacherDAO();
         try {
             PreparedStatement st = (PreparedStatement) getConnection().prepareStatement(sql);
             st.setInt(1, cid);
@@ -277,15 +276,44 @@ public class TeacherDao extends DBContext {
             System.out.println(e.getMessage());
         }
         return listTeacher;
-    }
-
-    public static void main(String[] args) {
-        List<Student_Class_Mark> list = new ArrayList<>();
-        TeacherDao td = new TeacherDao();
-        list = td.getStudent_Class_MarkByCid(1);
-        List<Double> list_marks = td.getListMarkOfStudentByCourseIdAndStudentId(list, "PRF192");
-        System.out.println(list_marks.get(0) + " " + list_marks.get(1));
-        CPS cps = td.getCpsByCid(5);
-        System.out.println(cps.getCourse_ID());
+  }
+    
+  public int deleteTeacher(String username) {
+        int row = 0;
+        try {
+            DBContext db = new DBContext();
+            Connection con = db.getConnection();
+            if (con != null) {
+                Statement st = con.createStatement();
+                String sql = "DELETE FROM [Teacher] WHERE [User_name] = '" + username + "';";
+                row = st.executeUpdate(sql);
+                st.close();
+                con.close();
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            row = -1;
+        }
+        return row;
+        }
+  
+     public int updateTeacher(Teacher t) {
+        try {
+            DBContext db = new DBContext();
+            Connection con = db.getConnection();
+            if (con != null) {
+                Statement st = con.createStatement();
+                String sql = "UPDATE [Teacher] SET  Teacher_name = '"+t.getTeacherName()+
+                        "', [Address] ='"+t.getAddress()+"', Phone_number ='"+t.getPhoneNum()+"', Email='"+t.getEmail()+"' WHERE [User_name] = '"+t.getUserName()+"'";
+                int rows = st.executeUpdate(sql);
+                st.close();
+                con.close();
+                return rows;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return -1;
+        }
+        return 0;
     }
 }

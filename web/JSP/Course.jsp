@@ -25,7 +25,7 @@
         <a href= "<%= request.getContextPath()%>/AdminInfo"> <input style="margin: 1%;margin-left:5%; font-weight: bold; padding: 0.5%" type="Submit" type="button" value="Back"></a>
         <div class="table-wrapper">
             <span class="status"><%
-                String info = (String) session.getAttribute("info");
+                String info = (String) session.getAttribute("status");
                 if (info != null && info.compareTo("") != 0)
                     out.println(info);
                 %> 

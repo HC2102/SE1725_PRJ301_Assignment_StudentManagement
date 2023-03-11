@@ -33,12 +33,12 @@ public class deleteCourse extends HttpServlet {
             row = cd.deleteCourse(id);
             if (row < 1) {
                 session.setAttribute("error", "Course deletion failed! This course is active!");
-                
-                response.sendRedirect("Courses"); 
+                session.setAttribute("status",null);
+                response.sendRedirect("ToCourses"); 
             } else {
                 session.setAttribute("status", "Course deletion successfully!");
-                
-                response.sendRedirect("Courses"); 
+                session.setAttribute("error", null);
+                response.sendRedirect("ToCourses"); 
             }           
         } catch (Exception E) {
             return;

@@ -69,37 +69,44 @@ public class StudentDAO {
         return row;
     }
 
-    public void deleteStudent(String ID) {
+    public int deleteStudent(String username) {
+        int row = 0;
         try {
             DBContext db = new DBContext();
             Connection con = db.getConnection();
             if (con != null) {
                 Statement st = con.createStatement();
-                String sql = "DELETE FROM Student WHERE ID = " + ID + ";";
-                int rows = st.executeUpdate(sql);
+                String sql = "DELETE FROM Student WHERE [User_name] = '" + username + "';";
+               row = st.executeUpdate(sql);
                 st.close();
                 con.close();
             }
         } catch (Exception e) {
+            row = -1;
             System.out.println(e.getMessage());
         }
+        return row;
     }
 
-//    public void updateStudent(Student s) {
-//        try {
-//            DBContext db = new DBContext();
-//            Connection con = db.getConnection();
-//            if (con != null) {
-//                Statement st = con.createStatement();
-//                String sql = "UPDATE Student SET Name = '" + cat.getName() + "' WHERE ID = " + cat.getID() + ";";
-//                int rows = st.executeUpdate(sql);
-//                st.close();
-//                con.close();
-//            }
-//        } catch (Exception e) {
-//            System.out.println(e.getMessage());
-//        }
-//    }
+    public int updateStudent(Student s) {
+        try {
+            DBContext db = new DBContext();
+            Connection con = db.getConnection();
+            if (con != null) {
+                Statement st = con.createStatement();
+                String sql = "UPDATE [Student] SET  Student_name = '"+s.getStudentName()+"', [Address] ='"+s.getAddress()+"', Phone_number ='"+s.getPhoneNum()+
+                        "', Email='"+s.getEmail()+"' WHERE [User_name] = '"+s.getUserName()+"'";
+                int rows = st.executeUpdate(sql);
+                st.close();
+                con.close();
+                return rows;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
     public Student getStudent(String ID) {
         try {
             DBContext db = new DBContext();

@@ -32,14 +32,14 @@ public class updateCourse extends HttpServlet {
             String id = request.getParameter("id");
             Course c = cd.getCourse(id);
             if(c == null){
-                response.sendRedirect("Courses");
+                response.sendRedirect("ToCourses");
             }else{
                 request.setAttribute("newcourse", c);
                 request.getRequestDispatcher("JSP/UpdateCourse.jsp").forward(request, response);
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            response.sendRedirect("Courses");
+            response.sendRedirect("ToCourses");
         }
     } 
 
@@ -62,7 +62,7 @@ public class updateCourse extends HttpServlet {
             cd.updateCourse(id,cname,bio);
             session.setAttribute("status","Update course successfully!"); 
             
-            response.sendRedirect("Courses");   
+            response.sendRedirect("ToCourses");   
         }catch(Exception e){
             request.setAttribute("error", "Error!");
             request.getRequestDispatcher("JSP/UpdateCourse.jsp").forward(request, response);
