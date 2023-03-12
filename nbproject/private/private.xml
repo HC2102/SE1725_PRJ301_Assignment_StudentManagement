@@ -4,8 +4,14 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/adAddMajor.jsp</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/adUserList.java</file>
             <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/deleteSemester.java</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/adSemesterList.java</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/DAO/TeacherDAO.java</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/listOfUser.jsp</file>
             <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/adSemesterList.jsp</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/dbObject/Semester.java</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/AdminInfoServlet.java</file>
             <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/DAO/SemesterDAO.java</file>
             <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/addSemester.java</file>
             <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/adAddSemester.jsp</file>

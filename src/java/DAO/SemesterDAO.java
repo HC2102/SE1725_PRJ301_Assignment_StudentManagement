@@ -78,7 +78,7 @@ public class SemesterDAO {
             Connection con = db.getConnection();
             if (con != null) {
                 Statement st = con.createStatement();
-                String sql = "DELETE FROM Semester WHERE Semester_ID = " + ID + ";";
+                String sql = "DELETE FROM Semester WHERE Semester_ID = '" + ID + "'";
                 row = st.executeUpdate(sql);
                 st.close();
                 con.close();
@@ -87,6 +87,7 @@ public class SemesterDAO {
                 throw new Exception();
             }
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             row = -1;
         }
         return row;
@@ -166,8 +167,8 @@ public class SemesterDAO {
         return null;
     }
     public String changeDateFormatSQL(String oldDate){
-        SimpleDateFormat inputFormat = new SimpleDateFormat("MM/dd/yyyy");
-        SimpleDateFormat newFormat = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat inputFormat = new SimpleDateFormat("mm/dd/yyyy");
+        SimpleDateFormat newFormat = new SimpleDateFormat("yyyy-mm-dd");
         Date date;
         String formated=null;
         try {
@@ -175,6 +176,7 @@ public class SemesterDAO {
             formated = newFormat.format(date);
             
         } catch (ParseException ex) {
+            System.out.println(formated);
             Logger.getLogger(SemesterDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return formated;
