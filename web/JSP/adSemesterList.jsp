@@ -17,7 +17,7 @@
     </head>
     <body>
         <%
-            ArrayList<Semester> sList = ( ArrayList<Semester>) request.getAttribute("mList");
+            ArrayList<Semester> sList = ( ArrayList<Semester>) request.getAttribute("semesterList");
         %>
         <h2>Semester controller</h2>
         <div class="table-wrapper">
@@ -33,35 +33,36 @@
                     out.println(err); %>
             </span>
             <!--/notification sections -->
-            <table class="fl-table">
-                <thead>
-                    <tr>
-                        <th>Semester ID</th>
-                        <th>Time start</th>
-                        <th>Time end</th>
-                        <th>Active</th>
-                        <th>Delete</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <%
-                        if (!sList.isEmpty()) {
-                            for (Semester s: sList) {
-                    %>
-                    <tr>
-                        <th><%=s.getSemester_ID()%></th>
-                        <th><%=s.getTime_start()%></th>
-                        <th><%=s.getTime_end()%></th>
-                        <th> <input type="radio" name="isActive" value="HTML"></th>
-                        <th><a style="text-decoration: none; font-weight: bold; border: 3px solid teal;" href="deleteSemester?delSem=<%=s.getSemester_ID()%>" class="confirmation">Delete</a></th>
-                    </tr>
-                    <%
+            <form action="updateActiveSemester" action="get" id="f1">
+                <table class="fl-table">
+                    <thead>
+                        <tr>
+                            <th>Semester ID</th>
+                            <th>Time start</th>
+                            <th>Time end</th>
+                            <th>Active</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%
+                            if (!sList.isEmpty()) {
+                                for (Semester s: sList) {
+                        %>
+                        <tr>
+                            <th><%=s.getSemester_ID()%></th>
+                            <th><%=s.getTime_start()%></th>
+                            <th><%=s.getTime_end()%></th>
+                            <th> <input class="cfActive" type="radio" name="isActive" value="<%=s.getSemester_ID()%>" <%=s.isCurrent_Semester()==true?"Checked":""%> onchange="change()"></th>
+                            <th><a style="text-decoration: none; font-weight: bold; border: 3px solid teal;" href="deleteSemester?delSem=<%=s.getSemester_ID()%>" class="confirmation">Delete</a></th>
+                        </tr>
+                        <%
+                                }
                             }
-                        }
-
-                    %>
-                </tbody>
-            </table>
+                        %>
+                    </tbody>
+                </table>
+            </form>
             <%                    if (request.getAttribute("err") != null) {
             %>
             <span style="text-align:center; color:red;"><%=request.getAttribute("err")%></span>
@@ -76,12 +77,21 @@
         </div>
         <script type="text/javascript">
             var elems = document.getElementsByClassName('confirmation');
+            var elemsActive = document.getElementsByClassName('cfActive');
             var confirmIt = function (e) {
                 if (!confirm('Doing this action will cause pernamently delete this major information completely? Do you want to process?'))
                     e.preventDefault();
             };
+            var confirmActive = function (e) {
+                if (!confirm('This action will change the current semester! Do you want to continue?'))
+                    e.preventDefault();
+            };
             for (var i = 0, l = elems.length; i < l; i++) {
                 elems[i].addEventListener('click', confirmIt, false);
+                elemsActive[i].addEventListener('click', confirmActive, false)
+            }
+            function change() {
+                document.getElementById("f1").submit();
             }
         </script>
     </body>

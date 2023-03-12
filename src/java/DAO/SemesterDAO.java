@@ -7,6 +7,7 @@ package DAO;
 import dbConnect.DBContext;
 import dbObject.Semester;
 import dbObject.Student;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -82,6 +83,28 @@ public class SemesterDAO {
 //            System.out.println(e.getMessage());
 //        }
 //    }
+    public int setActiveSemester(String semesterID) {
+        int row = 0;
+        String sql = "{call proc_setActive_Semester(?)}";
+        try {
+            DBContext db = new DBContext();
+            Connection con = db.getConnection();
+            if (con != null) {
+                CallableStatement st = con.prepareCall(sql);
+                //dau vao
+                st.setString(1, semesterID);
+                //run
+                row = st.executeUpdate();
+                st.close();
+            }
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            row = -1;
+        }
+        return row;
+    }
+
     public Semester getSemesterByID(String SemID) {
         try {
             DBContext db = new DBContext();
