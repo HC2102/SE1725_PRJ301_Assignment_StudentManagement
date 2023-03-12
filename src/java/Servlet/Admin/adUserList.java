@@ -26,7 +26,7 @@ public class adUserList extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserDAO udao = new UserDAO();
         ArrayList<User> userList;
-        if(req.getParameter("roleFind") == null || req.getParameter("roleFind").isEmpty()){
+        if(req.getParameter("roleFind") == null||req.getParameter("roleFind").compareToIgnoreCase("")==0){
            userList = udao.getAllUser();
         }else{
            userList =  udao.getUsersByRole(Integer.parseInt(req.getParameter("roleFind"))); 

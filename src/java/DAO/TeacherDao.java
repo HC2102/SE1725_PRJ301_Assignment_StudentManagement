@@ -245,7 +245,7 @@ public class TeacherDAO extends DBContext {
             st.setString(1, semester_id);
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
-                Semester semester = new Semester(semester_id, rs.getDate("Time_start"), rs.getDate("Time_end"), rs.getBoolean("current_Semester"));
+                Semester semester = new Semester(semester_id, rs.getDate("Time_start").toString(), rs.getDate("Time_end").toString(), rs.getBoolean("current_Semester"));
                 return semester;
             }
         } catch (Exception e) {

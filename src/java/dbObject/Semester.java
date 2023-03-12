@@ -12,13 +12,13 @@ import java.sql.Date;
  */
 public class Semester {
     private String Semester_ID;
-    private Date Time_start,Time_end;
+    private String Time_start,Time_end;
     private boolean current_Semester;
 
     public Semester() {
     }
 
-    public Semester(String Semester_ID, Date Time_start, Date Time_end, boolean current_Semester) {
+    public Semester(String Semester_ID, String Time_start, String Time_end, boolean current_Semester) {
         this.Semester_ID = Semester_ID;
         this.Time_start = Time_start;
         this.Time_end = Time_end;
@@ -34,19 +34,19 @@ public class Semester {
         this.Semester_ID = Semester_ID;
     }
 
-    public Date getTime_start() {
+    public String getTime_start() {
         return Time_start;
     }
 
-    public void setTime_start(Date Time_start) {
+    public void setTime_start(String Time_start) {
         this.Time_start = Time_start;
     }
 
-    public Date getTime_end() {
+    public String getTime_end() {
         return Time_end;
     }
 
-    public void setTime_end(Date Time_end) {
+    public void setTime_end(String Time_end) {
         this.Time_end = Time_end;
     }
 

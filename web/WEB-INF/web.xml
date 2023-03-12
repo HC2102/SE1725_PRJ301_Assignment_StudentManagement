@@ -169,6 +169,14 @@
         <servlet-name>updateActiveSemester</servlet-name>
         <servlet-class>Servlet.Admin.updateActiveSemester</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>deleteSemester</servlet-name>
+        <servlet-class>Servlet.Admin.deleteSemester</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addSemester</servlet-name>
+        <servlet-class>Servlet.Admin.addSemester</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/loginServlet</url-pattern>
@@ -336,6 +344,14 @@
     <servlet-mapping>
         <servlet-name>updateActiveSemester</servlet-name>
         <url-pattern>/updateActiveSemester</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteSemester</servlet-name>
+        <url-pattern>/deleteSemester</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addSemester</servlet-name>
+        <url-pattern>/addSemester</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
