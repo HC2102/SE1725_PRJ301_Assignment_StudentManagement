@@ -44,6 +44,9 @@ public class AdminOptions extends HttpServlet {
             case "Major Data":
                 resp.sendRedirect("majorList");
                 break;
+            case "Classes":
+                resp.sendRedirect("ClassList");
+                break;
             default:
                 throw new AssertionError();
         }
