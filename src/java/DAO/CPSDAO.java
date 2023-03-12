@@ -6,6 +6,7 @@ package DAO;
 
 import dbConnect.DBContext;
 import dbObject.CPS;
+import dbObject.Student;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -108,6 +109,69 @@ public class CPSDAO {
             System.out.println(e.getMessage());
         }
         return -1;
+    }
+    
+    public CPS getCPSByID(int CPSID) {
+        try {
+            DBContext db = new DBContext();
+            Connection con = db.getConnection();
+            if (con != null) {
+                Statement st = con.createStatement();
+                String sql = "SELECT * FROM CPS WHERE CPS_ID = " + CPSID + "";
+                ResultSet rs = st.executeQuery(sql);
+                if (rs.next()) {
+                    CPS cps = new CPS();
+                    cps.setCps_id(rs.getInt(1));
+                    cps.setCourse_ID(rs.getString(2));
+                    cps.setSemesterID(rs.getString(3));
+                    cps.setTeacher_User_name(rs.getString(4));
+                    cps.setBiographic(rs.getString(5));
+                    cps.setResource(rs.getString(6));
+                    return cps;
+                }
+                rs.close();
+                st.close();
+                con.close();
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+    
+    public ArrayList<CPS> getCPSByClassIDAndMajor(String ClassID, String majorID) {
+        ArrayList<CPS> listCPSByClassIDAndMajor = new ArrayList<>();
+        try {
+            DBContext db = new DBContext();
+            Connection con = db.getConnection();
+            if (con != null) {
+                Statement st = con.createStatement();
+                String sql = "SELECT cps.*\n" +
+                            "FROM CPS cps, Course c\n" +
+                            "WHERE cps.Course_ID = c.Course_ID and cps.Course_ID not in (SELECT c.Course_ID\n" +
+                            "							FROM Enrolled e, CPS cps, Course c\n" +
+                            "							WHERE E.CPS_ID = cps.CPS_ID and cps.Course_ID = c.Course_ID\n" +
+                            "							and e.Class_ID = '" + ClassID + "') and c.Major_ID = '" + majorID+ "'";
+                ResultSet rs = st.executeQuery(sql);
+                while (rs.next()) {
+                    CPS cps = new CPS();
+                    cps.setCps_id(rs.getInt(1));
+                    cps.setCourse_ID(rs.getString(2));
+                    cps.setSemesterID(rs.getString(3));
+                    cps.setTeacher_User_name(rs.getString(4));
+                    cps.setBiographic(rs.getString(5));
+                    cps.setResource(rs.getString(6));
+                    listCPSByClassIDAndMajor.add(cps);
+                }
+                rs.close();
+                st.close();
+                con.close();
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return listCPSByClassIDAndMajor;
     }
     
 }

@@ -129,7 +129,7 @@
                 </div>
                 <div class="row">
                     <input type="submit" value="Add CPS" name="add">
-                    <a href= "<%= request.getContextPath()%>/adCPSList"> <input type="button" value="Back to CPS List"></a>
+                    <input type="submit" value="Back to CPS List" name="BackToCPSList">
                 </div>              
             </form>                
         </div>

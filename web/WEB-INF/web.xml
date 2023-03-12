@@ -109,6 +109,26 @@
         <servlet-class>Servlet.Admin.updateUser</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>addEnrolledList</servlet-name>
+        <servlet-class>Servlet.Admin.adEnrolledList</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addEnrolled</servlet-name>
+        <servlet-class>Servlet.Admin.addEnrolled</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ClassByMajor</servlet-name>
+        <servlet-class>Servlet.Admin.ClassByMajor</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CPSByClass</servlet-name>
+        <servlet-class>Servlet.Admin.CPSByClass</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>insertEnrolled</servlet-name>
+        <servlet-class>Servlet.Admin.insertEnrolled</servlet-class>
+     </servlet>
+<servlet>
         <servlet-name>majorList</servlet-name>
         <servlet-class>Servlet.Admin.majorList</servlet-class>
     </servlet>
@@ -233,6 +253,26 @@
         <url-pattern>/updateUser</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>addEnrolledList</servlet-name>
+        <url-pattern>/addEnrolledList</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addEnrolled</servlet-name>
+        <url-pattern>/addEnrolled</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ClassByMajor</servlet-name>
+        <url-pattern>/ClassByMajor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CPSByClass</servlet-name>
+        <url-pattern>/CPSByClass</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>insertEnrolled</servlet-name>
+        <url-pattern>/insertEnrolled</url-pattern>
+        </servlet-mapping>
+<servlet-mapping>
         <servlet-name>majorList</servlet-name>
         <url-pattern>/majorList</url-pattern>
     </servlet-mapping>
