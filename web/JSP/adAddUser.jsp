@@ -49,7 +49,7 @@
             <div class="row">
                 <div>
                     <%
-                        String err = (String) session.getAttribute("noti");
+                        String err = (String) request.getAttribute("noti");
                         if (err != null) {
                     %>
                     <span style="text-align: center; color:red;"><%=err%></span>

@@ -63,7 +63,7 @@
 
                     </div>
                     <div class="col-75">
-                        <input type="text" name="phonenum" id="text" placeholder="Phone number" value="<%=uc.getPhonenumber()%>"  required>
+                        <input type="text" name="phonenum" id="text" placeholder="Phone number" value="<%=uc.getPhonenumber()%>" pattern="[0-9]{10}" required>
                     </div>
                 </div>
                 <div class="row">
@@ -79,7 +79,7 @@
                 <div class="row">
 
                     <input type="submit" value="Change">
-                    <a href= "<%= request.getContextPath()%>/adUserList"> <input type="button" value="Back to list"></a>
+                    <input type="button" value="Back to list" onclick="location.href = '<%= request.getContextPath()%>/adUserList'" />
                 </div>
 
 

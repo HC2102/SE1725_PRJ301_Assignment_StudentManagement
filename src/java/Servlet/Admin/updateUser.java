@@ -105,8 +105,8 @@ public class updateUser extends HttpServlet {
                 default:
                     throw new AssertionError();
             }
-            session.setAttribute("status","Update record successfully!"); 
-            resp.sendRedirect("adUserList");
+            req.setAttribute("status","Update record successfully!"); 
+            req.getRequestDispatcher("adUserList").forward(req, resp);
         } catch (Exception e) {
             req.setAttribute("error", "Error! "+e.getMessage());
             req.getRequestDispatcher("JSP/adUpdateUser.jsp").forward(req, resp);

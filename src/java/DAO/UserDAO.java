@@ -43,6 +43,32 @@ public class UserDAO {
         }
         return list;
     }
+    public ArrayList<User> getUsersByRole(int role) {
+        ArrayList<User> list = new ArrayList<>();
+        try {
+            DBContext db = new DBContext();
+            Connection con = db.getConnection();
+            if (con != null) {
+                Statement st = con.createStatement();
+                String sql = "SELECT * FROM [User] WHERE Role_ID = "+role;
+                ResultSet rs = st.executeQuery(sql);
+                while (rs.next()) {
+                    User u = new User();
+                    u.setUserName(rs.getString("User_name"));
+                    u.setPassWord(rs.getString("User_Password"));
+                    u.setRole(rs.getInt("Role_ID"));
+                    list.add(u);
+                }
+                rs.close();
+                st.close();
+                con.close();
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return list;
+    }
     public User getUser(String username) {
         try {
             DBContext db = new DBContext();

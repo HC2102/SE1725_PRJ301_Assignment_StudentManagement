@@ -67,11 +67,12 @@ public class AddUserByRole extends HttpServlet {
             row = sDAO.insertStudent(new Student(studentID, username, fname, major, phone, address, email));
         }
         if (row > 0) {
-            session.setAttribute("noti", "new user added successfully!");
+            req.setAttribute("noti", "new user added successfully!");
         } else {
-            session.setAttribute("noti", "Can not add because of unable connect to database or duplicated userName or studentID");
+            req.setAttribute("noti", "Can not add because of unable connect to database or duplicated userName or studentID");
         }
-        resp.sendRedirect("adAddUser");
+//        resp.sendRedirect("adAddUser");
+        req.getRequestDispatcher("adAddUser").forward(req, resp);
 
     }
 
