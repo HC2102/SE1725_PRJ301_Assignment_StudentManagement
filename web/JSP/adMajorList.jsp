@@ -71,7 +71,7 @@
         </div>
         <div style=" text-align: center; margin-bottom: 2%;">
             <a href="addMajor" ><input type="button" value="Add more Major" style="padding:10px"></a>
-            <a href="<%= request.getContextPath()%>/AdminInfo"><input type="button" value="Back to homepage" style="padding:10px"></a>
+            <a href="AdminInfo"><input type="button" value="Back to homepage" style="padding:10px"></a>
         </div>
         <script type="text/javascript">
             var elems = document.getElementsByClassName('confirmation');

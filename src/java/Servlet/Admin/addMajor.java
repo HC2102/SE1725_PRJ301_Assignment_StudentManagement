@@ -5,12 +5,14 @@
 
 package Servlet.Admin;
 
+import DAO.MajorDAO;
+import dbObject.Major;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
@@ -25,7 +27,20 @@ public class addMajor extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        try {
+            HttpSession session = req.getSession();
+            int row = 0;
+            MajorDAO mdao = new MajorDAO();
+            Major newMajor = new Major(req.getParameter("mID"), req.getParameter("mName"), req.getParameter("mBios"));
+            row = mdao.insertMajor(newMajor);
+            if(row<1){
+                throw new Exception();
+            }
+            resp.sendRedirect("majorList");
+        }catch(Exception e){
+            req.setAttribute("error", "Error!");
+            resp.sendRedirect("majorList");
+        }
     }
    
    

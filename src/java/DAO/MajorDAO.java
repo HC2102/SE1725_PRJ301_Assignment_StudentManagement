@@ -37,7 +37,7 @@ public class MajorDAO {
         return row;
     }
 
-    public int insertUser(Major m) {
+    public int insertMajor(Major m) {
         int row = 0;
         try {
 
@@ -58,7 +58,7 @@ public class MajorDAO {
         return row;
     }
 
-    public int updateStudent(Major m) {
+    public int updateMajor(Major m) {
         try {
             DBContext db = new DBContext();
             Connection con = db.getConnection();
@@ -102,5 +102,30 @@ public class MajorDAO {
             System.out.println(e.getMessage());
         }
         return list;
+    }
+     public Major getMajor(String majorID) {
+        try {
+            DBContext db = new DBContext();
+            Connection con = db.getConnection();
+            if (con != null) {
+                Statement st = con.createStatement();
+                String sql = "SELECT * FROM MAJOR WHERE Major_ID ='"+majorID+"'" ;
+                ResultSet rs = st.executeQuery(sql);
+                if (rs.next()) {
+                    Major m = new Major();
+                    m.setID(rs.getString("Major_ID"));
+                    m.setName(rs.getString("Major_name"));
+                    m.setBio(rs.getString("Biographic"));
+                    return m;
+                }
+                rs.close();
+                st.close();
+                con.close();
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
     }
 }
