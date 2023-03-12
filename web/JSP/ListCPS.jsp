@@ -18,29 +18,21 @@
         <title>List CPS</title>
     </head>
     <body>
-        <div class="ctr1">
-            <a style="text-decoration: none; font-family:'Times New Roman'; margin-left:5%; margin-top:1%;" href="<%= request.getContextPath()%>/JSP/StudentHome.jsp"><H1>Home</H1></a>
-            <div class="headerbutton">
-                <a href="<%= request.getContextPath()%>/JSP/ChangePass.jsp"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Change Password"></a>
-                <a href="<%= request.getContextPath()%>/logout"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Log out"></a>
-            </div>
-        </div>
-
         <%
-            ArrayList<CPS> listCPS = (ArrayList<CPS>)session.getAttribute("listCPS");
+            ArrayList<CPS> listCPS = (ArrayList<CPS>)request.getAttribute("listCPS");
         %>
 
         <h2>List Course Teach by Teacher</h2>
         <a href= "<%= request.getContextPath()%>/AdminInfo"> <input style="margin: 1%;margin-left:5%; font-weight: bold; padding: 0.5%" type="Submit" type="button" value="Back"></a>
         <span class="status">
             <%
-                        String status = (String) session.getAttribute("status");
+                        String status = (String) request.getAttribute("status");
                         if (status != null && status.compareTo("") != 0)
                             out.println(status);
             %> 
         </span>
         
-        <span class="error"><% String err = (String) session.getAttribute("error");
+        <span class="error"><% String err = (String) request.getAttribute("error");
                 if (err != null && err.compareTo("") != 0)
                     out.println(err); %>
             </span>
@@ -55,7 +47,6 @@
                         <th>Teacher_User_name</th>
                         <th>Biographic</th>
                         <th>Resource</th>
-                        <th>Update</th>
                         <th>Delete</th>
                     </tr>
                 </thead>
@@ -70,7 +61,6 @@
                         <td><%=cps.getTeacher_User_name()%></td>
                         <td><%=cps.getBiographic()%></td>
                         <td><%=cps.getResource()%></td>
-                        <td><a href="updateCPS?id=<%=cps.getCps_id()%>"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Update"></a></td>
                         <td><a href="deleteCPS?id=<%=cps.getCps_id()%>"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Delete"></a></td>
                     </tr>
                     <%}%>

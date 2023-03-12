@@ -29,39 +29,56 @@ public class addCPSToList extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        try {
-            int rows = 0;
-            CPSDAO cpsDAO = new CPSDAO();
-            SemesterDAO semDAO = new SemesterDAO();
-            Semester s = semDAO.getSemesterIDByCurrentSemester();
-            int cpsIndex = cpsDAO.getMaxCPSID();
-            String selectedCourse = (String) session.getAttribute("selectedCourse");
-            //set
-            CPS cps = new CPS();
-            cps.setCps_id(cpsIndex + 1);
-            cps.setCourse_ID(selectedCourse);
-            cps.setSemesterID(s.getSemester_ID());
-            cps.setTeacher_User_name(req.getParameter("chooseTeacher"));
-            if (req.getParameter("biographic") == null || req.getParameter("biographic").compareTo("") == 0) {
-                cps.setBiographic(null);
-            } else {
-                cps.setBiographic(req.getParameter("biographic"));
+        if (req.getParameter("add") != null) {
+            try {
+                int rows = 0;
+                CPSDAO cpsDAO = new CPSDAO();
+                SemesterDAO semDAO = new SemesterDAO();
+                Semester s = semDAO.getSemesterIDByCurrentSemester();
+                int cpsIndex = cpsDAO.getMaxCPSID();
+                String selectedCourse = (String) session.getAttribute("selectedCourse");
+                //set
+                CPS cps = new CPS();
+                cps.setCps_id(cpsIndex + 1);
+                cps.setCourse_ID(selectedCourse);
+                cps.setSemesterID(s.getSemester_ID());
+                cps.setTeacher_User_name(req.getParameter("chooseTeacher"));
+                if (req.getParameter("biographic") == null || req.getParameter("biographic").compareTo("") == 0) {
+                    cps.setBiographic(null);
+                } else {
+                    cps.setBiographic(req.getParameter("biographic"));
+                }
+
+                if (req.getParameter("resource") == null || req.getParameter("resource").compareTo("") == 0) {
+                    cps.setResource(null);
+                } else {
+                    cps.setResource(req.getParameter("resource"));
+                }
+                rows = cpsDAO.insertCPS(cps);
+                if (rows < 1) {
+                    throw new Exception();
+                } else {
+                    req.setAttribute("status", "CPS add successfully!");
+                    req.setAttribute("error", null);
+                    session.removeAttribute("selectedCourse");
+                    req.getRequestDispatcher("adCPSList").forward(req, resp);
+                }
+                if (req.getParameter("BackToCPSList") != null) {
+                    req.setAttribute("status", null);
+                    req.setAttribute("error", null);
+                    session.removeAttribute("selectedCourse");
+                    req.getRequestDispatcher("adCPSList").forward(req, resp);
+                }
+            } catch (Exception e) {
+                req.setAttribute("error", "CPS add failed!");
+                req.setAttribute("status", null);
+                session.removeAttribute("selectedCourse");
+                req.getRequestDispatcher("adCPSList").forward(req, resp);
             }
-            
-            if (req.getParameter("resource") == null || req.getParameter("resource").compareTo("") == 0) {
-                cps.setResource(null);
-            } else {
-                cps.setResource(req.getParameter("resource"));
-            }
-            rows = cpsDAO.insertCPS(cps);
-            if (rows < 1) {
-                throw new Exception();
-            } else {
-                session.invalidate();
-                resp.sendRedirect("adCPSList");
-            }
-        } catch (Exception e) {
-            session.invalidate();
+        } else if (req.getParameter("BackToCPSList") != null) {
+            req.setAttribute("status", null);
+            req.setAttribute("error", null);
+            session.removeAttribute("selectedCourse");
             req.getRequestDispatcher("adCPSList").forward(req, resp);
         }
 

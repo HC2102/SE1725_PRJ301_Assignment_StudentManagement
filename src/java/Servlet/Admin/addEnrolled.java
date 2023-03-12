@@ -4,17 +4,20 @@
  */
 package Servlet.Admin;
 
+import DAO.MajorDAO;
+import dbObject.Major;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  *
  * @author Zarius
  */
-public class updateCPS extends HttpServlet{
+public class addEnrolled extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -22,6 +25,12 @@ public class updateCPS extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        if (req.getParameter("addEnrolled") != null) {
+            MajorDAO mDAO = new MajorDAO();
+            ArrayList<Major> listMajor = mDAO.getAllMajors();
+            req.setAttribute("listMajor", listMajor);
+            req.getRequestDispatcher("JSP/adAddEnrolled.jsp").forward(req, resp);
+        }
     }
-    
+
 }

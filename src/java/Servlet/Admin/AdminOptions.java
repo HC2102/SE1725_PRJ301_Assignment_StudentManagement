@@ -36,6 +36,7 @@ public class AdminOptions extends HttpServlet {
 
             case "List Enrolled":
                 resp.sendRedirect("adEnrolledList");
+                break;
 
             case "Add course":
                 resp.sendRedirect("ToCourses");

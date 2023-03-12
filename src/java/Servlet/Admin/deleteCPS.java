@@ -38,14 +38,14 @@ public class deleteCPS extends HttpServlet{
             if (row < 1) {
                 throw new Exception();
             } else {
-                session.setAttribute("status", "CPS deletion successfully!");
-                session.setAttribute("error", null);
-                resp.sendRedirect("adCPSList");
+                req.setAttribute("status", "CPS deletion successfully!");
+                req.setAttribute("error", null);
+                req.getRequestDispatcher("adCPSList").forward(req, resp);
             }
         } catch (Exception e) {
-            session.setAttribute("error", "CPS deletion failed!");
-            session.setAttribute("status", null);
-            resp.sendRedirect("adCPSList");
+            req.setAttribute("error", "CPS deletion failed!");
+            req.setAttribute("status", null);
+            req.getRequestDispatcher("adCPSList").forward(req, resp);
         }
     }
     

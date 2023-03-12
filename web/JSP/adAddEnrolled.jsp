@@ -5,6 +5,8 @@
 --%>
 
 <%@page import="dbObject.CPS"%>
+<%@page import="dbObject.Major"%>
+<%@page import="dbObject.Class"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -18,15 +20,22 @@
     </head>
     <body>
         <script>
-            function submitForm() {
-                var selectValue = document.getElementById("chooseCourse").value;
+            function submitFormToGetClass() {
+                var selectValue = document.getElementById("chooseMajor").value;
                 var form = document.getElementById("myForm");
-                form.action = "classByCPSMajor";
+                form.action = "ClassByMajor";
                 form.submit();
             }
 
-            function hideButton() {
-                var button = document.querySelector('button');
+            function submitFormToGetCPS() {
+                var selectValue = document.getElementById("chooseClass").value;
+                var form = document.getElementById("myForm");
+                form.action = "CPSByClass";
+                form.submit();
+            }
+
+            function hideButton(buttonId) {
+                var button = document.getElementById(buttonId);
                 button.style.display = 'none';
             }
 
@@ -37,58 +46,105 @@
                 <img src="<%= request.getContextPath()%>/image/course.png" alt="">
             </div>
 
-            <form id="myForm" action="<%= request.getContextPath()%>" method="post">
-                <!-- CPS_ID -->
+            <form id="myForm" action="<%= request.getContextPath()%>/insertEnrolled" method="post">
+                <!-- Major -->
                 <div class="row">
                     <div class="col-25">
-                        <label for="text">CPS_ID:</label>
+                        <label for="text">Select Major: </label>
                     </div>
 
                     <div class="col-75">
-                        <%String selectedCPS = (String) session.getAttribute("selectedCourse");
-                            if (selectedCPS == null || selectedCPS.compareTo("") == 0) { %>
-                        <select name="chooseCPS" id="chooseCPS" >
-                            <option disabled selected value> -- Select a CPS -- </option>
+                        <%String selectedMajor = (String) session.getAttribute("selectedMajor");
+                            if (selectedMajor == null || selectedMajor.compareTo("") == 0) { %>
+                        <select name="chooseMajor" id="chooseMajor" >
+                            <option disabled selected value> -- Select a Major -- </option>
                             <%
-                                ArrayList<CPS> listCPS = (ArrayList<CPS>) request.getAttribute("listCPS");
-                                for (CPS cps : listCPS) {
+                                ArrayList<Major> listMajor = (ArrayList<Major>) request.getAttribute("listMajor");
+                                for (Major m : listMajor) {
                             %>
-                            <option value="<%=cps.getCps_id()%>"><%=cps.getCps_id()%> - <%=cps.getCourse_ID()%></option>
+                            <option value="<%=m.getID()%>"><%=m.getID()%></option>
                             <%}%>
                             <%} else {%>
-                            <option > <%=selectedCPS%></option>
+                            <option> <%=selectedMajor%></option>
                             <%}%>
                         </select>
-                        <%if (selectedCPS == null || selectedCPS.compareTo("") == 0) {%>
-                        <button style=" margin: 0;" type="button" onclick="submitForm();">Find Class</button>
+                        <%if (selectedMajor == null || selectedMajor.compareTo("") == 0) {%>
+                        <button id="button1" style=" margin: 0;" type="button" onclick="submitFormToGetClass();">Find Class</button>
                         <%} else {%>
                         <script>
                             window.onload = function () {
-                                hideButton();
+                                hideButton(button1);
                             };
                         </script>
                         <%}%>
                     </div>
                 </div>
 
-                <!-- Class ID -->
+                <!-- Class ID by Major ID -->
                 <div class="row">
                     <div class="col-25">
                         <label for="text">Class ID:</label>
                     </div>
                     <div class="col-75">
+                        <%  String selectedClass = (String) session.getAttribute("selectedClass");
+                            if (selectedClass == null || selectedClass.compareTo("") == 0) {
+                                ArrayList<Class> listClassByMajor = (ArrayList<Class>) request.getAttribute("listClassByMajor");
+                                if(listClassByMajor != null){%>
                         <select name="chooseClass" id="chooseClass" >
-                            <option disabled selected value> -- Select a Course -- </option>
-                            
-                            <option value="<%=c.getCourse_ID()%>"><%=c.getCourse_ID()%></option>
+                            <option disabled selected value> -- Select a Class -- </option>
+                            <%
+                                for (Class cl : listClassByMajor) {
+                            %>
+                            <option value="<%=cl.getClass_ID()%>"><%=cl.getClass_ID()%></option>
+                            <%}%>
+                            <%}%>
+                            <%} else {%>
+                            <option> <%=selectedClass%></option>
+                            <%}%>
                         </select>
-                        <button style=" margin: 0;" type="button" onclick="submitForm();">Find Teacher</button>
+                        <%if (selectedMajor == null || selectedMajor.compareTo("") == 0) {%>
+                        <script>
+                            window.onload = function () {
+                                hideButton(button2);
+                            };
+                        </script>
+                        <%} else {%>
+                        <%if (selectedClass == null || selectedClass.compareTo("") == 0) {%>
+                        <button id="button2" style=" margin: 0;" type="button" onclick="submitFormToGetCPS();">Find CPS</button>
+                        <%} else {%>
+                        <script>
+                            window.onload = function () {
+                                hideButton(button2);
+                            };
+                        </script>
+                        <%}%>
+                        <%}%>
                     </div>
                 </div> 
 
-                    <input type="submit" value="Add Enrolled" name="add">
-                    <a href= "<%= request.getContextPath()%>/ad"> <input type="button" value="Back to CPS List"></a>
-                </div>              
+                <!-- CPS ID by Class ID -->
+                <div class="row">
+                    <div class="col-25">
+                        <label for="text">CPS ID:</label>
+                    </div>
+                    <div class="col-75">
+                        <%ArrayList<CPS> listCPSByClassIDAndMajor = (ArrayList<CPS>) request.getAttribute("listCPSByClassIDAndMajor");
+                            if (listCPSByClassIDAndMajor != null) {%>
+                        <select name="chooseCPS" id="chooseCPS" >
+                            <option disabled selected value> -- Select a CPS -- </option>
+                            <%
+                                for (CPS cps : listCPSByClassIDAndMajor) {
+                            %>
+                            <option value="<%=cps.getCps_id()%>"><%=cps.getCps_id()%>-<%=cps.getCourse_ID()%></option>
+                            <%}%>
+                        </select>
+                        <%}%>
+
+                    </div>
+                </div> 
+
+                <input type="submit" value="Add Enrolled" name="add">
+                <input type="submit" value="Back to Enrolled List" name="BackToEnrolled">
             </form>                
         </div>
     </body>

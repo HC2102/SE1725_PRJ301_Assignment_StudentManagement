@@ -23,9 +23,12 @@ public class adCPSList extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         CPSDAO cpsDAO = new CPSDAO();
+        String status = (String)req.getAttribute("status");
+        String error = (String)req.getAttribute("error");
         ArrayList<CPS> listCPS = cpsDAO.getAllCPS();
-        HttpSession session = req.getSession();
-        session.setAttribute("listCPS", listCPS);
+        req.setAttribute("listCPS", listCPS);
+        req.setAttribute("status", status);
+        req.setAttribute("error", error);
         req.getRequestDispatcher("JSP/ListCPS.jsp").forward(req, resp);
     }
 

@@ -4,6 +4,10 @@
     Author     : Zarius
 --%>
 
+<%@page import="dbObject.CPS"%>
+<%@page import="DAO.CPSDAO"%>
+<%@page import="dbObject.Enrolled"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,52 +20,51 @@
         <title>List Enrolled</title>
     </head>
     <body>
-        <div class="ctr1">
-            <a style="text-decoration: none; font-family:'Times New Roman'; margin-left:5%; margin-top:1%;" href="<%= request.getContextPath()%>/JSP/StudentHome.jsp"><H1>Home</H1></a>
-            <div class="headerbutton">
-                <a href="<%= request.getContextPath()%>/JSP/ChangePass.jsp"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Change Password"></a>
-                <a href="<%= request.getContextPath()%>/logout"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Log out"></a>
-            </div>
-        </div>
-
+        <%ArrayList<Enrolled> listEnrolled = (ArrayList<Enrolled>)request.getAttribute("listEnrolled");%>
 
         <h2>List Enrolled</h2>
         <a href= "<%= request.getContextPath()%>/AdminInfo"> <input style="margin: 1%;margin-left:5%; font-weight: bold; padding: 0.5%" type="Submit" type="button" value="Back"></a>
         <span class="status">
             <%
-                        String status = (String) session.getAttribute("status");
+                        String status = (String) request.getAttribute("status");
                         if (status != null && status.compareTo("") != 0)
                             out.println(status);
             %> 
         </span>
-        
-        <span class="error"><% String err = (String) session.getAttribute("error");
+
+        <span class="error"><% String err = (String) request.getAttribute("error");
                 if (err != null && err.compareTo("") != 0)
                     out.println(err); %>
-            </span>
+        </span>
 
         <div class="table-wrapper">
             <table class="fl-table">
                 <thead>
                     <tr>
-                        <th>CPS_ID</th>
+                        <th>Course_ID</th>
+                        <th>Teacher Name</th>
+                        <th>SemesterID</th>
                         <th>Class_ID</th>
-                        <th>Update</th>
-                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <%      
+                            CPSDAO cpsDAO = new CPSDAO();
+                            for (Enrolled e : listEnrolled) {
+                            CPS cps = cpsDAO.getCPSByID(e.getCPSID());
+                    %>
                     <tr>
-                        <td><%=cps.getBiographic()%></td>
-                        <td><%=cps.getResource()%></td>
-                        <td><a href="updateCPS?id=<%=cps.getCps_id()%>"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Update"></a></td>
-                        <td><a href="deleteCPS?id=<%=cps.getCps_id()%>"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Delete"></a></td>
+                        <td><%=cps.getCourse_ID()%></td>
+                        <td><%=cps.getTeacher_User_name()%></td>
+                        <td><%=cps.getSemesterID()%></td>
+                        <td><%=e.getClassID()%></td>
                     </tr>
+                    <%}%>
                 </tbody>
             </table>
         </div>
-        <form style=" padding-left: 42%;"  action="" method="post"> 
-            <input style=" padding: 1%; font-weight: bold;" type="submit" value="Add CPS" name="addCPS">
+        <form style=" padding-left: 42%;"  action="addEnrolled" method="post"> 
+            <input style=" padding: 1%; font-weight: bold;" type="submit" value="Add Enrolled" name="addEnrolled">
         </form>
     </body>
 </html>
