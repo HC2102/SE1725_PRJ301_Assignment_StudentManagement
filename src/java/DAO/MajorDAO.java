@@ -18,6 +18,65 @@ import java.util.ArrayList;
  */
 public class MajorDAO {
 
+    public int deleteMajor(String ID) {
+        int row = 0;
+        try {
+            DBContext db = new DBContext();
+            Connection con = db.getConnection();
+            if (con != null) {
+                Statement st = con.createStatement();
+                String sql = "DELETE FROM [Major] WHERE [Major_ID] = '" + ID + "';";
+                row = st.executeUpdate(sql);
+                st.close();
+                con.close();
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            row = -1;
+        }
+        return row;
+    }
+
+    public int insertUser(Major m) {
+        int row = 0;
+        try {
+
+            DBContext db = new DBContext();
+            Connection con = db.getConnection();
+            if (con != null) {
+                Statement st = con.createStatement();
+                String sql = "INSERT INTO Major([Major_ID],[Major_name],[Biographic])\n"
+                        + "values ('"+m.getID()+"','"+m.getName()+"','"+m.getBio()+"')";
+                row = st.executeUpdate(sql);
+                st.close();
+                con.close();
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            row = -1;
+        }
+        return row;
+    }
+
+    public int updateStudent(Major m) {
+        try {
+            DBContext db = new DBContext();
+            Connection con = db.getConnection();
+            if (con != null) {
+                Statement st = con.createStatement();
+                String sql = "UPDATE MAJOR SET [Major_name] ='" + m.getName() + "', [Biographic]='" + m.getBio() + "' WHERE [Major_ID] = '" + m.getID() + "'";
+                int rows = st.executeUpdate(sql);
+                st.close();
+                con.close();
+                return rows;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
+
     public ArrayList<Major> getAllMajors() {
         ArrayList<Major> list = new ArrayList<>();
         try {

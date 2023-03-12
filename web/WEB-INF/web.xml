@@ -127,6 +127,22 @@
     <servlet>
         <servlet-name>insertEnrolled</servlet-name>
         <servlet-class>Servlet.Admin.insertEnrolled</servlet-class>
+     </servlet>
+<servlet>
+        <servlet-name>majorList</servlet-name>
+        <servlet-class>Servlet.Admin.majorList</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updateMajor</servlet-name>
+        <servlet-class>Servlet.Admin.updateMajor</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>deleteMajor</servlet-name>
+        <servlet-class>Servlet.Admin.deleteMajor</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addMajor</servlet-name>
+        <servlet-class>Servlet.Admin.addMajor</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -255,6 +271,22 @@
     <servlet-mapping>
         <servlet-name>insertEnrolled</servlet-name>
         <url-pattern>/insertEnrolled</url-pattern>
+        </servlet-mapping>
+<servlet-mapping>
+        <servlet-name>majorList</servlet-name>
+        <url-pattern>/majorList</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateMajor</servlet-name>
+        <url-pattern>/updateMajor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteMajor</servlet-name>
+        <url-pattern>/deleteMajor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addMajor</servlet-name>
+        <url-pattern>/addMajor</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

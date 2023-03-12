@@ -8,7 +8,7 @@
 <%@page import="java.util.List" %>
 <!DOCTYPE html>
 <html>
-  
+
     <head>
         <title>List of user</title>
         <meta charset="UTF-8">
@@ -21,13 +21,25 @@
         %>
         <h2>User Information</h2>
         <div class="table-wrapper">
+            <!--search by role-->
+            <form action="<%= request.getContextPath()%>/adUserList" method="post" class="table-wrapper" style="margin-bottom: 0; box-shadow: none">
+                <label for="roleFind">Roles </label>
+                <select name="roleFind">
+                    <option disabled selected value> -- select a role -- </option>
+                    <option value="0">Admin</option>
+                    <option value="1">Student</option>
+                    <option value="2">Teacher</option>
+                </select>
+                <input type="submit" name="findByRole" value="Find">
+            </form>
+             <!--end of search by role-->
             <span class="status"><%
-                String info = (String) session.getAttribute("status");
+                String info = (String) request.getAttribute("status");
                 if (info != null && info.compareTo("") != 0)
                     out.println(info);
                 %> 
             </span>
-            <span class="error"><% String err = (String) session.getAttribute("error");
+            <span class="error"><% String err = (String) request.getAttribute("error");
                 if (err != null && err.compareTo("") != 0)
                     out.println(err); %>
             </span>

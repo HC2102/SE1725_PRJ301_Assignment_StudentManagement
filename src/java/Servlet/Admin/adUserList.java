@@ -24,7 +24,16 @@ public class adUserList extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        this.doGet(req, resp);
+        UserDAO udao = new UserDAO();
+        ArrayList<User> userList;
+        if(req.getParameter("roleFind") == null || req.getParameter("roleFind").isEmpty()){
+           userList = udao.getAllUser();
+        }else{
+           userList =  udao.getUsersByRole(Integer.parseInt(req.getParameter("roleFind"))); 
+        }
+        HttpSession session = req.getSession();
+        session.setAttribute("userList", userList);
+        req.getRequestDispatcher("JSP/listOfUser.jsp").forward(req, resp);
     }
 
     @Override
