@@ -22,15 +22,15 @@
         <h2>User Information</h2>
         <div class="table-wrapper">
             <!--search by role-->
-            <form action="<%= request.getContextPath()%>/adUserList" method="post" class="table-wrapper" style="margin-bottom: 0; box-shadow: none">
+            <form id="f1" action="<%= request.getContextPath()%>/adUserList" method="post" class="table-wrapper" style="margin-bottom: 0; box-shadow: none">
                 <label for="roleFind">Roles </label>
-                <select name="roleFind">
+                <select name="roleFind" onchange="change()">
                     <option disabled selected value> -- select a role -- </option>
+                    <option value="">All</option>
                     <option value="0">Admin</option>
                     <option value="1">Student</option>
                     <option value="2">Teacher</option>
                 </select>
-                <input type="submit" name="findByRole" value="Find">
             </form>
              <!--end of search by role-->
             <span class="status"><%
@@ -99,6 +99,9 @@
             };
             for (var i = 0, l = elems.length; i < l; i++) {
                 elems[i].addEventListener('click', confirmIt, false);
+            }
+            function change() {
+                    document.getElementById("f1").submit();
             }
         </script>
     </body>

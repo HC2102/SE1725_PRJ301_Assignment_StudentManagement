@@ -36,17 +36,16 @@
             ArrayList<Class> listClass = (ArrayList<Class>)request.getAttribute("listClass");
         %>
         <h2>Student Information In Class <span style="color: white; font-weight: bold;"><%=classID%></span> </h2>
-        <form action="<%= request.getContextPath()%>/ListStudentOfClass" method="post" class="table-wrapper" style="margin-bottom: 0; box-shadow: none">
 
+        <form id='f1' action="<%= request.getContextPath()%>/ListStudentOfClass" method="post" class="table-wrapper" style="margin-bottom: 0; box-shadow: none">
             <label for="classFind">Search class: </label>
-            <select name="chooseClass">
+            <select name="chooseClass" onchange="change()">
                 <option disabled selected value> -- select a class -- </option>
                 <%for (Class cl : listClass) {
                 %>
                 <option value="<%=cl.getClass_ID()%>"><%=cl.getClass_ID()%></option>
                 <%}%>
             </select>
-            <input type="submit" name="findClass" value="Find Class">
         </form>
 
         <div class="table-wrapper">
@@ -75,5 +74,11 @@
                 </tbody>
             </table>
         </div>
+        <script type="text/javascript">
+            function change() {
+                document.getElementById("f1").submit();
+            }
+        </script>
     </body>
+
 </html>

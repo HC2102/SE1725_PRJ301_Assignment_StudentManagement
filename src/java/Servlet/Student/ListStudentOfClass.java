@@ -27,21 +27,19 @@ public class ListStudentOfClass extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (req.getParameter("findClass") != null) {
-            try {
-                String selectedClass = req.getParameter("chooseClass");
-                StudentDAO stDAO = new StudentDAO();
-                ClassDAO cDAO = new ClassDAO();
-                ArrayList<Class> listClass = cDAO.getAllClassExceptClassID(selectedClass);
-                ArrayList<Student> listStudentFromClassID = stDAO.getAllStudentFromClassID(selectedClass);
-                req.setAttribute("listClass", listClass);
-                req.setAttribute("classID", selectedClass);
-                req.setAttribute("listStudentFromClassID", listStudentFromClassID);
-                req.getRequestDispatcher("JSP/ClassOfStudent.jsp").forward(req, resp);
-                
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
+        try {
+            String selectedClass = req.getParameter("chooseClass");
+            StudentDAO stDAO = new StudentDAO();
+            ClassDAO cDAO = new ClassDAO();
+            ArrayList<Class> listClass = cDAO.getAllClassExceptClassID(selectedClass);
+            ArrayList<Student> listStudentFromClassID = stDAO.getAllStudentFromClassID(selectedClass);
+            req.setAttribute("listClass", listClass);
+            req.setAttribute("classID", selectedClass);
+            req.setAttribute("listStudentFromClassID", listStudentFromClassID);
+            req.getRequestDispatcher("JSP/ClassOfStudent.jsp").forward(req, resp);
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 }
