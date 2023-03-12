@@ -15,9 +15,9 @@
         <link rel="stylesheet" href="<%= request.getContextPath()%>/css/home_studentstyle.css">
         <title>Admin Services</title>
     </head>
-    
+
     <body>
- 
+
         <%
             Admin ad = (Admin) session.getAttribute("admin");
         %>
@@ -43,13 +43,14 @@
                 <p>Your Email:<%=ad.getAdmin_email()%></p>
             </div>
         </div>
-            <form style="padding-top: 5%; padding-left: 42%;"  action="AdminOptions" method="post" >
+        <form style="padding-top: 5%; padding-left: 42%;"  action="AdminOptions" method="post" >
             <input style=" padding: 1%; font-weight: bold; margin-right: 1% ;" type="submit" value="List CPS" name="option">
             <input style=" padding: 1%; font-weight: bold; margin-right: 1% ;" type="submit" value="User Data" name="option"> 
-            <input style=" padding: 1%; font-weight: bold;" type="submit" value="List ..." name="option"> <br>
+            <input style=" padding: 1%; font-weight: bold;" type="submit" value="List ..." name="option"> 
             <input style=" padding: 1%; font-weight: bold; margin-right: 1% ;" type="submit" value="Add course"name="option"> 
             <input style=" padding: 1%; font-weight: bold; margin-right: 1% ;" type="submit" value="List...">
-            <input style=" padding: 1%; font-weight: bold;" type="submit" value="List Enrolled" name="option"> <br>
+            <input style=" padding: 1%; font-weight: bold;" type="submit" value="List Enrolled" name="option">
+            <input style=" padding: 1%; font-weight: bold; margin-right: 1% ;" type="submit" value="Major Data" name="option">
         </form>
 
     </body>
