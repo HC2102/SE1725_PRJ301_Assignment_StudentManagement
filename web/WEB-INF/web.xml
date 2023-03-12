@@ -161,6 +161,10 @@
         <servlet-name>classes</servlet-name>
         <servlet-class>Servlet.Admin.ClassList</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>adSemesterList</servlet-name>
+        <servlet-class>Servlet.Admin.adSemesterList</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/loginServlet</url-pattern>
@@ -320,6 +324,10 @@
     <servlet-mapping>
         <servlet-name>classes</servlet-name>
         <url-pattern>/ClassList</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>adSemesterList</servlet-name>
+        <url-pattern>/adSemesterList</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

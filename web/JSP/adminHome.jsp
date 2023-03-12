@@ -48,6 +48,7 @@
             <input style=" padding: 1%; font-weight: bold; margin-right: 1% ;" type="submit" value="User Data" name="option">            
             <input style=" padding: 1%; font-weight: bold; margin-right: 1% ;" type="submit" value="Add course"name="option"> 
             <input style=" padding: 1%; font-weight: bold; margin-right: 1% ;" type="submit" value="Classes" name="option">
+            <input style=" padding: 1%; font-weight: bold; margin-right: 1% ;" type="submit" value="Semester setting" name="option">
             <input style=" padding: 1%; font-weight: bold;" type="submit" value="List Enrolled" name="option">
             <input style=" padding: 1%; font-weight: bold; margin-right: 1% ;" type="submit" value="Major Data" name="option">
         </form>

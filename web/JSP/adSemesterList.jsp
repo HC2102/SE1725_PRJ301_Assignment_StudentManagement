@@ -4,23 +4,24 @@
     Author     : HE170417
 --%>
 
+<%@page import="dbObject.Semester"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="dbObject.Major"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Major data</title>
+        <title>Semester controller</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="<%= request.getContextPath()%>/css/table.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <%
-            ArrayList<Major> mList = ( ArrayList<Major>) request.getAttribute("mList");
+            ArrayList<Semester> sList = ( ArrayList<Semester>) request.getAttribute("mList");
         %>
-        <h2>Major data</h2>
+        <h2>Semester controller</h2>
         <div class="table-wrapper">
+            <!-- notification sections -->
             <span class="status"><%
                 String info = (String) request.getAttribute("status");
                 if (info != null && info.compareTo("") != 0)
@@ -31,27 +32,28 @@
                 if (err != null && err.compareTo("") != 0)
                     out.println(err); %>
             </span>
+            <!--/notification sections -->
             <table class="fl-table">
                 <thead>
                     <tr>
-                        <th>Major ID</th>
-                        <th>Major name</th>
-                        <th>bios</th>
-                        <th>Action</th>
-                        <th>Action</th>
+                        <th>Semester ID</th>
+                        <th>Time start</th>
+                        <th>Time end</th>
+                        <th>Active</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
                     <%
-                        if (!mList.isEmpty()) {
-                            for (Major m: mList) {
+                        if (!sList.isEmpty()) {
+                            for (Semester s: sList) {
                     %>
                     <tr>
-                        <th><%=m.getID()%></th>
-                        <th><%=m.getName()%></th>
-                        <th><%=m.getBio()%></th>
-                        <th><a style="text-decoration: none; font-weight: bold; border: 3px solid teal;" href="updateMajor?upID=<%=m.getID()%>">Update</a></th>
-                        <th><a style="text-decoration: none; font-weight: bold; border: 3px solid teal;" href="deleteMajor?delID=<%=m.getID()%>" class="confirmation">Delete</a></th>
+                        <th><%=s.getSemester_ID()%></th>
+                        <th><%=s.getTime_start()%></th>
+                        <th><%=s.getTime_end()%></th>
+                        <th> <input type="radio" name="isActive" value="HTML"></th>
+                        <th><a style="text-decoration: none; font-weight: bold; border: 3px solid teal;" href="deleteSemester?delSem=<%=s.getSemester_ID()%>" class="confirmation">Delete</a></th>
                     </tr>
                     <%
                             }

@@ -18,7 +18,7 @@ import java.util.ArrayList;
  */
 public class SemesterDAO {
 
-    public ArrayList<Semester> getAllStudent() {
+    public ArrayList<Semester> getAllSemester() {
         ArrayList<Semester> listSemester = new ArrayList<>();
         try {
             DBContext db = new DBContext();
@@ -46,7 +46,7 @@ public class SemesterDAO {
         return listSemester;
     }
 
-    public int insertStudent(Student s) {
+    public int insertSemester(Student s) {
         int row = 0;
         try {
             DBContext db = new DBContext();
