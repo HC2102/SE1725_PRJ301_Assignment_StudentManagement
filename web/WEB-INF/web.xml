@@ -127,8 +127,8 @@
     <servlet>
         <servlet-name>insertEnrolled</servlet-name>
         <servlet-class>Servlet.Admin.insertEnrolled</servlet-class>
-     </servlet>
-<servlet>
+    </servlet>
+    <servlet>
         <servlet-name>majorList</servlet-name>
         <servlet-class>Servlet.Admin.majorList</servlet-class>
     </servlet>
@@ -143,6 +143,23 @@
     <servlet>
         <servlet-name>addMajor</servlet-name>
         <servlet-class>Servlet.Admin.addMajor</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updateclass</servlet-name>
+        <servlet-class>Servlet.Admin.UpdateClass</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addclass</servlet-name>
+        <servlet-class>Servlet.Admin.AddClass</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>deleteclasss</servlet-name>
+        <servlet-class>Servlet.Admin.DeleteClass</servlet-class>
+    </servlet>
+    <servlet>
+        <description>weeeeeeeeeeeeee</description>
+        <servlet-name>classes</servlet-name>
+        <servlet-class>Servlet.Admin.ClassList</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -271,8 +288,8 @@
     <servlet-mapping>
         <servlet-name>insertEnrolled</servlet-name>
         <url-pattern>/insertEnrolled</url-pattern>
-        </servlet-mapping>
-<servlet-mapping>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>majorList</servlet-name>
         <url-pattern>/majorList</url-pattern>
     </servlet-mapping>
@@ -287,6 +304,22 @@
     <servlet-mapping>
         <servlet-name>addMajor</servlet-name>
         <url-pattern>/addMajor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateclass</servlet-name>
+        <url-pattern>/UpdateClass</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addclass</servlet-name>
+        <url-pattern>/AddClass</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteclasss</servlet-name>
+        <url-pattern>/DeleteClass</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>classes</servlet-name>
+        <url-pattern>/ClassList</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
