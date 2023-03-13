@@ -18,9 +18,10 @@
         <link rel="stylesheet" href="<%= request.getContextPath()%>/css/CourseStyle_1.css">
     </head>
     <%
-        if (request.getAttribute("newclass") == null) {
-            response.sendRedirect("Login.jsp");
-        }
+
+    if (request.getAttribute("newclass")==null) {
+        response.sendRedirect("Login.jsp");
+    }
     %>
     <body>
         <h2>Update Class...</h2>
