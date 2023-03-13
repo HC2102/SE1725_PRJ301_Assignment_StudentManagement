@@ -57,7 +57,7 @@
                         <td><%= c.getBiographic()%></td>
                         <td><a href="updateCourse?id=<%=c.getCourse_ID()%>"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Update"></a></td> 
                         <td><a href="deleteCourse?id=<%=c.getCourse_ID()%>"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Delete"></a></td>
-                        <td><a href="CourseTest?id=<%=c.getCourse_ID()%>"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Delete"></a></td>
+                        <td><a href="CourseTest?id=<%=c.getCourse_ID()%>"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Details"></a></td>
                     </tr>
 
                     <%}
