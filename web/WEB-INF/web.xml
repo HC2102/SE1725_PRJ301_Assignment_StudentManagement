@@ -184,6 +184,22 @@
     <servlet>
         <servlet-name>addTest</servlet-name>
         <servlet-class>Servlet.Admin.addTest</servlet-class>
+        </servlet>
+<servlet>
+        <servlet-name>ClassDetail</servlet-name>
+        <servlet-class>Servlet.Admin.ClassDetail</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StudentWithClassMajor</servlet-name>
+        <servlet-class>Servlet.Admin.StudentWithClassMajor</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddStudentToClass</servlet-name>
+        <servlet-class>Servlet.Admin.AddStudentToClass</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteStudent</servlet-name>
+        <servlet-class>Servlet.Admin.DeleteStudent</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -368,6 +384,22 @@
     <servlet-mapping>
         <servlet-name>addTest</servlet-name>
         <url-pattern>/addTest</url-pattern>
+         </servlet-mapping>
+<servlet-mapping>
+        <servlet-name>ClassDetail</servlet-name>
+        <url-pattern>/ClassDetail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StudentWithClassMajor</servlet-name>
+        <url-pattern>/StudentWithClassMajor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddStudentToClass</servlet-name>
+        <url-pattern>/AddStudentToClass</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteStudent</servlet-name>
+        <url-pattern>/DeleteStudent</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -2,53 +2,15 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< Updated upstream
-        <group/>
-=======
+
         <group>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/src/java/DAO/TestDAO.java</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/UpdateClass.java</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/updateCourse.java</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/CourseTest.java</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/AddClass.java</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/web/META-INF/context.xml</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/addTest.java</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/UpdateClass.jsp</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/addTest.jsp</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/src/java/DAO/ClassDAO.java</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/Login.jsp</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/adMajorList.jsp</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/src/java/DAO/UserDAO.java</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/CourseDetailGrade.jsp</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/teacherHome.jsp</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/src/java/DAO/AdminDAO.java</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/ClassOfStudent.jsp</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/ListCPS.jsp</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/src/java/DAO/CPSDAO.java</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/table_information_student.jsp</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/ClassList.jsp</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/addCourse.jsp</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/web/WEB-INF/.gitkeep</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/ClassByMajor.java</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/StudentAverageScore.jsp</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/TestList.jsp</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/adUpdateUser.jsp</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/Course.jsp</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/tableStudentInfoWithMark.jsp</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/addClass.jsp</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/adAddCPS.jsp</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/ClassList.java</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/AdminOptions.java</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/adAddMajor.jsp</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/StudentHome.jsp</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/src/java/DAO/CourseDAO.java</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/adminHome.jsp</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/DeleteClass.java</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/src/java/DAO/StudentClassDAO.java</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/ToCourses.java</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/addCourse.java</file>
-            <file>file:/E:/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/UpdateCourse.jsp</file>
+            <file>file:/D:/FPT_University/Semester4_SP2023/PRJ301/Github_PullOrigin/SE1725_PRJ301_Assignment_StudentManagement/src/java/DAO/StudentDAO.java</file>
+            <file>file:/D:/FPT_University/Semester4_SP2023/PRJ301/Github_PullOrigin/SE1725_PRJ301_Assignment_StudentManagement/src/java/DAO/StudentClassDAO.java</file>
+            <file>file:/D:/FPT_University/Semester4_SP2023/PRJ301/Github_PullOrigin/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/StudentWithClassMajor.java</file>
+            <file>file:/D:/FPT_University/Semester4_SP2023/PRJ301/Github_PullOrigin/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/AllStudentOfClass.jsp</file>
+            <file>file:/D:/FPT_University/Semester4_SP2023/PRJ301/Github_PullOrigin/SE1725_PRJ301_Assignment_StudentManagement/web/WEB-INF/web.xml</file>
+            <file>file:/D:/FPT_University/Semester4_SP2023/PRJ301/Github_PullOrigin/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/ClassList.jsp</file>
+            <file>file:/D:/FPT_University/Semester4_SP2023/PRJ301/Github_PullOrigin/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/ClassDetail.java</file>
         </group>
->>>>>>> Stashed changes
     </open-files>
 </project-private>
