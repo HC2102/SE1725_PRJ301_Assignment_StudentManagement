@@ -5,6 +5,7 @@
 package DAO;
 
 import dbConnect.DBContext;
+import dbObject.Student;
 import dbObject.Student_Class;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
  * @author Zarius
  */
 public class StudentClassDAO {
+
     public ArrayList<Student_Class> getAllStudentClass() {
         ArrayList<Student_Class> listStudentClass = new ArrayList<>();
         try {
@@ -41,40 +43,47 @@ public class StudentClassDAO {
         }
         return listStudentClass;
     }
-    
-    public void insertStudentIntoClass(Student_Class stcl) {
+
+    public int insertStudentIntoClass(Student_Class stcl) {
+        int row = 0;
         try {
             DBContext db = new DBContext();
             Connection con = db.getConnection();
             if (con != null) {
                 Statement st = con.createStatement();
                 String sql = "INSERT INTO Student_Class(Student_ID, Class_ID)"
-                        + " values ('" + stcl.getStudent_ID()+ "','" + stcl.getClass_ID()+ "')";
-                int rows = st.executeUpdate(sql);
+                        + " values ('" + stcl.getStudent_ID() + "','" + stcl.getClass_ID() + "')";
+                row = st.executeUpdate(sql);
                 st.close();
                 con.close();
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            row = -1;
         }
+        return row;
     }
-    
-    public void deleteStudentFromClass(String Student_ID) {
+
+
+    public int deleteStudentFromClass(String Student_ID) {
+        int row = 0;
         try {
             DBContext db = new DBContext();
             Connection con = db.getConnection();
             if (con != null) {
                 Statement st = con.createStatement();
-                String sql = "DELETE FROM Student_Class WHERE Student_ID = " + Student_ID + ";";
-                int rows = st.executeUpdate(sql);
+                String sql = "DELETE FROM Student_Class WHERE Student_ID = '" + Student_ID + "'";
+                row = st.executeUpdate(sql);
                 st.close();
                 con.close();
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            row = -1;
         }
+        return row;
     }
-    
+
     public Student_Class getStudentFromClassByStudentID(String Student_ID) {
         try {
             DBContext db = new DBContext();
@@ -98,4 +107,5 @@ public class StudentClassDAO {
         }
         return null;
     }
+
 }

@@ -77,7 +77,7 @@ public class StudentDAO {
             if (con != null) {
                 Statement st = con.createStatement();
                 String sql = "DELETE FROM Student WHERE [User_name] = '" + username + "';";
-               row = st.executeUpdate(sql);
+                row = st.executeUpdate(sql);
                 st.close();
                 con.close();
             }
@@ -94,8 +94,8 @@ public class StudentDAO {
             Connection con = db.getConnection();
             if (con != null) {
                 Statement st = con.createStatement();
-                String sql = "UPDATE [Student] SET  Student_name = '"+s.getStudentName()+"', [Address] ='"+s.getAddress()+"', Phone_number ='"+s.getPhoneNum()+
-                        "', Email='"+s.getEmail()+"' WHERE [User_name] = '"+s.getUserName()+"'";
+                String sql = "UPDATE [Student] SET  Student_name = '" + s.getStudentName() + "', [Address] ='" + s.getAddress() + "', Phone_number ='" + s.getPhoneNum()
+                        + "', Email='" + s.getEmail() + "' WHERE [User_name] = '" + s.getUserName() + "'";
                 int rows = st.executeUpdate(sql);
                 st.close();
                 con.close();
@@ -107,6 +107,7 @@ public class StudentDAO {
         }
         return 0;
     }
+
     public Student getStudent(String ID) {
         try {
             DBContext db = new DBContext();
@@ -194,5 +195,40 @@ public class StudentDAO {
             System.out.println(e.getMessage());
         }
         return listStudentFromClassID;
+    }
+
+    public ArrayList<Student> getAllStudentWithMajorIDAndNotInClass(String Major_ID, String ClassID) {
+        ArrayList<Student> listStudentWithMajorIDAndNotInClass = new ArrayList<>();
+        try {
+            DBContext db = new DBContext();
+            Connection con = db.getConnection();
+            if (con != null) {
+                Statement st = con.createStatement();
+                String sql = "SELECT s.*\n" +
+                                "FROM Student s\n" +
+                                "LEFT JOIN Student_Class sc ON s.Student_ID = sc.Student_ID\n" +
+                                "WHERE s.Major_ID = '" + Major_ID + "' and s.Student_ID not in (SELECT Student_ID "
+                                                                                            + "FROM Student_Class WHERE Class_ID = '" + ClassID + "')";
+                ResultSet rs = st.executeQuery(sql);
+                while (rs.next()) {
+                    Student s = new Student();
+                    s.setStudentID(rs.getString("Student_ID"));
+                    s.setUserName(rs.getString("User_name"));
+                    s.setStudentName(rs.getString("Student_name"));
+                    s.setMajorID(rs.getString("Major_ID"));
+                    s.setPhoneNum(rs.getString("Phone_number"));
+                    s.setAddress(rs.getString("Address"));
+                    s.setEmail(rs.getString("Email"));
+                    listStudentWithMajorIDAndNotInClass.add(s);
+                }
+                rs.close();
+                st.close();
+                con.close();
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return listStudentWithMajorIDAndNotInClass;
     }
 }
