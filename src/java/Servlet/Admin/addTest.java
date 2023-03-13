@@ -39,8 +39,7 @@ public class addTest extends HttpServlet {
             t.setWeight(Integer.parseInt(request.getParameter("weight")));
             row = td.insertTest(t);
             if (row < 1) {
-                request.setAttribute("info", "Failed to add! Please re-check your input!");
-                
+                request.setAttribute("info", "Failed to add! Please re-check your input!");    
                 request.getRequestDispatcher("JSP/addTest.jsp").forward(request, response);
             } else {
                 request.setAttribute("status", "Add test successfully!");

@@ -22,7 +22,7 @@
 
                 <img src="<%= request.getContextPath()%>/image/test.png" alt="">
             </div>
-            <form action="<%= request.getContextPath()%>/addTest" method="post">
+            <form action="<%= request.getContextPath()%>/addTest?id=<%=request.getParameter("id")%>" method="post">
                 <input type="hidden" value="<%request.getParameter("Course_id");%>" name="cid">
                 
                 <div class="row">
@@ -55,7 +55,7 @@
                 <div class="row">
                     
                     <input type="submit" value="Add">   
-                    <a href= "<%= request.getContextPath()%>/CourseTest?id=<%=request.getParameter("id")%>"> <input type="button" value="Back to list"></a>
+                    <a href= "<%= request.getContextPath()%>/CourseTest"> <input type="button" value="Back to list"></a>
                 </div>              
             </form>  
                 <span class="err" style="color: red;"><%
