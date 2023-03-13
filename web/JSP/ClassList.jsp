@@ -16,11 +16,7 @@
         <link href="<%= request.getContextPath()%>/css/table.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <%
-            if (request.getAttribute("classlist") == null) {
-                response.sendRedirect("JSP/Login.jsp");
-            }
-        %>
+       
         <h2>Class List</h2>
         <a href= "<%= request.getContextPath()%>/AdminInfo"> <input style="margin: 1%;margin-left:5%; font-weight: bold; padding: 0.5%" type="Submit" type="button" value="Back"></a>
         <div class="table-wrapper">
@@ -41,7 +37,7 @@
                         <th>Major ID</th>                     
                         <th>Action 1</th>
                         <th>Action 2</th>
-                        <th>Add Student</th>
+                        <th>Detail</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -53,7 +49,7 @@
                         <td><%= c.getMajor_ID()%></td>
                         <td><a href="UpdateClass?id=<%=c.getClass_ID()%>"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Update"></a></td> 
                         <td><a href="DeleteClass?id=<%=c.getClass_ID()%>"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Delete"></a></td>
-                        <td><a href="AddStudent?id=<%=c.getClass_ID()%>"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Add Students"></a></td>
+                        <td><a href="ClassDetail?id=<%=c.getClass_ID()%>"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Class Detail"></a></td>
                     </tr>
 
                     <%}
