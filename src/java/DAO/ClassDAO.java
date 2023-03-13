@@ -74,7 +74,11 @@ public class ClassDAO {
             Connection con = db.getConnection();
             if (con != null) {
                 Statement st = con.createStatement();
-                String sql = "SELECT * FROM Class WHERE Major_ID = '" + majorID + "' ORDER BY Class_ID";
+                String sql = "SELECT c.Class_ID, c.Major_ID FROM Class c, Student_Class sc \n" +
+                                "WHERE c.Class_ID = sc.Class_ID and c.Major_ID = '" +majorID + "' \n" +
+                                "GROUP BY c.Class_ID, c.Major_ID\n" +
+                                "HAVING Count(sc.Student_ID) > 0\n" +
+                                "ORDER BY c.Class_ID";
                 ResultSet rs = st.executeQuery(sql);
                 while (rs.next()) {
                     Class cl = new Class();
