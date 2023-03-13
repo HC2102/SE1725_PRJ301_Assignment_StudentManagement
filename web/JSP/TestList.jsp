@@ -44,8 +44,8 @@
                         <th>Course ID</th>
                         <th>Test Name</th>
                         <th>Weight</th>
-                        <th>Action 1</th>
-                        <th>Action 2</th>    
+                        
+                        <th>Action</th>    
                     </tr>
                 </thead>
                 <tbody> 
@@ -63,7 +63,7 @@
                         <td><%= t.getCourse_id()%></td>
                         <td><%= t.getTest_name()%></td>
                         <td><%= t.getWeight()%></td>
-                        <td><a href="updateTest?id=<%=t.getTest_id()%>"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Update"></a></td> 
+                        
                         <td><a href="deleteTest?id=<%=t.getTest_id()%>"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Delete"></a></td>
                     </tr>
                     <%}%>
