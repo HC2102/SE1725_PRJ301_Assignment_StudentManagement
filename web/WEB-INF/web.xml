@@ -178,6 +178,14 @@
         <servlet-class>Servlet.Admin.addSemester</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>test</servlet-name>
+        <servlet-class>Servlet.Admin.CourseTest</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addTest</servlet-name>
+        <servlet-class>Servlet.Admin.addTest</servlet-class>
+        </servlet>
+<servlet>
         <servlet-name>ClassDetail</servlet-name>
         <servlet-class>Servlet.Admin.ClassDetail</servlet-class>
     </servlet>
@@ -370,6 +378,14 @@
         <url-pattern>/addSemester</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>test</servlet-name>
+        <url-pattern>/CourseTest</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addTest</servlet-name>
+        <url-pattern>/addTest</url-pattern>
+         </servlet-mapping>
+<servlet-mapping>
         <servlet-name>ClassDetail</servlet-name>
         <url-pattern>/ClassDetail</url-pattern>
     </servlet-mapping>
