@@ -20,7 +20,7 @@
     if (request.getAttribute("newclass")==null) {
         response.sendRedirect("Login.jsp");
     }
-%>
+    %>
     <body>
         <h2>Update Class...</h2>
         <%
@@ -28,50 +28,50 @@
             Class c = (Class)request.getAttribute("newclass");
             
         %>
-       <div class="container">
-           
+        <div class="container">
+
             <div class="imgdiv">
                 <img src="<%= request.getContextPath()%>/image/class.png" alt="">
             </div>
-            
+
             <form action="<%= request.getContextPath()%>/UpdateClass?id=<%=c.getClass_ID()%>" method="post">
-                 <div class="row">
+                <div class="row">
                     <div class="col-25">
                         <label for="text">New Class ID:</label>
                     </div>
                     <div class="col-75">
                         <input type="text" name="cid" id="text" placeholder="Class ID" required>
                         <span class="err"><%
-                        String err = (String) request.getAttribute("info");
+                        String err = (String) request.getAttribute("error");
                         if(err!=null && err.compareTo("")!=0) out.println(err);
-                        %> 
+                            %> 
                         </span>
                     </div>
                 </div>            
                 <div class="row">
                     <div class="col-25">
                         <label for="text">Major ID:</label>
-                        
+
                     </div>
                     <div class="col-75">
-                        
+
                         <select name="mid">
-                        <option value="LA">LA</option>
-                        <option value="GD">GD</option>
-                        <option value="SE">SE</option>
-                        <option value="BA">BA</option>
+                            <option value="LA">LA</option>
+                            <option value="GD">GD</option>
+                            <option value="SE">SE</option>
+                            <option value="BA">BA</option>
                         </select>
-                        
+
                     </div>
                 </div>
                 <div class="row">
-                    
+
                     <input type="submit" value="Update">
                     <a href= "<%= request.getContextPath()%>/ClassList"> <input type="button" value="Back to list"></a>
                 </div>
-                
-                 
+
+
             </form>
-       </div>
+        </div>
     </body>
 </html>

@@ -7,12 +7,10 @@ package Servlet.Admin;
 
 import DAO.ClassDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 /**
  *
@@ -25,21 +23,19 @@ public class DeleteClass extends HttpServlet {
     throws ServletException, IOException {
         try {
             int row = 0;
-            HttpSession session = request.getSession();
             ClassDAO cd = new ClassDAO();
             String id = request.getParameter("id");
             row = cd.deleteClass(id);
             if (row < 1) {
-                session.setAttribute("error", "Class deletion failed! This class is in learning process!");
-                session.setAttribute("status",null);
-                response.sendRedirect("ClassList"); 
+                request.setAttribute("error", "Class deletion failed! This class is in learning process!");
+                request.setAttribute("status",null);
+                request.getRequestDispatcher("ClassList").forward(request, response);
             } else {
-                session.setAttribute("status", "Class deletion successfully!");
-                session.setAttribute("error", null);
-                response.sendRedirect("ClassList"); 
+                request.setAttribute("status", "Class deletion successfully!");
+                request.setAttribute("error", null);
+                request.getRequestDispatcher("ClassList").forward(request, response);
             }           
         } catch (Exception E) {
-            return;
         }
     } 
 

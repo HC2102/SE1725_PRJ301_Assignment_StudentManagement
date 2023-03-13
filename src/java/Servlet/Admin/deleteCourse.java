@@ -2,7 +2,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-
 package Servlet.Admin;
 
 import DAO.CourseDAO;
@@ -20,40 +19,38 @@ import jakarta.servlet.http.HttpSession;
  * @author dange
  */
 public class deleteCourse extends HttpServlet {
-   
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         try {
             int row = 0;
-            HttpSession session = request.getSession();
             CourseDAO cd = new CourseDAO();
             String id = request.getParameter("id");
             row = cd.deleteCourse(id);
             if (row < 1) {
-                session.setAttribute("error", "Course deletion failed! This course is active!");
-                session.setAttribute("status",null);
-                response.sendRedirect("ToCourses"); 
+                request.setAttribute("error", "Course deletion failed! This course is active!");
+                request.setAttribute("status", null);
+                request.getRequestDispatcher("ToCourses").forward(request, response);
             } else {
-                session.setAttribute("status", "Course deletion successfully!");
-                session.setAttribute("error", null);
-                response.sendRedirect("ToCourses"); 
-            }           
+                request.setAttribute("status", "Course deletion successfully!");
+                request.setAttribute("error", null);
+                request.getRequestDispatcher("ToCourses").forward(request, response);
+            }
         } catch (Exception E) {
             return;
         }
-    } 
+    }
 
-   
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         this.doGet(request, response);
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
+     *
      * @return a String containing servlet description
      */
     @Override

@@ -8,12 +8,10 @@ package Servlet.Admin;
 import DAO.ClassDAO;
 import dbObject.Class;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import java.util.ArrayList;
 
 /**
@@ -29,12 +27,9 @@ public class UpdateClass extends HttpServlet {
             ClassDAO cd = new ClassDAO();
             ArrayList<dbObject.Class> classlist = cd.getAllClass();
             String id = request.getParameter("id");
-            System.out.println(""+id);
             Class cl = cd.getClass(id);
-            
             if(cl == null){
                 response.sendRedirect("ClassList");
-                return;
             }else{
                 request.setAttribute("newclass", cl);
                 request.setAttribute("classlist", classlist);
@@ -51,7 +46,6 @@ public class UpdateClass extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         try{
-            HttpSession session = request.getSession();
             ClassDAO cd = new ClassDAO();
             String id = request.getParameter("id");
             String newid = request.getParameter("cid");
@@ -59,22 +53,16 @@ public class UpdateClass extends HttpServlet {
             int row = 0;
             row=cd.updateClass(id,mid,newid);
             if (row < 1) {
-                session.setAttribute("status",null);   
-                request.setAttribute("info", null);
-                session.setAttribute("error", "Update failed! Class ID already existed or class is currently in learning session!");
-                response.sendRedirect("ClassList");
-                return;
-                
+                request.setAttribute("status",null);   
+                request.setAttribute("error", "Update failed! Class ID already existed or class is currently in learning session!");
+                request.getRequestDispatcher("ClassList").forward(request, response);
             } else {
-                session.setAttribute("error", null);
-                request.setAttribute("info", null);
-                session.setAttribute("status", "Update success!");
-                response.sendRedirect("ClassList"); 
+                request.setAttribute("error", null);
+                request.setAttribute("status", "Update success!");
+                request.getRequestDispatcher("ClassList").forward(request, response);
             }          
         }catch(Exception e){
-            request.setAttribute("error", "Error!");
             request.getRequestDispatcher("JSP/UpdateClass.jsp").forward(request, response);
-            return;
         }
     }
 }
