@@ -54,15 +54,14 @@ public class updateCourse extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         try{
-            HttpSession session = request.getSession();
             CourseDAO cd = new CourseDAO();
             String id = request.getParameter("id");
             String cname = request.getParameter("name");
             String bio = request.getParameter("bio");
             cd.updateCourse(id,cname,bio);
-            session.setAttribute("status","Update course successfully!"); 
+            request.setAttribute("status","Update course successfully!"); 
             
-            response.sendRedirect("ToCourses");   
+            request.getRequestDispatcher("ToCourses").forward(request, response); 
         }catch(Exception e){
             request.setAttribute("error", "Error!");
             request.getRequestDispatcher("JSP/UpdateCourse.jsp").forward(request, response);

@@ -7,7 +7,6 @@ package Servlet.Admin;
 
 import DAO.ClassDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -24,8 +23,12 @@ public class ClassList extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ClassDAO cd = new ClassDAO();
+        String status = (String)request.getAttribute("status");
+        String error = (String)request.getAttribute("error");
         ArrayList<dbObject.Class> classlist = cd.getAllClass();
         request.setAttribute("classlist", classlist);
+        request.setAttribute("status", status);
+        request.setAttribute("error", error);
         request.getRequestDispatcher("JSP/ClassList.jsp").forward(request, response);
     }
 

@@ -25,12 +25,12 @@
         <a href= "<%= request.getContextPath()%>/AdminInfo"> <input style="margin: 1%;margin-left:5%; font-weight: bold; padding: 0.5%" type="Submit" type="button" value="Back"></a>
         <div class="table-wrapper">
             <span class="status"><%
-                String info = (String) session.getAttribute("status");
+                String info = (String) request.getAttribute("status");
                 if (info != null && info.compareTo("") != 0)
                     out.println(info);
                 %> 
             </span>
-            <span class="error"><% String err = (String) session.getAttribute("error");
+            <span class="error"><% String err = (String) request.getAttribute("error");
                 if (err != null && err.compareTo("") != 0)
                     out.println(err); %>
             </span>

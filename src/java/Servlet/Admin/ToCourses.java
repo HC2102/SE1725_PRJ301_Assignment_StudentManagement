@@ -23,8 +23,12 @@ public class ToCourses extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         CourseDAO cd = new CourseDAO();
+        String status = (String)request.getAttribute("status");
+        String error = (String)request.getAttribute("error");
         ArrayList<Course> clist = cd.getAllCourse();
         request.setAttribute("clist", clist);
+        request.setAttribute("status", status);
+        request.setAttribute("error", error);
         request.getRequestDispatcher("JSP/Course.jsp").forward(request, response);
     }
 
