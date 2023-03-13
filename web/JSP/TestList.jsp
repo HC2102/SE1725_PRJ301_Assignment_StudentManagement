@@ -19,21 +19,21 @@
     </head>
     <body>
         <%
-
             if (request.getAttribute("tlist") == null) {
                 response.sendRedirect("Login.jsp");
             }
         %>
+        <% String courseID = (String)request.getAttribute("courseID");%>
         <h2>Test List</h2>
         <a href= "<%= request.getContextPath()%>/ToCourses"> <input style="margin: 1%;margin-left:5%; font-weight: bold; padding: 0.5%" type="Submit" type="button" value="Back"></a>
         <div class="table-wrapper">
             <span class="status"><%
-                String info = (String) session.getAttribute("status");
+                String info = (String) request.getAttribute("status");
                 if (info != null && info.compareTo("") != 0)
                     out.println(info);
                 %> 
             </span>
-            <span class="error"><% String err = (String) session.getAttribute("error");
+            <span class="error"><% String err = (String) request.getAttribute("error");
                 if (err != null && err.compareTo("") != 0)
                     out.println(err); %>
             </span>
@@ -64,7 +64,7 @@
                         <td><%= t.getTest_name()%></td>
                         <td><%= t.getWeight()%></td>
                         
-                        <td><a href="deleteTest?id=<%=t.getTest_id()%>"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Delete"></a></td>
+                        <td><a href="deleteTest?id=<%=t.getTest_id()%>&crsID=<%= t.getCourse_id()%>"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Delete"></a></td>
                     </tr>
                     <%}%>
                 <tbody>
@@ -73,7 +73,7 @@
 
         </div>
         <div style="display: flex; justify-content: center;">
-            <a href="<%= request.getContextPath()%>/JSP/addTest.jsp?id=<%=request.getParameter("id")%>"><input style=" font-weight: bold; padding: 5%" type="Submit" value="Add test and its weight..."></a>
+            <a href="<%= request.getContextPath()%>/JSP/addTest.jsp?id=<%=courseID%>"><input style=" font-weight: bold; padding: 5%" type="Submit" value="Add test and its weight..."></a>
         </div>
 
     </body>

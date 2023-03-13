@@ -25,9 +25,9 @@ public class CourseTest extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         TestDAO td = new TestDAO();
-        String id =(String) request.getParameter("id");
-        System.out.println(id);
-        ArrayList<Test> t = td.getTestbyID(id);
+        String courseID = request.getParameter("id");
+        ArrayList<Test> t = td.getTestbyID(courseID);
+        request.setAttribute("courseID", courseID);
         request.setAttribute("tlist", t);
         request.getRequestDispatcher("JSP/TestList.jsp").forward(request, response);
     }

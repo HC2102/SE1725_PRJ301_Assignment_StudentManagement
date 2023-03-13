@@ -91,14 +91,14 @@ public class TestDAO {
         return row;
     }
     //warning: delete cascade will delete the user and all common entirely? make sure to user them
-    public int deleteTest(String id) {
+    public int deleteTest(String id, String Course_ID) {
          int row = 0;
         try {
             DBContext db = new DBContext();
             Connection con = db.getConnection();
             if (con != null) {
                 Statement st = con.createStatement();
-                String sql = "DELETE FROM [Test] WHERE [Test_id] = '" + id + "';";
+                String sql = "DELETE FROM [Test] WHERE [Test_id] = '" + id + "' and Course_ID = '" + Course_ID + "';";
                 row = st.executeUpdate(sql);
                 st.close();
                 con.close();
