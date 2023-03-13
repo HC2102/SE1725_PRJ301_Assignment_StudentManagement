@@ -6,7 +6,9 @@
 package Servlet.Admin;
 
 import DAO.ClassDAO;
+import DAO.MajorDAO;
 import dbObject.Class;
+import dbObject.Major;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -27,7 +29,9 @@ public class UpdateClass extends HttpServlet {
         try {
             int row = 0;
             ClassDAO cd = new ClassDAO();
+            MajorDAO md = new MajorDAO();
             ArrayList<dbObject.Class> classlist = cd.getAllClass();
+            ArrayList<Major> majorList = md.getAllMajors();
             String id = request.getParameter("id");
             System.out.println(""+id);
             Class cl = cd.getClass(id);
@@ -38,6 +42,7 @@ public class UpdateClass extends HttpServlet {
             }else{
                 request.setAttribute("newclass", cl);
                 request.setAttribute("classlist", classlist);
+                request.setAttribute("majorlist", majorList);
                 request.getRequestDispatcher("JSP/UpdateClass.jsp").forward(request, response);
             }
         } catch (Exception e) {
