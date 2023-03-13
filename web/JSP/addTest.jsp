@@ -22,7 +22,8 @@
 
                 <img src="<%= request.getContextPath()%>/image/test.png" alt="">
             </div>
-            <form action="<%= request.getContextPath()%>/addTest?id=<%=request.getParameter("id")%>" method="post">
+                <%String courseID = request.getParameter("id");%>
+            <form action="<%= request.getContextPath()%>/addTest?id=<%=courseID%>" method="post">
                 <input type="hidden" value="<%request.getParameter("Course_id");%>" name="cid">
                 
                 <div class="row">
@@ -41,7 +42,7 @@
 
                     </div>
                     <div class="col-75">
-                        <input type="text" name="name" id="text" placeholder="Test name" required>
+                        <input type="text" name="tName" id="text" placeholder="Test name" required>
                     </div>
                 </div>
                 <div class="row">
@@ -49,13 +50,13 @@
                         <label for="text">Weight:</label>
                     </div>
                     <div class="col-75" >
-                        <input type="number" name="name" id="text" placeholder="Weight" required>
+                        <input type="number" name="tWei" id="text" placeholder="Weight" required>
                     </div>
                 </div>
                 <div class="row">
                     
                     <input type="submit" value="Add">   
-                    <a href= "<%= request.getContextPath()%>/CourseTest"> <input type="button" value="Back to list"></a>
+                    <a href= "<%= request.getContextPath()%>/CourseTest?id=<%=courseID%>"> <input type="button" value="Back to list"></a>
                 </div>              
             </form>  
                 <span class="err" style="color: red;"><%
