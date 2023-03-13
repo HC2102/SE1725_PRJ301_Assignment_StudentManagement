@@ -4,6 +4,7 @@
     Author     : dange
 --%>
 
+<%@page import="DAO.TestDAO"%>
 <%@page import="dbObject.Test" %>
 <%@page import="java.util.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -17,8 +18,8 @@
         <link href="<%= request.getContextPath()%>/css/table.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <%  
-            
+        <%
+
             if (request.getAttribute("tlist") == null) {
                 response.sendRedirect("Login.jsp");
             }
@@ -48,11 +49,15 @@
                     </tr>
                 </thead>
                 <tbody> 
-                    <%  
-             ArrayList<Test> tlist = ( ArrayList<Test>) request.getAttribute("tlist");
-             String courseId = tlist.get(0).getCourse_id();
-             for(Test t: tlist){
-        %>
+                    <%
+                        ArrayList<Test> tlist = (ArrayList<Test>) request.getAttribute("tlist");
+                        if (tlist == null || tlist.size() == 0) {
+                            TestDAO tdao = new TestDAO();
+                            tlist = tdao.getTestbyID(request.getParameter("id"));
+                        }
+
+                        for (Test t : tlist) {
+                    %>
                     <tr>
                         <td><%= t.getTest_id()%></td>
                         <td><%= t.getCourse_id()%></td>
@@ -68,7 +73,7 @@
 
         </div>
         <div style="display: flex; justify-content: center;">
-            <a href="<%= request.getContextPath()%>/JSP/addTest.jsp?Course_id=<%=courseId%>"><input style=" font-weight: bold; padding: 5%" type="Submit" value="Add test and its weight..."></a>
+            <a href="<%= request.getContextPath()%>/JSP/addTest.jsp?id=<%=request.getParameter("id")%>"><input style=" font-weight: bold; padding: 5%" type="Submit" value="Add test and its weight..."></a>
         </div>
 
     </body>

@@ -55,7 +55,7 @@
                 <div class="row">
                     
                     <input type="submit" value="Add">   
-                    <a href= "<%= request.getContextPath()%>/CourseTest"> <input type="button" value="Back to list"></a>
+                    <a href= "<%= request.getContextPath()%>/CourseTest?id=<%=request.getParameter("id")%>"> <input type="button" value="Back to list"></a>
                 </div>              
             </form>  
                 <span class="err" style="color: red;"><%
