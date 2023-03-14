@@ -31,13 +31,20 @@ public class StudentInfoServlet extends HttpServlet {
 
         //get user name
         String userName = (String) session.getAttribute("userName");
+        System.out.println(userName);
         //get student and class
         Student s = stuDAO.getStudentByUsername(userName);
         Student_Class stcl = stclDAO.getStudentFromClassByStudentID(s.getStudentID());
-
+            System.out.println(s.toString());
+            System.out.println(stcl);
         //attribute for session
         session.setAttribute("userStudent", s);
-        session.setAttribute("studentClass", stcl);
+        if(stcl != null){
+             session.setAttribute("studentClass", stcl);
+        }else{
+            stcl = new Student_Class(userName, "null");
+            session.setAttribute("studentClass", stcl);
+        }
         req.getRequestDispatcher("JSP/StudentHome.jsp").forward(req, resp);
         }catch(Exception  e){
             System.out.println("StudentInfoServlet, there may be empty in this class or other unexpected error");

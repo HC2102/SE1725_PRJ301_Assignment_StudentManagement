@@ -11,8 +11,8 @@
 <%@page errorPage="error.jsp" %>
 <!DOCTYPE html>
 <%
-    if (session.getAttribute("userStudent") == null || session.getAttribute("studentClass") == null) {
-        response.sendRedirect("Login.jsp");
+    if (session.getAttribute("userStudent") == null) {
+        response.sendRedirect("JSP/Login.jsp");
     }
 %>
 <html lang="en">

@@ -143,7 +143,7 @@ public class StudentDAO {
             Connection con = db.getConnection();
             if (con != null) {
                 Statement st = con.createStatement();
-                String sql = "SELECT * FROM Student WHERE User_name = '" + Username + "';";
+                String sql = "SELECT * FROM Student WHERE User_name = '" + Username + "'";
                 ResultSet rs = st.executeQuery(sql);
                 if (rs.next()) {
                     Student s = new Student();
