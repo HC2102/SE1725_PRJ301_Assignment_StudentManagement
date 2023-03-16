@@ -23,17 +23,17 @@
 
         %>
         <h2>Class <%=classID%></h2>
-        <a href= "<%= request.getContextPath()%>/ClassList"> <input style="margin: 1%;margin-left:5%; font-weight: bold; padding: 0.5%" type="Submit" type="button" value="Back"></a>
+
         <span class="status"><%
                 String info = (String) request.getAttribute("status");
                 if (info != null && info.compareTo("") != 0)
                     out.println(info);
-                %> 
-            </span>
-            <span class="error"><% String err = (String) request.getAttribute("error");
-                if (err != null && err.compareTo("") != 0)
-                    out.println(err); %>
-            </span>
+            %> 
+        </span>
+        <span class="error"><% String err = (String) request.getAttribute("error");
+            if (err != null && err.compareTo("") != 0)
+                out.println(err); %>
+        </span>
         <div class="table-wrapper">
             <table class="fl-table">
                 <thead>
@@ -59,8 +59,12 @@
                 </tbody>
             </table>
         </div>
-        <div style="display: flex; justify-content: center;">
-            <a href="<%= request.getContextPath()%>/StudentWithClassMajor?id=<%=classID%>"><input style=" font-weight: bold; padding: 5%" type="Submit" value="Add Student"></a>
+
+        <div style="display: flex; margin-left: 42%; margin-top: 3%">
+            <a style="margin-right: 3%" href= "<%= request.getContextPath()%>/ClassList"> <input style=" font-weight: bold; padding: 12%" type="Submit" type="button" value="Back"></a>
+            <div style="display: flex; justify-content: center;">
+                <a href="<%= request.getContextPath()%>/StudentWithClassMajor?id=<%=classID%>"><input style=" font-weight: bold; padding: 5%" type="Submit" value="Add Student"></a>
+            </div>
         </div>
     </body>
 </html>

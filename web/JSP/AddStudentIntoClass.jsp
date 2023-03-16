@@ -22,8 +22,8 @@
             String classID = (String) request.getAttribute("classID");
         %>
         <h2>Add Student To Class <%=classID%></h2>
-        <a href= "<%= request.getContextPath()%>/ClassDetail?id=<%=classID%>"> <input style="margin: 1%;margin-left:5%; font-weight: bold; padding: 0.5%" type="Submit" type="button" value="Back"></a>
-        
+
+
         <span class="status"><%
                 String info = (String) request.getAttribute("status");
                 if (info != null && info.compareTo("") != 0)
@@ -59,5 +59,6 @@
                 </tbody>
             </table>
         </div>
+        <a href= "<%= request.getContextPath()%>/ClassDetail?id=<%=classID%>"> <input style="margin-top:2%;margin-left:47%; font-weight: bold; padding: 0.5%" type="Submit" type="button" value="Back"></a>
     </body>
 </html>

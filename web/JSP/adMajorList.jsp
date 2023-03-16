@@ -50,8 +50,8 @@
                         <th><%=m.getID()%></th>
                         <th><%=m.getName()%></th>
                         <th><%=m.getBio()%></th>
-                        <th><a style="text-decoration: none; font-weight: bold; border: 3px solid teal;" href="updateMajor?upID=<%=m.getID()%>">Update</a></th>
-                        <th><a style="text-decoration: none; font-weight: bold; border: 3px solid teal;" href="deleteMajor?delID=<%=m.getID()%>" class="confirmation">Delete</a></th>
+                        <th><a href="updateMajor?upID=<%=m.getID()%>"><input class="id" style="margin-right: 1%; font-weight: bold;" type="Submit" value="Update"></a></th>
+                        <th><a href="deleteMajor?delID=<%=m.getID()%>"><input class="id" style="margin-right: 1%; font-weight: bold;" type="Submit" value="Delete"></a></th>
                     </tr>
                     <%
                             }
@@ -69,8 +69,8 @@
 
         </div>
         <div style=" text-align: center; margin-bottom: 2%;">
-            <a href="addMajor" ><input type="button" value="Add more Major" style="padding:10px"></a>
-            <a href="AdminInfo"><input type="button" value="Back to homepage" style="padding:10px"></a>
+            <a href="addMajor" ><input class="id" type="button" value="Add more Major" style="padding:10px; font-weight: bold"></a>
+            <a href="AdminInfo"><input class="id" type="button" value="Back to homepage" style="padding:10px; font-weight: bold"></a>
         </div>
         <script type="text/javascript">
             var elems = document.getElementsByClassName('confirmation');

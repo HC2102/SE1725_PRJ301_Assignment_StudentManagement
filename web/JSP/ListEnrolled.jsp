@@ -23,7 +23,7 @@
         <%ArrayList<Enrolled> listEnrolled = (ArrayList<Enrolled>)request.getAttribute("listEnrolled");%>
 
         <h2>List Enrolled</h2>
-        <a href= "<%= request.getContextPath()%>/AdminInfo"> <input style="margin: 1%;margin-left:5%; font-weight: bold; padding: 0.5%" type="Submit" type="button" value="Back"></a>
+
         <span class="status">
             <%
                         String status = (String) request.getAttribute("status");
@@ -63,8 +63,11 @@
                 </tbody>
             </table>
         </div>
-        <form style=" padding-left: 42%;"  action="addEnrolled" method="post"> 
-            <input style=" padding: 1%; font-weight: bold;" type="submit" value="Add Enrolled" name="addEnrolled">
-        </form>
+        <div style="display: flex; margin-left: 45%; margin-top: 2%">
+            <a style="margin-right: 2%" href= "<%= request.getContextPath()%>/AdminInfo"> <input style="font-weight: bold; padding: 14%" type="Submit" type="button" value="Back"></a>
+            <form action="addEnrolled" method="post"> 
+                <input style=" padding: 5%; font-weight: bold;" type="submit" value="Add Enrolled" name="addEnrolled">
+            </form>
+        </div>
     </body>
 </html>
