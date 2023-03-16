@@ -51,7 +51,7 @@
                         <th><%=m.getName()%></th>
                         <th><%=m.getBio()%></th>
                         <th><a href="updateMajor?upID=<%=m.getID()%>"><input class="id" style="margin-right: 1%; font-weight: bold;" type="Submit" value="Update"></a></th>
-                        <th><a href="deleteMajor?delID=<%=m.getID()%>"><input class="id" style="margin-right: 1%; font-weight: bold;" type="Submit" value="Delete"></a></th>
+                        <th><a href="deleteMajor?delID=<%=m.getID()%>"><input class="id confirmation" style="margin-right: 1%; font-weight: bold;" type="Submit" value="Delete"></a></th>
                     </tr>
                     <%
                             }

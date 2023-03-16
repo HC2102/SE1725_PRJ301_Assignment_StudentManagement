@@ -48,7 +48,8 @@ public class AdminOptions extends HttpServlet {
 //                resp.sendRedirect("ClassList");
                 req.getRequestDispatcher("ClassList").forward(req, resp);
             case "Semester setting":
-                resp.sendRedirect("adSemesterList");
+                req.getRequestDispatcher("adSemesterList").forward(req, resp);
+//                resp.sendRedirect("adSemesterList");
                 break;
             default:
                 throw new AssertionError();

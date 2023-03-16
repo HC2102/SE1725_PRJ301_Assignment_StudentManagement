@@ -54,7 +54,7 @@
                             <th><%=s.getTime_start()%></th>
                             <th><%=s.getTime_end()%></th>
                             <th> <input class="cfActive" type="radio" name="isActive" value="<%=s.getSemester_ID()%>" <%=s.isCurrent_Semester()==true?"Checked":""%> onchange="change()"></th>
-                            <th><a href="deleteSemester?delSem=<%=s.getSemester_ID()%>"><input class="id" style="margin-right: 1%; font-weight: bold;" type="Submit" value="Update"></a></th>
+                            <th><a href="deleteSemester?delSem=<%=s.getSemester_ID()%>"><input class="id confirmation" style="margin-right: 1%; font-weight: bold;" type="Submit" value="Update"></a></th>
                         </tr>
                         <%
                                 }

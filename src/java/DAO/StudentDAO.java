@@ -57,7 +57,7 @@ public class StudentDAO {
                 Statement st = con.createStatement();
                 String sql = "INSERT INTO Student(Student_ID, User_name, Student_name, Major_ID, Phone_number, Address, Email)"
                         + " values ('" + s.getStudentID() + "','" + s.getUserName() + "','" + s.getStudentName() + "','" + s.getMajorID() + "','"
-                        + s.getPhoneNum() + "','" + s.getAddress() + "','" + s.getPhoneNum() + "')";
+                        + s.getPhoneNum() + "','" + s.getAddress() + "','" + s.getEmail() + "')";
                 row = st.executeUpdate(sql);
                 st.close();
                 con.close();

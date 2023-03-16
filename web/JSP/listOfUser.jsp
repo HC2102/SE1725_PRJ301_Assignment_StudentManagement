@@ -70,7 +70,7 @@
                             }
                             %></th>
                         <th><a href="updateUser?upname=<%=u.getUserName()%>"><input class="id" style="margin-right: 1%; font-weight: bold;" type="Submit" value="Update"></a></th>
-                        <th><a href="deleteUser?delname=<%=u.getUserName()%>&role=<%=u.getRole()%>"><input class="id" style="margin-right: 1%; font-weight: bold;" type="Submit" value="Delete"></a></th>
+                        <th><a href="deleteUser?delname=<%=u.getUserName()%>&role=<%=u.getRole()%>"><input class="id confirmation" style="margin-right: 1%; font-weight: bold;" type="Submit" value="Delete"></a></th>
                     </tr>
 
                     <%
