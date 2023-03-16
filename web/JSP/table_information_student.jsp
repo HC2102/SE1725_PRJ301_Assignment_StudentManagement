@@ -91,6 +91,6 @@
                     history.back();
                 }
             </script>
-            <a style="margin-left: 45%" href="<%= request.getContextPath()%>\teacherInfo"><input class="but" type="button" value="Back to homepage"></a>
+            <a style="margin-left: 45%" href="<%= request.getContextPath()%>\teacherInfo"><input class="id" type="button" value="Back to homepage"></a>
         </body>
     </html>

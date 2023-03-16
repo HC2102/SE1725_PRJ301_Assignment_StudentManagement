@@ -23,7 +23,7 @@
         %>
 
         <h2>List Course Teach by Teacher</h2>
-        <a href= "<%= request.getContextPath()%>/AdminInfo"> <input style="margin: 1%;margin-left:5%; font-weight: bold; padding: 0.5%" type="Submit" type="button" value="Back"></a>
+
         <span class="status">
             <%
                         String status = (String) request.getAttribute("status");
@@ -31,11 +31,11 @@
                             out.println(status);
             %> 
         </span>
-        
+
         <span class="error"><% String err = (String) request.getAttribute("error");
                 if (err != null && err.compareTo("") != 0)
                     out.println(err); %>
-            </span>
+        </span>
 
         <div class="table-wrapper">
             <table class="fl-table">
@@ -67,8 +67,12 @@
                 </tbody>
             </table>
         </div>
-        <form style=" padding-left: 42%;"  action="InsertCPS" method="post"> 
-            <input style=" padding: 1%; font-weight: bold;" type="submit" value="Add CPS" name="addCPS">
-        </form>
+                
+                <div style="display: flex; margin-top: 3%; margin-left: 45%">
+            <a href= "<%= request.getContextPath()%>/AdminInfo"> <input style="font-weight: bold; padding: 6%;" type="Submit" type="button" value="Back"></a>
+            <form    action="InsertCPS" method="post"> 
+                <input style=" padding: 4%; font-weight: bold; margin-left: 20%" type="submit" value="Add CPS" name="addCPS">
+            </form>
+        </div>
     </body>
 </html>

@@ -54,7 +54,7 @@
                             <th><%=s.getTime_start()%></th>
                             <th><%=s.getTime_end()%></th>
                             <th> <input class="cfActive" type="radio" name="isActive" value="<%=s.getSemester_ID()%>" <%=s.isCurrent_Semester()==true?"Checked":""%> onchange="change()"></th>
-                            <th><a style="text-decoration: none; font-weight: bold; border: 3px solid teal;" href="deleteSemester?delSem=<%=s.getSemester_ID()%>" class="confirmation">Delete</a></th>
+                            <th><a href="deleteSemester?delSem=<%=s.getSemester_ID()%>"><input class="id" style="margin-right: 1%; font-weight: bold;" type="Submit" value="Update"></a></th>
                         </tr>
                         <%
                                 }
@@ -72,8 +72,8 @@
 
         </div>
         <div style=" text-align: center; margin-bottom: 2%;">
-            <a href="addSemester" ><input type="button" value="Add Semester" style="padding:10px"></a>
-            <a href="AdminInfo"><input type="button" value="Back to homepage" style="padding:10px"></a>
+            <a href="addSemester" ><input class="id" type="button" value="Add Semester" style="padding:10px; font-weight: bold"></a>
+            <a href="AdminInfo"><input class="id" type="button" value="Back to homepage" style="padding:10px; font-weight: bold"></a>
         </div>
         <script type="text/javascript">
             var elems = document.getElementsByClassName('confirmation');

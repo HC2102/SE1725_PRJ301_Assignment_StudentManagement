@@ -32,7 +32,7 @@
                     <option value="2">Teacher</option>
                 </select>
             </form>
-             <!--end of search by role-->
+            <!--end of search by role-->
             <span class="status"><%
                 String info = (String) request.getAttribute("status");
                 if (info != null && info.compareTo("") != 0)
@@ -69,9 +69,10 @@
                                 out.print("Teacher");
                             }
                             %></th>
-                        <th><a style="text-decoration: none; font-weight: bold; border: 3px solid teal;" href="updateUser?upname=<%=u.getUserName()%>">Update</a></th>
-                        <th><a style="text-decoration: none; font-weight: bold; border: 3px solid teal;" href="deleteUser?delname=<%=u.getUserName()%>&role=<%=u.getRole()%>" class="confirmation">Delete</a></th>
+                        <th><a href="updateUser?upname=<%=u.getUserName()%>"><input class="id" style="margin-right: 1%; font-weight: bold;" type="Submit" value="Update"></a></th>
+                        <th><a href="deleteUser?delname=<%=u.getUserName()%>&role=<%=u.getRole()%>"><input class="id" style="margin-right: 1%; font-weight: bold;" type="Submit" value="Delete"></a></th>
                     </tr>
+
                     <%
                             }
                         }
@@ -88,8 +89,8 @@
 
         </div>
         <div style=" text-align: center; margin-bottom: 2%;">
-            <a href="adAddUser" ><input type="button" value="Add more user" style="padding:10px"></a>
-            <a href="<%= request.getContextPath()%>/AdminInfo"><input type="button" value="Back to homepage" style="padding:10px"></a>
+            <a href="adAddUser" ><input class="id" type="button" value="Add more user" style="padding:10px; font-weight: bold"></a>
+            <a href="<%= request.getContextPath()%>/AdminInfo"><input class="id" type="button" value="Back to homepage" style="padding:10px; font-weight: bold  "></a>
         </div>
         <script type="text/javascript">
             var elems = document.getElementsByClassName('confirmation');
@@ -101,7 +102,7 @@
                 elems[i].addEventListener('click', confirmIt, false);
             }
             function change() {
-                    document.getElementById("f1").submit();
+                document.getElementById("f1").submit();
             }
         </script>
     </body>
