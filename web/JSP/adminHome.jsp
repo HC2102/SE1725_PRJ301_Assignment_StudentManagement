@@ -24,7 +24,7 @@
         <div class="ctr1">
             <a style="text-decoration: none; font-family:'Times New Roman'; margin-left:5%; margin-top:1%;" href="<%= request.getContextPath()%>/AdminInfo"><H1>Home</H1></a>
             <div class="headerbutton">
-                <a href="<%= request.getContextPath()%>/JSP/ChangePass.jsp"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Change Password"></a>
+                <a style="margin-right: 5%" href="<%= request.getContextPath()%>/JSP/ChangePass.jsp"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Change Password"></a>
                 <a href="<%= request.getContextPath()%>/logout"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Log out"></a>
             </div>
 
@@ -43,13 +43,13 @@
                 <p>Your Email:<%=ad.getAdmin_email()%></p>
             </div>
         </div>
-        <form style="padding-top: 5%; padding-left: 42%;"  action="AdminOptions" method="post" >
+        <form style="padding-top: 5%; padding-left: 30%;"  action="AdminOptions" method="post" >
             <input style=" padding: 1%; font-weight: bold; margin-right: 1% ;" type="submit" value="List CPS" name="option">
             <input style=" padding: 1%; font-weight: bold; margin-right: 1% ;" type="submit" value="User Data" name="option">            
             <input style=" padding: 1%; font-weight: bold; margin-right: 1% ;" type="submit" value="Add course"name="option"> 
             <input style=" padding: 1%; font-weight: bold; margin-right: 1% ;" type="submit" value="Classes" name="option">
             <input style=" padding: 1%; font-weight: bold; margin-right: 1% ;" type="submit" value="Semester setting" name="option">
-            <input style=" padding: 1%; font-weight: bold;" type="submit" value="List Enrolled" name="option">
+            <input style=" padding: 1%; font-weight: bold; margin-right: 1%" type="submit" value="List Enrolled" name="option">
             <input style=" padding: 1%; font-weight: bold; margin-right: 1% ;" type="submit" value="Major Data" name="option">
         </form>
 

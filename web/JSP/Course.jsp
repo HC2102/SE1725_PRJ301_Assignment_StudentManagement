@@ -22,7 +22,7 @@
             }
         %>
         <h2>Course List</h2>
-        <a href= "<%= request.getContextPath()%>/AdminInfo"> <input style="margin: 1%;margin-left:5%; font-weight: bold; padding: 0.5%" type="Submit" type="button" value="Back"></a>
+
         <div class="table-wrapper">
             <span class="status"><%
                 String info = (String) request.getAttribute("status");
@@ -55,9 +55,9 @@
                         <td><%= c.getCourse_name()%></td>
                         <td><%= c.getMajor_ID()%></td>
                         <td><%= c.getBiographic()%></td>
-                        <td><a href="updateCourse?id=<%=c.getCourse_ID()%>"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Update"></a></td> 
-                        <td><a href="deleteCourse?id=<%=c.getCourse_ID()%>"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Delete"></a></td>
-                        <td><a href="CourseTest?id=<%=c.getCourse_ID()%>"><input style="margin-right: 1%; font-weight: bold;" type="Submit" value="Details"></a></td>
+                        <td><a href="updateCourse?id=<%=c.getCourse_ID()%>"><input class="id" style="margin-right: 1%; font-weight: bold;" type="Submit" value="Update"></a></td> 
+                        <td><a href="deleteCourse?id=<%=c.getCourse_ID()%>"><input class="id" style="margin-right: 1%; font-weight: bold;" type="Submit" value="Delete"></a></td>
+                        <td><a href="CourseTest?id=<%=c.getCourse_ID()%>"><input class="id" style="margin-right: 1%; font-weight: bold;" type="Submit" value="Details"></a></td>
                     </tr>
 
                     <%}
@@ -68,8 +68,12 @@
             </table>
 
         </div>
-        <div style="display: flex; justify-content: center;">
-            <a href="<%= request.getContextPath()%>/JSP/addCourse.jsp"><input style=" font-weight: bold; padding: 5%" type="Submit" value="Add more courses..."></a>
+
+        <div style="display: flex; margin-left: 42%; margin-top: 2%">
+            <a style="margin-right: 2%"  href= "<%= request.getContextPath()%>/AdminInfo"> <input class="id" style="; font-weight: bold; padding: 10%;" type="Submit" type="button" value="Back"></a>
+            <div>
+                <a href="<%= request.getContextPath()%>/JSP/addCourse.jsp"><input class="id" style=" font-weight: bold; padding: 3%" type="Submit" value="Add more courses"></a>
+            </div>
         </div>
 
     </body>
