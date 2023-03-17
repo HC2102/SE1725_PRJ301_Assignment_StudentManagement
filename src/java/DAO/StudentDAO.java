@@ -204,7 +204,7 @@ public class StudentDAO {
             Connection con = db.getConnection();
             if (con != null) {
                 Statement st = con.createStatement();
-                String sql = "SELECT s.*\n" +
+                String sql = "SELECT distinct s.*\n" +
                                 "FROM Student s\n" +
                                 "LEFT JOIN Student_Class sc ON s.Student_ID = sc.Student_ID\n" +
                                 "WHERE s.Major_ID = '" + Major_ID + "' and s.Student_ID not in (SELECT Student_ID "

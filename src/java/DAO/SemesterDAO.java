@@ -31,7 +31,7 @@ public class SemesterDAO {
             Connection con = db.getConnection();
             if (con != null) {
                 Statement st = con.createStatement();
-                String sql = "SELECT * FROM Semester";
+                String sql = "SELECT * FROM Semester ORDER BY Time_start";
                 ResultSet rs = st.executeQuery(sql);
                 while (rs.next()) {
                     Semester sem = new Semester();
