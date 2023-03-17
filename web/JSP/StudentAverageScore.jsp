@@ -18,6 +18,10 @@
         <link rel="stylesheet" href="<%= request.getContextPath()%>/css/home_studentstyle.css">
         <title>student's score information</title>
     </head>
+    <%
+        if (session.getAttribute("userName") == null || session.getAttribute("userType").toString().compareToIgnoreCase("student") != 0) {
+            response.sendRedirect(request.getContextPath()+"/loginServlet");}
+    %>
     <body>
         <%
             Student stu = (Student) session.getAttribute("userStudent");

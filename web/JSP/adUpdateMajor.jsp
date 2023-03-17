@@ -16,6 +16,10 @@
         <link rel="stylesheet" href="<%= request.getContextPath()%>/css/CourseStyle_1.css">
     </head>
     <body>
+        <%
+        if (session.getAttribute("userName") == null || session.getAttribute("userType").toString().compareToIgnoreCase("admin") != 0) {
+            response.sendRedirect(request.getContextPath()+"/loginServlet");}
+    %>
         <h2>Update major</h2>
         <div class="container">
             <div class="imgdiv">

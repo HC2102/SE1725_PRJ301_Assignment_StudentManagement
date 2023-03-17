@@ -17,6 +17,10 @@
     </head>
     <body>
         <%
+        if (session.getAttribute("userName") == null || session.getAttribute("userType").toString().compareToIgnoreCase("admin") != 0) {
+            response.sendRedirect(request.getContextPath()+"/loginServlet");}
+    %>
+        <%
             ArrayList<Major> mList = ( ArrayList<Major>) request.getAttribute("mList");
         %>
         <h2>Major data</h2>

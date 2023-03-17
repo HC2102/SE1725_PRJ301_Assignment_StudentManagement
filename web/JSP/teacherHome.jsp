@@ -19,6 +19,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
     <body>
+        <%
+        if (session.getAttribute("userName") == null || session.getAttribute("userType").toString().compareToIgnoreCase("teacher") != 0) {
+            response.sendRedirect(request.getContextPath()+"/loginServlet");}
+    %>
         <div class="ctr1">
             <H1>Home</H1>
             <div class="headerbutton">

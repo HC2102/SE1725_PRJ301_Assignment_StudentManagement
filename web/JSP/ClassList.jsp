@@ -16,7 +16,10 @@
         <link href="<%= request.getContextPath()%>/css/table.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-
+<%
+        if (session.getAttribute("userName") == null || session.getAttribute("userType").toString().compareToIgnoreCase("admin") != 0) {
+            response.sendRedirect(request.getContextPath()+"/loginServlet");}
+    %>
         <h2>Class List</h2>
 
         <div class="table-wrapper">

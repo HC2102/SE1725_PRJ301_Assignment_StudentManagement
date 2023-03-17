@@ -11,9 +11,8 @@
 <!DOCTYPE html>
 <html>
     <%
-    if (request.getAttribute("listStudentFromClassID")==null) {
-        response.sendRedirect("Login.jsp");
-    }
+        if (session.getAttribute("userName") == null || session.getAttribute("userType").toString().compareToIgnoreCase("student") != 0) {
+            response.sendRedirect(request.getContextPath()+"/loginServlet");}
     %>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

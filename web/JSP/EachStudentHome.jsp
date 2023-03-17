@@ -15,11 +15,10 @@
         <link rel="stylesheet" href="<%= request.getContextPath()%>/css/home_studentstyle.css">
         <title>Student's Information</title>
     </head>
-    <%
-    if (session.getAttribute("userGuest")==null ||session.getAttribute("GuestClass")==null) {
-        response.sendRedirect("Login.jsp");
-    }
-%>
+   <%
+        if (session.getAttribute("userName") == null || session.getAttribute("userType").toString().compareToIgnoreCase("student") != 0) {
+            response.sendRedirect(request.getContextPath()+"/loginServlet");}
+    %>
     <body>
         <%
             Student stu = (Student) session.getAttribute("userGuest");

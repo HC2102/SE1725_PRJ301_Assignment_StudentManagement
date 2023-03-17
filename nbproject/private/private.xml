@@ -2,6 +2,43 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/ClassList.jsp</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/listOfUser.jsp</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/adSemesterList.jsp</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/addTest.jsp</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/EachStudentHome.jsp</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/updateMark.jsp</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/teacherHome.jsp</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/StudentAverageScore.jsp</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/ClassOfStudent.jsp</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/CourseDetailGrade.jsp</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/addClass.jsp</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/adminHome.jsp</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/StudentHome.jsp</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/UpdateClass.jsp</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/adUpdateMajor.jsp</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/ListCPS.jsp</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/adAddEnrolled.jsp</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/adAddUser.jsp</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/adUpdateUser.jsp</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/AddStudentIntoClass.jsp</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/tableStudentInfoWithMark.jsp</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/adMajorList.jsp</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/ChangePass.jsp</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/adAddCPS.jsp</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Student/StudentInfoServlet.java</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/error.jsp</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/TestList.jsp</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/adAddMajor.jsp</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/LoginServlet.java</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/ListEnrolled.jsp</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/AllStudentOfClass.jsp</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/UpdateCourse.jsp</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/Course.jsp</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/addCourse.jsp</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/table_information_student.jsp</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/adAddSemester.jsp</file>
+        </group>
     </open-files>
 </project-private>

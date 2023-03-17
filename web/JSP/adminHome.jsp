@@ -15,7 +15,10 @@
         <link rel="stylesheet" href="<%= request.getContextPath()%>/css/home_studentstyle.css">
         <title>Admin Services</title>
     </head>
-
+<%
+        if (session.getAttribute("userName") == null || session.getAttribute("userType").toString().compareToIgnoreCase("admin") != 0) {
+            response.sendRedirect(request.getContextPath()+"/loginServlet");}
+    %>
     <body>
 
         <%

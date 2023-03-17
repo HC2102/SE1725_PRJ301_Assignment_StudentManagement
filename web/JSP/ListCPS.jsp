@@ -17,6 +17,10 @@
         <link rel="stylesheet" href="<%= request.getContextPath()%>/css/home_studentstyle.css">
         <title>List CPS</title>
     </head>
+    <%
+        if (session.getAttribute("userName") == null || session.getAttribute("userType").toString().compareToIgnoreCase("admin") != 0) {
+            response.sendRedirect(request.getContextPath()+"/loginServlet");}
+    %>
     <body>
         <%
             ArrayList<CPS> listCPS = (ArrayList<CPS>)request.getAttribute("listCPS");

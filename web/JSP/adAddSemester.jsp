@@ -8,6 +8,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="<%= request.getContextPath()%>/css/CourseStyle_1.css">
     </head>
+    <%
+        if (session.getAttribute("userName") == null || session.getAttribute("userType").toString().compareToIgnoreCase("admin") != 0) {
+            response.sendRedirect(request.getContextPath()+"/loginServlet");}
+    %>
     <body>
         <h2>Add New Semester...</h2>
         <div class="container">

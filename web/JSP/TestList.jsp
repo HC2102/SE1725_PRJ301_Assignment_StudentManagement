@@ -17,6 +17,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="<%= request.getContextPath()%>/css/table.css" rel="stylesheet" type="text/css"/>
     </head>
+    <%
+        if (session.getAttribute("userName") == null || session.getAttribute("userType").toString().compareToIgnoreCase("admin") != 0) {
+            response.sendRedirect(request.getContextPath()+"/loginServlet");}
+    %>
     <body>
         <%
             if (request.getAttribute("tlist") == null) {

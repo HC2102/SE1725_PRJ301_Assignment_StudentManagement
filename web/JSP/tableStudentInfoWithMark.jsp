@@ -24,7 +24,10 @@
         <link href="css/table.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-
+<%
+        if (session.getAttribute("userName") == null || session.getAttribute("userType").toString().compareToIgnoreCase("teacher") != 0) {
+            response.sendRedirect(request.getContextPath()+"/loginServlet");}
+    %>
         <h2>Student Information</h2>
         <div class="table-wrapper">
             <table class="fl-table">

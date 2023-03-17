@@ -10,11 +10,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page errorPage="error.jsp" %>
 <!DOCTYPE html>
-<%
-    if (session.getAttribute("userStudent") == null) {
-        response.sendRedirect("JSP/Login.jsp");
-    }
-%>
+
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -23,6 +19,10 @@
         <link rel="stylesheet" href="<%= request.getContextPath()%>/css/home_studentstyle.css">
         <title>Student homepage</title>
     </head>
+    <%
+        if (session.getAttribute("userName") == null || session.getAttribute("userType").toString().compareToIgnoreCase("student") != 0) {
+            response.sendRedirect(request.getContextPath()+"/loginServlet");}
+    %>
     <body>
         <%
             Student stu = (Student) session.getAttribute("userStudent");

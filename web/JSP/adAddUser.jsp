@@ -17,11 +17,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="<%= request.getContextPath()%>\css\adAddUser.css" />
     </head>
-    <%
-    if (session.getAttribute("majorList")==null) {
-        response.sendRedirect("Login.jsp");
-    }
-%>
+   <%
+        if (session.getAttribute("userName") == null || session.getAttribute("userType").toString().compareToIgnoreCase("admin") != 0) {
+            response.sendRedirect(request.getContextPath()+"/loginServlet");}
+    %>
     <body>
         <!-- <script src="function.js"></script> -->
         <script>

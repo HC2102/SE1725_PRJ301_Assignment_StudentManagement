@@ -22,6 +22,10 @@
         <title>Update Grade</title>
 
     </head>
+    <%
+        if (session.getAttribute("userName") == null || session.getAttribute("userType").toString().compareToIgnoreCase("teacher") != 0) {
+            response.sendRedirect(request.getContextPath()+"/loginServlet");}
+    %>
     <body>
         <% 
         ArrayList<Grade> list = (ArrayList<Grade>)request.getAttribute("data");

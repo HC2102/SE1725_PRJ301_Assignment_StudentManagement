@@ -20,6 +20,12 @@ import jakarta.servlet.http.HttpServletResponse;
 public class deleteSemester extends HttpServlet {
 
     @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        this.doGet(req, resp);
+    }
+
+    
+    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         SemesterDAO sDAO = new SemesterDAO();
         int row = 0;

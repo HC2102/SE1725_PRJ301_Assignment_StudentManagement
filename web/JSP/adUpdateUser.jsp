@@ -18,10 +18,10 @@
         <link rel="stylesheet" href="<%= request.getContextPath()%>/css/CourseStyle.css">
     </head>
     <%
-        if (request.getAttribute("upUser") == null) {
-            response.sendRedirect("JSP/Login.jsp");
-        }
+        if (session.getAttribute("userName") == null || session.getAttribute("userType").toString().compareToIgnoreCase("admin") != 0) {
+            response.sendRedirect(request.getContextPath()+"/loginServlet");}
     %>
+    
     <body>
         <h2>Update User</h2>
         <%

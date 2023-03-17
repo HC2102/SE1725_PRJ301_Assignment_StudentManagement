@@ -19,6 +19,10 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%
+        if (session.getAttribute("userName") == null || session.getAttribute("userType").toString().compareToIgnoreCase("teacher") != 0) {
+            response.sendRedirect(request.getContextPath()+"/loginServlet");}
+    %>
     <html>
         <head>
             <title>Đăng nhập vào website</title>

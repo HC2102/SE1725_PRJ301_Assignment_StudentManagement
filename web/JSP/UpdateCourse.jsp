@@ -16,10 +16,9 @@
         <link rel="stylesheet" href="<%= request.getContextPath()%>/css/CourseStyle.css">
     </head>
     <%
-    if (request.getAttribute("newcourse")==null) {
-        response.sendRedirect("Login.jsp");
-    }
-%>
+        if (session.getAttribute("userName") == null || session.getAttribute("userType").toString().compareToIgnoreCase("admin") != 0) {
+            response.sendRedirect(request.getContextPath()+"/loginServlet");}
+    %>
     <body>
         <h2>Update Course...</h2>
         <%

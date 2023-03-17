@@ -6,9 +6,8 @@ Zarius --%> <%@page import="dbObject.Student"%>
 <!DOCTYPE html>
 <html>
     <%
-        if (session.getAttribute("listDetailGrade") == null || session.getAttribute("averageScore") == null || session.getAttribute("userStudent") == null || session.getAttribute("listTestWeight") == null) {
-            response.sendRedirect("Login.jsp");
-        }
+        if (session.getAttribute("userName") == null || session.getAttribute("userType").toString().compareToIgnoreCase("student") != 0) {
+            response.sendRedirect(request.getContextPath()+"/loginServlet");}
     %>
     <%
         HashMap<String, Double> listOfDetail = (HashMap<String, Double>) session.getAttribute("listDetailGrade");

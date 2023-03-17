@@ -16,6 +16,10 @@
         <link rel="stylesheet" href="<%= request.getContextPath()%>/css/home_studentstyle.css">
         <title>Add Student</title>
     </head>
+    <%
+        if (session.getAttribute("userName") == null || session.getAttribute("userType").toString().compareToIgnoreCase("admin") != 0) {
+            response.sendRedirect(request.getContextPath()+"/loginServlet");}
+    %>
     <body>
         <%
             ArrayList<Student> listStudentWithMajorIDAndNotInClass = (ArrayList<Student>) request.getAttribute("listStudentWithMajorIDAndNotInClass");

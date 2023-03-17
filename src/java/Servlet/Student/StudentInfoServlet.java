@@ -48,6 +48,7 @@ public class StudentInfoServlet extends HttpServlet {
         req.getRequestDispatcher("JSP/StudentHome.jsp").forward(req, resp);
         }catch(Exception  e){
             System.out.println("StudentInfoServlet, there may be empty in this class or other unexpected error");
+            resp.sendRedirect(req.getContextPath()+"/loginServlet");
         }
         
     }
