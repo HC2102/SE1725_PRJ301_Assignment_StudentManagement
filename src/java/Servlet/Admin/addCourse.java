@@ -24,7 +24,7 @@ public class addCourse extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        response.sendRedirect(request.getContextPath() + "/loginServlet");
     }
 
     @Override
@@ -50,8 +50,8 @@ public class addCourse extends HttpServlet {
                 request.setAttribute("info", null);
 
                 request.getRequestDispatcher("ToCourses").forward(request, response);
-            }  
-        }catch(Exception e){
+            }
+        } catch (Exception e) {
 
             request.setAttribute("error", "Error!");
             request.getRequestDispatcher("JSP/addCourse.jsp").forward(request, response);
