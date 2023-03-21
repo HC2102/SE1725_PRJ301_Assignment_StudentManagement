@@ -67,7 +67,7 @@
         <div style="display: flex; margin-left: 45%; margin-top: 3%">
             <a style="margin-right: 3%" href= "<%= request.getContextPath()%>/AdminInfo"> <input class="id" style=" font-weight: bold; padding: 16%" type="Submit" type="button" value="Back"></a>
             <div style="display: flex; justify-content: center;">
-                <a href="<%= request.getContextPath()%>/JSP/addClass.jsp"><input class="id" style=" font-weight: bold; padding: 5%" type="Submit" value="Add more classes"></a>
+                <a href="<%= request.getContextPath()%>/AddClass"><input class="id" style=" font-weight: bold; padding: 5%" type="Submit" value="Add more classes"></a>
             </div>
         </div>
     </body>

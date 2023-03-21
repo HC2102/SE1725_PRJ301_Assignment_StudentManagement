@@ -5,12 +5,16 @@
 package Servlet.Admin;
 
 import DAO.ClassDAO;
+import DAO.MajorDAO;
 import dbObject.Class;
+import dbObject.Major;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import java.util.ArrayList;
 
 /**
  *
@@ -30,7 +34,15 @@ public class AddClass extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect(request.getContextPath() + "/loginServlet");
+        HttpSession session = request.getSession();
+        if (session.getAttribute("userName") == null || session.getAttribute("userType").toString().compareToIgnoreCase("admin") != 0) {
+            response.sendRedirect(request.getContextPath() + "/loginServlet");
+        }else{
+            MajorDAO mdao = new MajorDAO();
+            ArrayList<Major> mlist = mdao.getAllMajors();
+            request.setAttribute("mlist", mlist);
+            request.getRequestDispatcher("JSP/addClass.jsp").forward(request, response);
+        }
     }
 
     @Override

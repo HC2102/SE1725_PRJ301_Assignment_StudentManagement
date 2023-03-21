@@ -77,7 +77,7 @@
         <div style="display: flex; margin-left: 42%; margin-top: 2%">
             <a style="margin-right: 2%"  href= "<%= request.getContextPath()%>/AdminInfo"> <input class="id" style="; font-weight: bold; padding: 10%;" type="Submit" type="button" value="Back"></a>
             <div>
-                <a href="<%= request.getContextPath()%>/JSP/addCourse.jsp"><input class="id" style=" font-weight: bold; padding: 3%" type="Submit" value="Add more courses"></a>
+                <a href="<%= request.getContextPath()%>/addCourse"><input class="id" style=" font-weight: bold; padding: 3%" type="Submit" value="Add more courses"></a>
             </div>
         </div>
 

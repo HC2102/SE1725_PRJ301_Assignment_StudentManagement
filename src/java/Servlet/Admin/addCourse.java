@@ -5,7 +5,9 @@
 package Servlet.Admin;
 
 import DAO.CourseDAO;
+import DAO.MajorDAO;
 import dbObject.Course;
+import dbObject.Major;
 import jakarta.servlet.ServletContext;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,6 +16,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.ArrayList;
 
 /**
  *
@@ -24,7 +27,15 @@ public class addCourse extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect(request.getContextPath() + "/loginServlet");
+        HttpSession session = request.getSession();
+        if (session.getAttribute("userName") == null || session.getAttribute("userType").toString().compareToIgnoreCase("admin") != 0) {
+            response.sendRedirect(request.getContextPath() + "/loginServlet");
+        }else{
+            MajorDAO mdao = new MajorDAO();
+            ArrayList<Major> mlist = mdao.getAllMajors();
+            request.setAttribute("mlist", mlist);
+            request.getRequestDispatcher("JSP/addCourse.jsp").forward(request, response);
+        }
     }
 
     @Override
@@ -52,7 +63,6 @@ public class addCourse extends HttpServlet {
                 request.getRequestDispatcher("ToCourses").forward(request, response);
             }
         } catch (Exception e) {
-
             request.setAttribute("error", "Error!");
             request.getRequestDispatcher("JSP/addCourse.jsp").forward(request, response);
         }

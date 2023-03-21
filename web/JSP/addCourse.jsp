@@ -3,7 +3,7 @@
     Created on : Mar 8, 2023, 4:21:38 PM
     Author     : dange
 --%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -49,10 +49,11 @@
                     </div>
                     <div class="col-75">
                         <select name="mid">
-                            <option value="LA">LA</option>
-                            <option value="GD">GD</option>
-                            <option value="SE">SE</option>
-                            <option value="BA">BA</option>
+                            <c:if test="${mlist != null}">
+                                <c:forEach items="${mlist}" var="m">
+                                    <option value="${m.ID}">${m.name}</option>
+                                </c:forEach>
+                            </c:if>
                         </select>
 
                     </div>
