@@ -23,19 +23,28 @@ public class EachStudentHome extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+
         StudentDAO stuDAO = new StudentDAO();
         StudentClassDAO stclDAO = new StudentClassDAO();
         String studentID = req.getParameter("id");
         Student s = stuDAO.getStudent(studentID);
-        //get student and class
-        Student_Class stcl = stclDAO.getStudentFromClassByStudentID(studentID);
-        //Create a session
-        HttpSession session = req.getSession();
-        //attribute for session
-        session.setAttribute("userGuest", s);
-        session.setAttribute("GuestClass", stcl);
-        req.getRequestDispatcher("JSP/EachStudentHome.jsp").forward(req, resp);
+        if (session.getAttribute("userName") == null || session.getAttribute("userType").toString().compareToIgnoreCase("student") != 0) {
+            resp.sendRedirect(req.getContextPath() + "/loginServlet");
+        } else {
+            if (s == null) {
+                req.getRequestDispatcher("/studentInfo").forward(req, resp);
+            } else {
+                Student_Class stcl = stclDAO.getStudentFromClassByStudentID(studentID);
+                //Create a session
+                //attribute for session
+                session.setAttribute("userGuest", s);
+                session.setAttribute("GuestClass", stcl);
+                req.getRequestDispatcher("JSP/EachStudentHome.jsp").forward(req, resp);
+            }
+        }
 
+        //get student and class
     }
 
     @Override

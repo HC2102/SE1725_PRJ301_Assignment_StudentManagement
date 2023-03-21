@@ -12,10 +12,9 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
-
-
 
 /**
  *
@@ -25,22 +24,24 @@ public class StudentWithClassMajor extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String classID = req.getParameter("id");
-        StudentDAO sDAO = new StudentDAO();
-        ClassDAO cDAO = new ClassDAO();
-        Class selectedClass = cDAO.getClass(classID);
-        ArrayList<Student> listStudentWithMajorIDAndNotInClass = sDAO.getAllStudentWithMajorIDAndNotInClass(selectedClass.getMajor_ID(), classID);
-        req.setAttribute("listStudentWithMajorIDAndNotInClass", listStudentWithMajorIDAndNotInClass);
-        req.setAttribute("classID", classID);
-        req.getRequestDispatcher("JSP/AddStudentIntoClass.jsp").forward(req, resp);
-        
-        
+        HttpSession session = req.getSession();
+        if (session.getAttribute("userName") == null || session.getAttribute("userType").toString().compareToIgnoreCase("admin") != 0) {
+            resp.sendRedirect(req.getContextPath() + "/loginServlet");
+        } else {
+            String classID = req.getParameter("id");
+            StudentDAO sDAO = new StudentDAO();
+            ClassDAO cDAO = new ClassDAO();
+            Class selectedClass = cDAO.getClass(classID);
+            ArrayList<Student> listStudentWithMajorIDAndNotInClass = sDAO.getAllStudentWithMajorIDAndNotInClass(selectedClass.getMajor_ID(), classID);
+            req.setAttribute("listStudentWithMajorIDAndNotInClass", listStudentWithMajorIDAndNotInClass);
+            req.setAttribute("classID", classID);
+            req.getRequestDispatcher("JSP/AddStudentIntoClass.jsp").forward(req, resp);
+        }
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         this.doGet(req, resp);
     }
-    
 
 }

@@ -3,7 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/FPT_University/Semester4_SP2023/PRJ301/Github_PullOrigin/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/AdminOptions.java</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/updateUser.java</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/StudentWithClassMajor.java</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/SubjectOfSemesterServlet.java</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/InsertCPS.java</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Teacher/TeacherInfoServlet.java</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/WEB-INF/web.xml</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/updateMajor.java</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/ListCPS.jsp</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/DAO/SemesterDAO.java</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/adAddUser.jsp</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/adCPSList.java</file>
         </group>
     </open-files>
 </project-private>

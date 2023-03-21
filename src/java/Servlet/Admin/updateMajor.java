@@ -22,10 +22,16 @@ public class updateMajor extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        MajorDAO mdao = new MajorDAO();
-        Major upMajor = mdao.getMajor(req.getParameter("upID"));
-        req.setAttribute("updateMajor", upMajor);
-        req.getRequestDispatcher("JSP/adUpdateMajor.jsp").forward(req, resp);
+        HttpSession session = req.getSession();
+        if (session.getAttribute("userName") == null) {
+            resp.sendRedirect(req.getContextPath() + "/loginServlet");
+        } else {
+            MajorDAO mdao = new MajorDAO();
+            Major upMajor = mdao.getMajor(req.getParameter("upID"));
+            req.setAttribute("updateMajor", upMajor);
+            req.getRequestDispatcher("JSP/adUpdateMajor.jsp").forward(req, resp);
+        }
+
     }
 
     @Override
@@ -38,7 +44,7 @@ public class updateMajor extends HttpServlet {
             String mBio = req.getParameter("mBios");
             Major upMajor = new Major(mID, mName, mBio);
             row = mdao.updateMajor(upMajor);
-            if(row <1){
+            if (row < 1) {
                 throw new Exception();
             }
             resp.sendRedirect("majorList");

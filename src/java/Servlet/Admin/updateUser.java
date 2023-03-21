@@ -29,43 +29,49 @@ public class updateUser extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        UserDAO uDao = new UserDAO();
-        StudentDAO sDAO = new StudentDAO();
-        TeacherDAO tDAO = new TeacherDAO();
-        AdminDAO aDAO  =  new AdminDAO();
-        String username = req.getParameter("upname");
-//        HttpSession session = req.getSession();
-        User u = uDao.getUser(username);
-        UserCommon uc = null;
-        switch (u.getRole()) {
-            case 0:
-                Admin getAdmin =aDAO.getAdmin(username);
-                uc = new UserCommon(username, getAdmin.getAdmin_name(), getAdmin.getAdmin_Address(), getAdmin.getAdmin_phonenumber(), getAdmin.getAdmin_email());
-                break;
-            case 1:
-                Student getStudent = sDAO.getStudentByUsername(username);
-                uc = new UserCommon(username, getStudent.getStudentName(), getStudent.getAddress(), getStudent.getPhoneNum(), getStudent.getEmail());
-                break;
-            case 2:
-                Teacher getTeacher = tDAO.getByUserName(username);
-                uc = new UserCommon(username, getTeacher.getTeacherName(), getTeacher.getAddress(), getTeacher.getPhoneNum(), getTeacher.getEmail());
-                break;
-            default:
-                throw new AssertionError();
-        }
-        if (u == null || uc == null) {
-            resp.sendRedirect("adUserList");
+        HttpSession session = req.getSession();
+        if (session.getAttribute("userName") == null) {
+            resp.sendRedirect(req.getContextPath() + "/loginServlet");
         } else {
-            req.setAttribute("commonUser", uc);
-            req.setAttribute("upUser", u);
-            req.getRequestDispatcher("JSP/adUpdateUser.jsp").forward(req, resp);
+            UserDAO uDao = new UserDAO();
+            StudentDAO sDAO = new StudentDAO();
+            TeacherDAO tDAO = new TeacherDAO();
+            AdminDAO aDAO = new AdminDAO();
+            String username = req.getParameter("upname");
+//        HttpSession session = req.getSession();
+            User u = uDao.getUser(username);
+            UserCommon uc = null;
+            switch (u.getRole()) {
+                case 0:
+                    Admin getAdmin = aDAO.getAdmin(username);
+                    uc = new UserCommon(username, getAdmin.getAdmin_name(), getAdmin.getAdmin_Address(), getAdmin.getAdmin_phonenumber(), getAdmin.getAdmin_email());
+                    break;
+                case 1:
+                    Student getStudent = sDAO.getStudentByUsername(username);
+                    uc = new UserCommon(username, getStudent.getStudentName(), getStudent.getAddress(), getStudent.getPhoneNum(), getStudent.getEmail());
+                    break;
+                case 2:
+                    Teacher getTeacher = tDAO.getByUserName(username);
+                    uc = new UserCommon(username, getTeacher.getTeacherName(), getTeacher.getAddress(), getTeacher.getPhoneNum(), getTeacher.getEmail());
+                    break;
+                default:
+                    throw new AssertionError();
+            }
+            if (u == null || uc == null) {
+                resp.sendRedirect("adUserList");
+            } else {
+                req.setAttribute("commonUser", uc);
+                req.setAttribute("upUser", u);
+                req.getRequestDispatcher("JSP/adUpdateUser.jsp").forward(req, resp);
+            }
         }
+
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-            HttpSession session =  req.getSession();
+            HttpSession session = req.getSession();
             UserDAO uDAO = new UserDAO();
             TeacherDAO tDAO = new TeacherDAO();
             StudentDAO sDAO = new StudentDAO();
@@ -79,7 +85,7 @@ public class updateUser extends HttpServlet {
             String newAddress = req.getParameter("address");
             switch (role) {
                 case 0:
-                    Admin newAd =  aDAO.getAdmin(upname);
+                    Admin newAd = aDAO.getAdmin(upname);
                     newAd.setAdmin_Address(newAddress);
                     newAd.setAdmin_email(newEmail);
                     newAd.setAdmin_phonenumber(newPhone);
@@ -105,10 +111,10 @@ public class updateUser extends HttpServlet {
                 default:
                     throw new AssertionError();
             }
-            req.setAttribute("status","Update record successfully!"); 
+            req.setAttribute("status", "Update record successfully!");
             req.getRequestDispatcher("adUserList").forward(req, resp);
         } catch (Exception e) {
-            req.setAttribute("error", "Error! "+e.getMessage());
+            req.setAttribute("error", "Error! " + e.getMessage());
             req.getRequestDispatcher("JSP/adUpdateUser.jsp").forward(req, resp);
         }
     }

@@ -2,8 +2,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-
-
 package Servlet.Teacher;
 
 import DAO.TeacherDAO;
@@ -27,14 +25,19 @@ public class TeacherInfoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        String user_name = (String) session.getAttribute("userName");
-        TeacherDAO td = new TeacherDAO();
-        Teacher t = td.getByUserName(user_name);
-        List<CPS> list = td.getCpsByUserName(user_name);
-        List<String> list_semester = td.getListSemesterByUsername(user_name);
-        session.setAttribute("data", t);
-        session.setAttribute("list_semester", list_semester);
-        response.sendRedirect("JSP/teacherHome.jsp");
+        if (session.getAttribute("userName") == null || session.getAttribute("userType").toString().compareToIgnoreCase("teacher") != 0) {
+            response.sendRedirect(request.getContextPath() + "/loginServlet");
+        } else {
+            String user_name = (String) session.getAttribute("userName");
+            TeacherDAO td = new TeacherDAO();
+            Teacher t = td.getByUserName(user_name);
+            List<CPS> list = td.getCpsByUserName(user_name);
+            List<String> list_semester = td.getListSemesterByUsername(user_name);
+            session.setAttribute("data", t);
+            session.setAttribute("list_semester", list_semester);
+            response.sendRedirect("JSP/teacherHome.jsp");
+        }
+
     }
 
     @Override

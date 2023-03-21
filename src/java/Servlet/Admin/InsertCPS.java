@@ -30,7 +30,7 @@ public class InsertCPS extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (req.getParameter("addCPS") != null) {
+        try{
             SemesterDAO semDAO = new SemesterDAO();
             CourseDAO cDAO = new CourseDAO();
             Semester currentSem = semDAO.getSemesterIDByCurrentSemester();
@@ -38,6 +38,10 @@ public class InsertCPS extends HttpServlet {
             req.setAttribute("listCourse", listCourse);
             req.setAttribute("currentSem", currentSem.getSemester_ID());
             req.getRequestDispatcher("JSP/adAddCPS.jsp").forward(req, resp);
+        }catch(Exception e){
+            req.setAttribute("error", "no current semester chooses");
+            req.getRequestDispatcher("adCPSList");
         }
+            
     }
 }
