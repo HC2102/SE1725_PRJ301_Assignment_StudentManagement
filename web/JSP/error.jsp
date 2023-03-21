@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Mua haha this is a notification</title>
+        <title>Error has been found!</title>
     </head>
     <style>
         body{
@@ -18,7 +18,7 @@
         }
     </style>
     <body>
-        <h1>Haha look who made a mistake!</h1>
+        <h1>This is an error page</h1>
         <img style="width:80%" src="<%=request.getContextPath()%>\image\error.png" alt="error"> <br>
         Exception: <%= exception%>
 
