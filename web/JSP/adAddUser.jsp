@@ -95,7 +95,7 @@
                             type="text"
                             id="fullname"
                             name="fullname"
-                            placeholder="Student full name"
+                            placeholder="full name"
                             required
                             />
                     </div>

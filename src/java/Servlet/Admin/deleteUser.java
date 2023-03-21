@@ -16,6 +16,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
@@ -32,9 +33,16 @@ public class deleteUser extends HttpServlet {
         String err=null;
         int row = 0;
         try {
+            HttpSession session = req.getSession();
+            String suicideName = (String)session.getAttribute("userName");
             String username = req.getParameter("delname");
             int role = Integer.parseInt(req.getParameter("role"));
             User delU = uDAO.getUser(username);
+            
+            //check if user delete him/her self!
+            if (suicideName.compareTo(username)==0) {
+                throw new Exception("Can not delete yourself!");
+            }
             //delete
             switch (role) {
                 case 0:
