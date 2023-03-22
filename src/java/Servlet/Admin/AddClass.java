@@ -60,7 +60,7 @@ public class AddClass extends HttpServlet {
                 request.setAttribute("info", "Class ID already exists");
                 request.setAttribute("status", null);
                 request.setAttribute("error", null);
-                request.getRequestDispatcher("JSP/addClass.jsp").forward(request, response);
+                this.doGet(request, response);
             } else {
                 request.setAttribute("status", "Add class successfully!");
                 request.setAttribute("error", null);
@@ -69,7 +69,7 @@ public class AddClass extends HttpServlet {
             }
         } catch (Exception e) {
             request.setAttribute("info", "Error!");
-            request.getRequestDispatcher("JSP/addClass.jsp").forward(request, response);
+            this.doGet(request, response);
         }
     }
 }
