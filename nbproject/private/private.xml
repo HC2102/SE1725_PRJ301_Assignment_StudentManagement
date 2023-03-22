@@ -3,29 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/CPSByClass.java</file>
-            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/Login.jsp</file>
-            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/addCPSToList.java</file>
-            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/teacherByCourse.java</file>
-            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/ClassDetail.java</file>
-            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/SubjectOfSemesterServlet.java</file>
-            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/adEnrolledList.java</file>
-            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/majorList.java</file>
-            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/web/JSP/error.jsp</file>
-            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/DAO/TeacherDAO.java</file>
-            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/LoginServlet.java</file>
-            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/StudentWithClassMajor.java</file>
-            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/ClassList.java</file>
-            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/adAddUser.java</file>
-            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/DAO/StudentDAO.java</file>
-            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/addCourse.java</file>
-            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Student/ClassOfStudentServlet.java</file>
-            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/ToCourses.java</file>
-            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/adCPSList.java</file>
-            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/ListStudentOfCpsServlet.java</file>
-            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/CourseTest.java</file>
-            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/insertEnrolled.java</file>
-            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/Servlet/Admin/addEnrolled.java</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/Login/LoginBeans.java</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/outsideObject/UserCommon.java</file>
+            <file>file:/D:/NetBeansProjects/SE1725_PRJ301_Assignment_StudentManagement/src/java/dbObject/Student_Class_Mark.java</file>
         </group>
     </open-files>
 </project-private>

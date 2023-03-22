@@ -31,7 +31,7 @@ public class ToCourses extends HttpServlet {
         ArrayList<Course> clist = cd.getAllCourse();
         request.setAttribute("clist", clist);
         ArrayList<Major> mlist = mdao.getAllMajors();
-        request.setAttribute("mlist", clist);
+        request.setAttribute("mlist", mlist);
         request.setAttribute("status", status);
         request.setAttribute("error", error);
         request.getRequestDispatcher("JSP/Course.jsp").forward(request, response);
